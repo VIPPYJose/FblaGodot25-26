@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="fbla 25-26 Godot"
-run/main_scene="uid://bpc17rrt6fasq"
+config/name="My Little Buddy"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
