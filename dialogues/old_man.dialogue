@@ -1,0 +1,13 @@
+~ start
+set Npc.finished = false
+Wise Old Man: [[Hi|Hello|Howdy]], this is some dialogue.
+Wise Old Man: Here are some choices.
+- First one
+	Wise Old Man: You picked the first one.
+- Second one
+	Wise Old Man: You picked the second one.
+- Start again => start
+- End the conversation => END
+Wise Old Man: For more information see the online documentation.
+set Npc.finished = true
+=> END
