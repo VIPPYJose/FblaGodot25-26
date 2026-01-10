@@ -8,7 +8,6 @@ var last_dir := Vector2.ZERO
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D if has_node("Sprite2D") else $playerspriteanim
 @onready var npc: CharacterBody2D = get_node_or_null("../Path2D/PathFollow2D/npc")
 
-
 func _physics_process(_delta: float) -> void:
 	var player_can_move = player_moveable()
 
@@ -24,7 +23,6 @@ func _physics_process(_delta: float) -> void:
 		input_dir = input_dir.normalized()
 		velocity = input_dir * speed
 		move_and_slide()
-		#print("player is moving")
 		
 		last_dir = input_dir
 		_play_move_anim()
@@ -35,18 +33,18 @@ func _physics_process(_delta: float) -> void:
 
 func _play_move_anim():
 	var anim = ""
-	if last_dir.x > 0: anim = "move_right"
-	elif last_dir.x < 0: anim = "move_left"
-	elif last_dir.y < 0: anim = "move_up"
-	else: anim = "move_down"
+	if last_dir.x > 0: anim = "move_left"
+	elif last_dir.x < 0: anim = "move_right"
+	elif last_dir.y < 0: anim = "move_down"
+	else: anim = "move_up"
 	_play_if_exists(anim)
 
 func _play_idle_anim():
 	var anim = ""
-	if last_dir.x > 0: anim = "idle_right"
-	elif last_dir.x < 0: anim = "idle_left"
-	elif last_dir.y < 0: anim = "idle_up"
-	else: anim = "idle_down"
+	if last_dir.x > 0: anim = "idle_left"
+	elif last_dir.x < 0: anim = "idle_right"
+	elif last_dir.y < 0: anim = "idle_down"
+	else: anim = "idle_up"
 	_play_if_exists(anim)
 
 func _play_if_exists(anim_name: String):

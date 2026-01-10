@@ -7,7 +7,7 @@ var finished: bool = false
 var player_can_move: bool = true
 var player_in_range: bool = false
 
-@onready var label = $CanvasLayer/Label
+@onready var label = get_node_or_null("CanvasLayer/Label")
 
 func _ready():
 	if label:

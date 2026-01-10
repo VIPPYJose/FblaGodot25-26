@@ -18,7 +18,7 @@ var default_options := {
 	"pattern": "fade",
 	"wait_time": 0.5,
 	"invert": false,
-	"invert_on_leave": true,
+	"invert_on_leave": false,
 	"ease": 1.0,
 	"skip_scene_change": false,
 	"skip_fade_out": false,
@@ -28,12 +28,6 @@ var default_options := {
 	"on_fade_out": func(): null,
 	"on_fade_in": func(): null,
 }
-# extra_options = {
-#   "pattern_enter": DEFAULT_IMAGE,
-#   "pattern_leave": DEFAULT_IMAGE,
-#   "ease_enter": 1.0,
-#   "ease_leave": 1.0,
-# }
 
 var singleton_entities := {}
 var _previous_scene = null
