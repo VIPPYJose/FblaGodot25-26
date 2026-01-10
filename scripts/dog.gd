@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var breed: String = "basic_dog"
+
 var path: Array[Vector2] = []
 var needs_menu_instance: CanvasLayer
 
@@ -58,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	if player.velocity == Vector2.ZERO:
-		animated_sprite_2d.play("idle")
+		_play_animation("idle")
 		return
 	
 	var old_pos = global_position
@@ -90,13 +92,30 @@ func _physics_process(delta: float) -> void:
 		accumulated_distance += segment_distance
 	
 	if old_pos.distance_to(global_position) > 0.1:
-		animated_sprite_2d.play("run")
+		_play_animation("run")
 		if global_position.x < old_pos.x:
 			animated_sprite_2d.flip_h = true
 		elif global_position.x > old_pos.x:
 			animated_sprite_2d.flip_h = false
 	else:
-		animated_sprite_2d.play("idle")
+		_play_animation("idle")
 	
 	if not found_target and not path.is_empty():
 		pass
+
+func _play_animation(anim_name: String) -> void:
+	if not animated_sprite_2d:
+		return
+	
+	# Try various naming conventions found in the tscn
+	var possible_names = [
+		breed + "_" + anim_name,
+		breed.capitalize() + "_" + anim_name,
+		anim_name, # fallback to exact name if it exists
+		"basic_dog_" + anim_name # final fallback
+	]
+	
+	for name in possible_names:
+		if animated_sprite_2d.sprite_frames.has_animation(name):
+			animated_sprite_2d.play(name)
+			return

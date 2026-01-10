@@ -25,4 +25,3 @@ func _on_settings_pressed():
 
 func _on_close_settings_pressed():
 	settings_panel.hide()
-

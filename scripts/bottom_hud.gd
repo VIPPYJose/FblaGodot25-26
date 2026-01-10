@@ -11,4 +11,3 @@ func _ready():
 func update_ui():
 	money_label.text = "§ " + str(money)
 	time_label.text = "Sun. 1:25 PM"
-
