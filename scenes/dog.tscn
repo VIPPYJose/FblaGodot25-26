@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://brfibhbe70tiq"]
+[gd_scene load_steps=134 format=3 uid="uid://brfibhbe70tiq"]
 
 [ext_resource type="Script" uid="uid://etk4tb5j4drl" path="res://scripts/dog.gd" id="1_dog_script"]
 [ext_resource type="Texture2D" uid="uid://b3tpu3qax8u7q" path="res://assets/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="2_v3i3p"]
@@ -434,30 +434,6 @@ region = Rect2(256, 320, 64, 64)
 atlas = ExtResource("15_rns1n")
 region = Rect2(320, 320, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jeic"]
-atlas = ExtResource("8_3ks0t")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pw5sp"]
-atlas = ExtResource("8_3ks0t")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8jun"]
-atlas = ExtResource("8_3ks0t")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fnix5"]
-atlas = ExtResource("8_3ks0t")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bno02"]
-atlas = ExtResource("8_3ks0t")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1nkt4"]
-atlas = ExtResource("8_3ks0t")
-region = Rect2(320, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjqk5"]
 atlas = ExtResource("2_vwjdu")
 region = Rect2(0, 192, 64, 64)
@@ -554,7 +530,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Argentino_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -589,7 +565,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Golden_Retriever_idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -612,7 +588,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Golden_Retriever_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -635,7 +611,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Husky_idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -658,7 +634,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Husky_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -681,7 +657,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Pharoah_hound_idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -704,7 +680,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Pharoah_hound_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -825,7 +801,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"labrador_more_blond_idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -871,7 +847,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"labrador_ruby_idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -891,24 +867,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7vknq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3jeic")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pw5sp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8jun")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fnix5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bno02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1nkt4")
 }],
 "loop": true,
 "name": &"labrador_ruby_run",
@@ -955,7 +913,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"rottie_run",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Dog" type="CharacterBody2D"]
@@ -964,8 +922,10 @@ script = ExtResource("1_dog_script")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ei5el")
-animation = &"labrador_more_blond_idle"
+animation = &"rottie_run"
+frame_progress = 0.16528629
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 polygon = PackedVector2Array(-15, 14, -16, 16, -18, 15, -19, 14, -20, 13, -20, 9, -20, 7, -23, 8, -23, 15, -18, 20, -15, 22, -14, 24, -15, 26, -16, 28, -15, 30, -14, 30, -12, 31, -11, 30, -12, 28, -10, 27, -10, 24, -8, 23, -5, 23, -1, 23, 2, 23, 3, 26, 4, 29, 4, 30, 5, 31, 9, 31, 10, 31, 9, 28, 8, 25, 9, 23, 10, 20, 12, 19, 13, 17, 14, 13, 15, 12, 16, 13, 20, 13, 21, 11, 21, 7, 19, 5, 14, 3, 11, 4, 9, 5, 8, 8, 6, 10, 2, 13, -4, 12, -9, 12, -13, 12)
