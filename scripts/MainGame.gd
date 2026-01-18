@@ -35,13 +35,17 @@ func spawn_player():
 	name_tag.text = GameState.player_name
 	name_tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_tag.custom_minimum_size = Vector2(100, 20)
-	name_tag.position = Vector2(-50, -40)
+	
+	var label_settings = LabelSettings.new()
+	label_settings.font_size = 18
+	label_settings.outline_size = 3
+	label_settings.outline_color = Color.BLACK
+	name_tag.label_settings = label_settings
+	
+	name_tag.scale = Vector2(1.0 / player.scale.x, 1.0 / player.scale.y)
+	name_tag.position = Vector2(-50 * name_tag.scale.x, -30 * name_tag.scale.y)
 	name_tag.visible = false
 	name_tag.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	# Smaller pixel font look
-	name_tag.add_theme_font_size_override("font_size", 10)
-	
 	player.add_child(name_tag)
 	
 	player.mouse_entered.connect(func(): 
@@ -63,13 +67,17 @@ func spawn_dog():
 	name_tag.text = GameState.pet_name
 	name_tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_tag.custom_minimum_size = Vector2(100, 20)
-	name_tag.position = Vector2(-50, -40)
+	
+	var label_settings = LabelSettings.new()
+	label_settings.font_size = 18
+	label_settings.outline_size = 3
+	label_settings.outline_color = Color.BLACK
+	name_tag.label_settings = label_settings
+	
+	name_tag.scale = Vector2(1.0 / dog.scale.x, 1.0 / dog.scale.y)
+	name_tag.position = Vector2(-50 * name_tag.scale.x, -40 * name_tag.scale.y)
 	name_tag.visible = false
 	name_tag.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	# Smaller pixel font look
-	name_tag.add_theme_font_size_override("font_size", 10)
-	
 	dog.add_child(name_tag)
 	
 	dog.mouse_entered.connect(func(): 

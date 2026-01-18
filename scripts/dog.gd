@@ -11,12 +11,10 @@ extends CharacterBody2D
 var path: Array[Vector2] = []
 var needs_menu_instance: CanvasLayer
 
-
 var hunger: float = 80.0
 var thirst: float = 70.0
 var energy: float = 100.0
 var hygiene: float = 90.0
-
 
 var hunger_decay: float = 0.5
 var thirst_decay: float = 0.8
@@ -24,10 +22,9 @@ var energy_decay: float = 0.3
 var hygiene_decay: float = 0.2
 
 func _ready() -> void:
-	# Enable input picking for the dog so it can be clicked
+	add_to_group("dog")
 	input_pickable = true
 	
-	# Instance the needs menu and add it to the scene
 	if needs_menu_scene:
 		needs_menu_instance = needs_menu_scene.instantiate()
 		get_tree().root.add_child.call_deferred(needs_menu_instance)
@@ -48,7 +45,6 @@ func toggle_menu() -> void:
 			needs_menu_instance.show_menu(self)
 
 func _physics_process(delta: float) -> void:
-	# Decay needs
 	hunger = max(0, hunger - hunger_decay * delta)
 	thirst = max(0, thirst - thirst_decay * delta)
 	energy = max(0, energy - energy_decay * delta)
@@ -57,7 +53,6 @@ func _physics_process(delta: float) -> void:
 	var player = get_tree().get_first_node_in_group(player_group)
 	if not player:
 		return
-	
 
 	if player.velocity == Vector2.ZERO:
 		_play_animation("idle")
@@ -77,7 +72,6 @@ func _physics_process(delta: float) -> void:
 		var segment_distance = p_current.distance_to(p_prev)
 		
 		if accumulated_distance + segment_distance >= target_distance:
-			# The target point is on this segment
 			var remaining_distance = target_distance - accumulated_distance
 			var ratio = remaining_distance / segment_distance
 			global_position = p_current.lerp(p_prev, ratio)
@@ -99,20 +93,16 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.flip_h = false
 	else:
 		_play_animation("idle")
-	
-	if not found_target and not path.is_empty():
-		pass
 
 func _play_animation(anim_name: String) -> void:
 	if not animated_sprite_2d:
 		return
 	
-	# Try various naming conventions found in the tscn
 	var possible_names = [
 		breed + "_" + anim_name,
 		breed.capitalize() + "_" + anim_name,
-		anim_name, # fallback to exact name if it exists
-		"basic_dog_" + anim_name # final fallback
+		anim_name,
+		"basic_dog_" + anim_name
 	]
 	
 	for name in possible_names:

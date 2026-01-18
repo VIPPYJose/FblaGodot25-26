@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://c06gk2o2ya52f"]
 
-[ext_resource type="Script" uid="uid://85r1uj7416cu" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
+[ext_resource type="Script" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
 
 [node name="BottomHUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_hud_script")
 
 [node name="Background" type="Panel" parent="."]
@@ -38,7 +39,7 @@ theme_override_constants/separation = 15
 [node name="MoneyLabel" type="Label" parent="Background/Margin/MainHBox/LeftSection"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "$353"
+text = "$150"
 vertical_alignment = 1
 
 [node name="SpacerLeft" type="Control" parent="Background/Margin/MainHBox"]
@@ -48,7 +49,7 @@ size_flags_horizontal = 3
 [node name="TimeLabel" type="Label" parent="Background/Margin/MainHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Sun. 1:25 PM"
+text = "Mon. 12:00 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -60,6 +61,30 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="NeedsBtn" type="Button" parent="Background/Margin/MainHBox/RightSection"]
+layout_mode = 2
+text = " 🐾 "
+
 [node name="BuildBtn" type="Button" parent="Background/Margin/MainHBox/RightSection"]
 layout_mode = 2
 text = " 🏠 "
+
+[node name="TopRightHUD" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="FinanceBtn" type="Button" parent="TopRightHUD"]
+layout_mode = 2
+text = " 📝 "
+
+[node name="PauseBtn" type="Button" parent="TopRightHUD"]
+layout_mode = 2
+text = " ... "

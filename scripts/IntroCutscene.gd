@@ -74,5 +74,10 @@ func _on_continue_button_pressed():
 	SceneManager.change_scene("res://scenes/CharacterCustomize.tscn", {"pattern": "curtains"})
 
 func _on_toggle_pressed(toggle_index):
-	var content = technical_panel.get_node("VBoxContainer/Section" + str(toggle_index) + "/Content")
-	content.visible = !content.visible
+	var vbox = technical_panel.get_node("VBoxContainer")
+	for i in range(1, 5):
+		var content = vbox.get_node("Section" + str(i) + "/Content")
+		if i == toggle_index:
+			content.visible = !content.visible
+		else:
+			content.visible = false
