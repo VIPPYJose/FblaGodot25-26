@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddy2k6y6w8b2w"]
+[gd_scene load_steps=4 format=3 uid="uid://ddy2k6y6w8b2w"]
 
 [ext_resource type="Script" uid="uid://bnwm45xsk324o" path="res://scripts/needs_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dykv6tnnuubxm" path="res://assets/placeholder/download 7.44.10 PM.png" id="2_upfti"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljf80"]
 
@@ -15,9 +16,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -215.33331
-offset_top = -164.0
+offset_top = -214.0
 offset_right = -10.0
-offset_bottom = -10.0
+offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -134,3 +135,22 @@ show_percentage = false
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox"]
 layout_mode = 2
 text = "50"
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0.5)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -61.0
+offset_right = -10.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Download7_44_10Pm" type="Sprite2D" parent="."]
+position = Vector2(1128, 603)
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_upfti")

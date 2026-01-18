@@ -922,8 +922,7 @@ script = ExtResource("1_dog_script")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ei5el")
-animation = &"rottie_run"
-frame_progress = 0.16528629
+animation = &"Argentino_idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

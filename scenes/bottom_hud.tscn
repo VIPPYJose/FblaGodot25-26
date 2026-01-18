@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c06gk2o2ya52f"]
 
-[ext_resource type="Script" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
+[ext_resource type="Script" uid="uid://85r1uj7416cu" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
 
 [node name="BottomHUD" type="CanvasLayer"]
 script = ExtResource("1_hud_script")
@@ -38,7 +38,7 @@ theme_override_constants/separation = 15
 [node name="MoneyLabel" type="Label" parent="Background/Margin/MainHBox/LeftSection"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "§ 353"
+text = "$353"
 vertical_alignment = 1
 
 [node name="SpacerLeft" type="Control" parent="Background/Margin/MainHBox"]
