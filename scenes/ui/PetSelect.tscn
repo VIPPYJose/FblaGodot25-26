@@ -27,54 +27,57 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Select Your Pet"
 horizontal_alignment = 1
 
 [node name="PreviewContainer" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="DogPreview" type="AnimatedSprite2D" parent="VBoxContainer/PreviewContainer"]
-position = Vector2(100, 100)
-scale = Vector2(4, 4)
+position = Vector2(200, 200)
+scale = Vector2(8, 8)
 
 [node name="CycleContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 100
 alignment = 1
 
 [node name="PrevButton" type="Button" parent="VBoxContainer/CycleContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "<"
 
 [node name="BreedName" type="Label" parent="VBoxContainer/CycleContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "Golden Retriever"
 
 [node name="NextButton" type="Button" parent="VBoxContainer/CycleContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = ">"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
 text = "Continue"
 
 [connection signal="pressed" from="VBoxContainer/CycleContainer/PrevButton" to="." method="_on_prev_button_pressed"]

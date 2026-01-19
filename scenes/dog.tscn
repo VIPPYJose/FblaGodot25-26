@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://djibp26sixet0"]
+[gd_scene load_steps=134 format=3 uid="uid://bi8snp74053p0"]
 
 [ext_resource type="Script" uid="uid://etk4tb5j4drl" path="res://scripts/dog.gd" id="1_dog_script"]
 [ext_resource type="Texture2D" uid="uid://b3tpu3qax8u7q" path="res://assets/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="2_v3i3p"]

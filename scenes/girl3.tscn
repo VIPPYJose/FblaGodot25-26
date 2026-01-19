@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://g2pt5jsvcxap"]
+[gd_scene load_steps=52 format=3 uid="uid://dv1fhwcx16a65"]
 
 [ext_resource type="Script" uid="uid://cgnpu08xwmatr" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bx3t1250q1qvl" path="res://assets/Humans/STYLE3FEMALE.png" id="2_5nevj"]

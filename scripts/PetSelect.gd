@@ -17,7 +17,7 @@ var breeds = [
 var current_breed_index = 0
 
 func _ready():
-	var dog_scene = load("res://scenes/dog.tscn").instantiate()
+	var dog_scene = load("res://scenes/People and dog/dog.tscn").instantiate()
 	preview.sprite_frames = dog_scene.get_node("AnimatedSprite2D").sprite_frames
 	dog_scene.free()
 	update_preview()
@@ -54,4 +54,4 @@ func _on_next_button_pressed():
 
 func _on_continue_button_pressed():
 	GameState.save_pet(breeds[current_breed_index]["id"])
-	SceneManager.change_scene("res://scenes/PetName.tscn", {"pattern": "curtains"})
+	SceneManager.change_scene("res://scenes/ui/PetName.tscn", {"pattern": "curtains"})

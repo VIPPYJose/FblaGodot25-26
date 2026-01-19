@@ -12,22 +12,22 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(400, 300)
+custom_minimum_size = Vector2(800, 600)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 40
 
 [node name="Header" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
@@ -35,20 +35,24 @@ layout_mode = 2
 [node name="Title" type="Label" parent="Panel/VBox/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 56
 text = "Finances"
 horizontal_alignment = 1
 
 [node name="CloseBtn" type="Button" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = " X "
 
 [node name="Content" type="VBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="BalanceLabel" type="Label" parent="Panel/VBox/Content"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 48
 text = "Current Balance: $150"
 horizontal_alignment = 1

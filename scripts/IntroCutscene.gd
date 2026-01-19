@@ -71,7 +71,7 @@ func next_slide():
 		show_slide(current_slide + 1)
 
 func _on_continue_button_pressed():
-	SceneManager.change_scene("res://scenes/CharacterCustomize.tscn", {"pattern": "curtains"})
+	SceneManager.change_scene("res://scenes/ui/CharacterCustomize.tscn", {"pattern": "curtains"})
 
 func _on_toggle_pressed(toggle_index):
 	var vbox = technical_panel.get_node("VBoxContainer")

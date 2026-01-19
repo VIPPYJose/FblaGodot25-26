@@ -34,11 +34,11 @@ func update_preview():
 	var scene_path = ""
 	if current_variant == "male":
 		if current_char_id == 1:
-			scene_path = "res://scenes/Dude1.tscn"
+			scene_path = "res://scenes/People and dog/Dude1.tscn"
 		else:
 			scene_path = "res://scenes/People and dog/Dude" + str(current_char_id) + ".tscn"
 	else:
-		scene_path = "res://scenes/girl" + str(current_char_id) + ".tscn"
+		scene_path = "res://scenes/People and dog/girl" + str(current_char_id) + ".tscn"
 	
 	var scene = load(scene_path).instantiate()
 	var sprite = scene.get_node("Sprite2D") if scene.has_node("Sprite2D") else scene.get_node("playerspriteanim")
@@ -82,4 +82,4 @@ func _on_continue_button_pressed():
 		
 	GameState.save_character(current_char_id, current_variant)
 	GameState.save_player_name(name_input.text.strip_edges())
-	SceneManager.change_scene("res://scenes/PetSelect.tscn", {"pattern": "curtains"})
+	SceneManager.change_scene("res://scenes/ui/PetSelect.tscn", {"pattern": "curtains"})

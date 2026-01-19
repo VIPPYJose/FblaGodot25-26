@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwukp4g2b3wog"]
+[gd_scene load_steps=2 format=3 uid="uid://bnvlle0kirhvb"]
 
 [ext_resource type="Script" uid="uid://rdva6wncrad3" path="res://scripts/PetName.gd" id="1_pet_name"]
 

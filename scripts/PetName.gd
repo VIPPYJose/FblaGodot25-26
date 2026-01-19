@@ -4,7 +4,7 @@ extends Control
 @onready var pet_name_input = $VBoxContainer/PetNameInput
 
 func _ready():
-	var dog_scene = load("res://scenes/dog.tscn").instantiate()
+	var dog_scene = load("res://scenes/People and dog/dog.tscn").instantiate()
 	preview.sprite_frames = dog_scene.get_node("AnimatedSprite2D").sprite_frames
 	dog_scene.free()
 	
@@ -32,4 +32,4 @@ func _on_continue_button_pressed():
 		return
 		
 	GameState.save_pet_name(p_name)
-	SceneManager.change_scene("res://scenes/MainGame.tscn", {"pattern": "curtains"})
+	SceneManager.change_scene("res://scenes/ui/MainGame.tscn", {"pattern": "curtains"})

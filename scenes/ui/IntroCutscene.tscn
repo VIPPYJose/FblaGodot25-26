@@ -27,25 +27,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -100.0
-offset_right = 300.0
-offset_bottom = 100.0
+offset_left = -600.0
+offset_top = -200.0
+offset_right = 600.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "Some dogs don’t start life feeling safe."
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
 visible = false
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
 text = "Continue"
 
 [node name="TechnicalPanel" type="PanelContainer" parent="."]
@@ -56,25 +60,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -250.0
-offset_right = 400.0
-offset_bottom = 250.0
+offset_left = -800.0
+offset_top = -500.0
+offset_right = 800.0
+offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TechnicalPanel"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="TechnicalPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 56
 text = "Game Overview"
 horizontal_alignment = 1
 
 [node name="Overview" type="Label" parent="TechnicalPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Welcome to your digital pet care experience! You will adopt a dog, explore a 2D top-down world, and help your pet heal and build trust."
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -83,12 +88,15 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="Header" type="Button" parent="TechnicalPanel/VBoxContainer/Section1"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Stats & Interactions"
 
 [node name="Content" type="Label" parent="TechnicalPanel/VBoxContainer/Section1"]
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Your dog has stats like Hunger, Energy, Hygiene, Happiness, and Fun that you must manage. Interact through world actions — like walking, playing fetch in the park, visiting the beach, shopping for food and toys, or dropping your pet off at daycare — as well as direct one-on-one care actions like feeding, petting, playing, or washing."
 autowrap_mode = 3
 
@@ -96,12 +104,15 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="Header" type="Button" parent="TechnicalPanel/VBoxContainer/Section2"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Care Costs & Budget"
 
 [node name="Content" type="Label" parent="TechnicalPanel/VBoxContainer/Section2"]
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "You will also manage your pet’s care costs, including food, toys, and vet visits, helping you understand responsibility and budgeting."
 autowrap_mode = 3
 
@@ -109,12 +120,15 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="Header" type="Button" parent="TechnicalPanel/VBoxContainer/Section3"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Pet Emotions & Growth"
 
 [node name="Content" type="Label" parent="TechnicalPanel/VBoxContainer/Section3"]
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Your choices affect your pet’s emotions and behavior, and consistent care will help it grow, bond with you, and thrive."
 autowrap_mode = 3
 
@@ -122,12 +136,15 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="Header" type="Button" parent="TechnicalPanel/VBoxContainer/Section4"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Customization & Programming Learning"
 
 [node name="Content" type="Label" parent="TechnicalPanel/VBoxContainer/Section4"]
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Explore, care, and experiment with customization, pet reactions, and interactive features while learning programming concepts such as variables, conditionals, functions, and logic to simulate responsive pet behavior."
 autowrap_mode = 3
 

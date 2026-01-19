@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var target_distance: float = 67.0
 @export var player_group: String = "player"
-@export var needs_menu_scene: PackedScene = preload("res://scenes/needs_menu.tscn")
+@export var needs_menu_scene: PackedScene = preload("res://scenes/ui/needs_menu.tscn")
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 

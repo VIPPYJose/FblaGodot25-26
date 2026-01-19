@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcyeqi6jpdlva"]
+[gd_scene load_steps=2 format=3 uid="uid://dhr3qupo3ds07"]
 
 [ext_resource type="Script" uid="uid://bm5pu0imhpy28" path="res://scripts/PetSelect.gd" id="1_pet_select"]
 

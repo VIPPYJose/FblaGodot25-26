@@ -9,7 +9,7 @@ func _ready():
 	setup_hud()
 
 func setup_hud():
-	var hud_scene = load("res://scenes/bottom_hud.tscn")
+	var hud_scene = load("res://scenes/ui/bottom_hud.tscn")
 	if hud_scene:
 		var hud = hud_scene.instantiate()
 		add_child(hud)
@@ -21,11 +21,11 @@ func spawn_player():
 	
 	if variant == "male":
 		if id == 1:
-			scene_path = "res://scenes/Dude1.tscn"
+			scene_path = "res://scenes/People and dog/Dude1.tscn"
 		else:
 			scene_path = "res://scenes/People and dog/Dude" + str(id) + ".tscn"
 	else:
-		scene_path = "res://scenes/girl" + str(id) + ".tscn"
+		scene_path = "res://scenes/People and dog/girl" + str(id) + ".tscn"
 		
 	var player = load(scene_path).instantiate()
 	player.global_position = player_spawn_pos
@@ -59,7 +59,7 @@ func spawn_player():
 	)
 
 func spawn_dog():
-	var dog_scene = load("res://scenes/dog.tscn")
+	var dog_scene = load("res://scenes/People and dog/dog.tscn")
 	var dog = dog_scene.instantiate()
 	dog.global_position = dog_spawn_pos
 	dog.breed = GameState.dog_breed
