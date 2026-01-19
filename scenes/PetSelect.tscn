@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://petselect123"]
+[gd_scene load_steps=2 format=3 uid="uid://dcyeqi6jpdlva"]
 
-[ext_resource type="Script" path="res://scripts/PetSelect.gd" id="1_pet_select"]
+[ext_resource type="Script" uid="uid://bm5pu0imhpy28" path="res://scripts/PetSelect.gd" id="1_pet_select"]
 
 [node name="PetSelect" type="Control"]
 layout_mode = 3

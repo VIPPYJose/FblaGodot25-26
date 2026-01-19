@@ -14,6 +14,9 @@ func _ready():
 	update_highlights()
 
 func _input(event):
+	if name_input.has_focus():
+		return
+		
 	if event.is_action_pressed("ui_left") or event.is_action_pressed("move_left"):
 		cycle_character(-1)
 	elif event.is_action_pressed("ui_right") or event.is_action_pressed("move_right"):
@@ -30,7 +33,10 @@ func cycle_character(direction):
 func update_preview():
 	var scene_path = ""
 	if current_variant == "male":
-		scene_path = "res://scenes/Dude" + str(current_char_id) + ".tscn"
+		if current_char_id == 1:
+			scene_path = "res://scenes/Dude1.tscn"
+		else:
+			scene_path = "res://scenes/People and dog/Dude" + str(current_char_id) + ".tscn"
 	else:
 		scene_path = "res://scenes/girl" + str(current_char_id) + ".tscn"
 	

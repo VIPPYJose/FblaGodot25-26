@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://charcust123"]
+[gd_scene load_steps=2 format=3 uid="uid://eu8nlpcmw6bi"]
 
-[ext_resource type="Script" path="res://scripts/CharacterCustomize.gd" id="1_char_cust"]
+[ext_resource type="Script" uid="uid://bd7520is8f3xb" path="res://scripts/CharacterCustomize.gd" id="1_char_cust"]
 
 [node name="CharacterCustomize" type="Control"]
 layout_mode = 3

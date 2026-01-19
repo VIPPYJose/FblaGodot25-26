@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var pause_btn = $TopRightHUD/PauseBtn
 
 var pause_menu_scene = preload("res://scenes/PauseMenu.tscn")
-var finance_menu_scene = preload("res://scenes/FinanceMenu.tscn")
+var finance_menu_scene = preload("res://scenes/ui/FinanceMenu.tscn")
 var current_pause_menu = null
 
 func _ready():

@@ -20,7 +20,10 @@ func spawn_player():
 	var scene_path = ""
 	
 	if variant == "male":
-		scene_path = "res://scenes/Dude" + str(id) + ".tscn"
+		if id == 1:
+			scene_path = "res://scenes/Dude1.tscn"
+		else:
+			scene_path = "res://scenes/People and dog/Dude" + str(id) + ".tscn"
 	else:
 		scene_path = "res://scenes/girl" + str(id) + ".tscn"
 		

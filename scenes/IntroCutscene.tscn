@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://intro123"]
+[gd_scene load_steps=2 format=3 uid="uid://chtr6tp1qwy3d"]
 
-[ext_resource type="Script" path="res://scripts/IntroCutscene.gd" id="1_intro"]
+[ext_resource type="Script" uid="uid://b7r1vsvuk866c" path="res://scripts/IntroCutscene.gd" id="1_intro"]
 
 [node name="IntroCutscene" type="Control"]
 layout_mode = 3

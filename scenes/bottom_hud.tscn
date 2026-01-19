@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c06gk2o2ya52f"]
+[gd_scene load_steps=2 format=3 uid="uid://m0im6nf2dk8v"]
 
-[ext_resource type="Script" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
+[ext_resource type="Script" uid="uid://85r1uj7416cu" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
 
 [node name="BottomHUD" type="CanvasLayer"]
 process_mode = 3

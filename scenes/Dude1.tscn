@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c82e8riey31c4"]
+[gd_scene load_steps=52 format=3 uid="uid://ddrc1gd6d0f4j"]
 
 [ext_resource type="Script" uid="uid://b45axvln68oej" path="res://scripts/dude4.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://pmq44lgc11fo" path="res://assets/Humans/STYLE2MALE.png" id="2_j4qoq"]
@@ -397,7 +397,7 @@ scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 6.6069007, 0, 9.249661, 3.0792403, 6.6069007, 3.5191326, -5.2855215)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
-scale = Vector2(1.0052286, 1.0746742)
+scale = Vector2(80400, 86000)
 zoom = Vector2(1.5, 1.5)
 process_callback = 0
 position_smoothing_enabled = true

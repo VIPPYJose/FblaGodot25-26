@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://pausemenu123"]
+[gd_scene format=3 uid="uid://bh76t42n4wylh"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
