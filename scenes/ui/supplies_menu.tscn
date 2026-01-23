@@ -12,8 +12,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -380.0
+offset_left = -450.0
+offset_top = -520.0
 offset_right = -40.0
 offset_bottom = -120.0
 grow_horizontal = 0
@@ -29,14 +29,14 @@ layout_mode = 2
 [node name="Title" type="Label" parent="PanelContainer/VBoxContainer/TitleHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 46
 text = "📈 Pet Supplies"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer/TitleHBox"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = " X "
 
 [node name="ContentContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -46,15 +46,15 @@ theme_override_constants/separation = 15
 
 [node name="FoodLabel" type="Label" parent="PanelContainer/VBoxContainer/ContentContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "Food: 0 days left"
 
 [node name="WaterLabel" type="Label" parent="PanelContainer/VBoxContainer/ContentContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "Water: 0 days left"
 
 [node name="MedicationLabel" type="Label" parent="PanelContainer/VBoxContainer/ContentContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "Medication: none prescribed"

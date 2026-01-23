@@ -55,12 +55,26 @@ func update_overview():
 	spendable_label.text = "Spending Money: $%d" % GameState.money
 	savings_label.text = "Emergency Savings: $%d" % GameState.savings_balance
 	
-	# Update Progress Bars
-	var food_pct = GameState.get_budget_status("Food")
-	var vet_pct = GameState.get_budget_status("Vet")
+	var total_spent = GameState.weekly_report["total_spent"]
+	
+	# Calculate percentages based on composition of total spending (sharing the 100%)
+	# as requested: "if vet was $50 and med was $40 and water was $10, Food=10% Vet=90%"
+	var food_spent = GameState.budget_data["Food"]["spent"]
+	var vet_spent = GameState.budget_data["Vet"]["spent"]
+	
+	var food_pct = 0.0
+	var vet_pct = 0.0
+	
+	if total_spent > 0:
+		food_pct = (float(food_spent) / float(total_spent)) * 100.0
+		vet_pct = (float(vet_spent) / float(total_spent)) * 100.0
 	
 	food_progress.value = food_pct
 	vet_progress.value = vet_pct
+	
+	# Show percentage in label for clarity
+	$Panel/VBox/Content/TabContainer/Overview/FoodLabel.text = "Food & Water (%.0f%%)" % food_pct
+	$Panel/VBox/Content/TabContainer/Overview/VetLabel.text = "Vet & Medicine (%.0f%%)" % vet_pct
 	
 	update_progress_color(food_progress, food_pct)
 	update_progress_color(vet_progress, vet_pct)
@@ -115,20 +129,25 @@ func update_history():
 	for entry in GameState.transaction_history:
 		var h_box = HBoxContainer.new()
 		
+		var font_size = 35 # Increased for readability
+		
 		var day_label = Label.new()
 		day_label.text = "[Day %d]" % entry["day"]
-		day_label.custom_minimum_size.x = 80
+		day_label.custom_minimum_size.x = 130
+		day_label.add_theme_font_size_override("font_size", font_size)
 		h_box.add_child(day_label)
 		
 		var desc_label = Label.new()
 		desc_label.text = entry["description"]
 		desc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		desc_label.add_theme_font_size_override("font_size", font_size)
 		h_box.add_child(desc_label)
 		
 		var amount_label = Label.new()
 		var prefix = "+" if entry["amount"] >= 0 else ""
 		amount_label.text = "%s$%d" % [prefix, entry["amount"]]
 		amount_label.add_theme_color_override("font_color", Color.GREEN if entry["amount"] >= 0 else Color.RED)
+		amount_label.add_theme_font_size_override("font_size", font_size)
 		h_box.add_child(amount_label)
 		
 		history_list.add_child(h_box)

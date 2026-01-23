@@ -31,7 +31,11 @@ func _input(event: InputEvent):
 
 func start_dialogue():
 	if DialogueManager:
-		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "start")
+		# Using custom balloon for larger text
+		var balloon_scene = load("res://dialogues/balloon.tscn")
+		var balloon = balloon_scene.instantiate()
+		get_tree().root.add_child(balloon)
+		balloon.start(dialogue_resource, "start")
 	else:
 		# Fallback if DialogueManager is not working/installed
 		open_shop()

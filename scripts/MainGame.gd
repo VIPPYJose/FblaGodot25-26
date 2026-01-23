@@ -21,6 +21,21 @@ func _ready():
 	setup_pause_menu()
 	_make_paths_visible()
 	
+	# Background Music
+	var music_player = AudioStreamPlayer.new()
+	music_player.name = "BackgroundMusic"
+	var music_stream = load("res://assets/Music/inspiring-synth-arpeggios-with-mellow-pads-and-creative-calm-energy-408709 (1).mp3")
+	if music_stream:
+		music_player.stream = music_stream
+		music_player.autoplay = true
+		# Godot 4.x loop setting is on the stream itself usually for mp3, 
+		# but let's ensure it loops via script if needed or trust the importer.
+		# If it's an AudioStreamMP3, we can set loop.
+		if music_stream is AudioStreamMP3:
+			music_stream.loop = true
+		add_child(music_player)
+		music_player.play()
+	
 	# Initialize Day 1 if it's a new game
 	if GameState.is_day_one and not GameState.is_tutorial_complete:
 		if dog_instance:

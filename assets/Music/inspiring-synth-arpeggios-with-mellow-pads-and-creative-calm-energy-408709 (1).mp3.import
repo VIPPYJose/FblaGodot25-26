@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcij3mgkl7kqp"
+path="res://.godot/imported/inspiring-synth-arpeggios-with-mellow-pads-and-creative-calm-energy-408709 (1).mp3-bb87a0609b43a75856468ad828a78ff2.mp3str"
+
+[deps]
+
+source_file="res://assets/Music/inspiring-synth-arpeggios-with-mellow-pads-and-creative-calm-energy-408709 (1).mp3"
+dest_files=["res://.godot/imported/inspiring-synth-arpeggios-with-mellow-pads-and-creative-calm-energy-408709 (1).mp3-bb87a0609b43a75856468ad828a78ff2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

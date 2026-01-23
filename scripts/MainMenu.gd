@@ -3,10 +3,8 @@ extends Control
 @onready var continue_button = $VBoxContainer/ContinueButton
 @onready var start_button = $VBoxContainer/StartButton
 @onready var settings_button = $VBoxContainer/SettingsButton
-@onready var settings_panel = $SettingsPanel
 
 func _ready():
-	settings_panel.hide()
 	continue_button.pressed.connect(_on_continue_pressed)
 	start_button.pressed.connect(_on_start_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
@@ -24,7 +22,7 @@ func _on_start_pressed():
 	SceneManager.change_scene("res://scenes/ui/IntroCutscene.tscn")
 
 func _on_settings_pressed():
-	settings_panel.show()
-
-func _on_close_settings_pressed():
-	settings_panel.hide()
+	var settings_scene = load("res://scenes/ui/SettingsMenu.tscn")
+	if settings_scene:
+		var settings_menu = settings_scene.instantiate()
+		add_child(settings_menu)

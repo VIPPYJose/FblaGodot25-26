@@ -8,8 +8,17 @@ extends CharacterBody2D
 
 @export var breed: String = "basic_dog"
 
+# State machine
+enum DogState {FOLLOWING_PLAYER, EATING, DRINKING, SLEEPING}
+var current_state: DogState = DogState.FOLLOWING_PLAYER
+
 var path: Array[Vector2] = []
 var needs_menu_instance: CanvasLayer
+
+# Path following for actions
+var action_path: Array = []
+var action_callback: Callable
+var action_speed: float = 100.0
 
 var hunger: float = 80.0
 var thirst: float = 70.0
@@ -46,6 +55,16 @@ func _ready() -> void:
 	if needs_menu_scene:
 		needs_menu_instance = needs_menu_scene.instantiate()
 		get_tree().root.add_child.call_deferred(needs_menu_instance)
+	
+	# Connect to day started signal
+	GameState.day_started.connect(_on_day_started)
+
+func _on_day_started(_day: int):
+	# Wake up from sleep
+	if current_state == DogState.SLEEPING:
+		current_state = DogState.FOLLOWING_PLAYER
+		GameState.is_dog_sleeping = false
+		_play_animation("idle")
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -54,6 +73,44 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
 		toggle_menu()
+	
+	# Dog action keys (only when following player)
+	if current_state == DogState.FOLLOWING_PLAYER and event is InputEventKey and event.pressed:
+		if event.keycode == KEY_1:
+			start_action("food path", DogState.EATING, _on_food_complete)
+		elif event.keycode == KEY_2:
+			start_action("water path", DogState.DRINKING, _on_water_complete)
+		elif event.keycode == KEY_3:
+			start_action("Sleep path", DogState.SLEEPING, _on_sleep_complete)
+
+func start_action(path_name: String, state: DogState, callback: Callable):
+	var main_game = get_tree().current_scene
+	var path_node = main_game.get_node_or_null(path_name)
+	if not path_node or not path_node is Path2D:
+		print("Path not found: ", path_name)
+		return
+	
+	# Get baked points from path
+	action_path = Array(path_node.curve.get_baked_points())
+	action_callback = callback
+	current_state = state
+	path.clear()
+
+func _on_food_complete():
+	hunger = min(100.0, hunger + 30.0)
+	current_state = DogState.FOLLOWING_PLAYER
+	print("Dog ate! Hunger: ", hunger)
+
+func _on_water_complete():
+	thirst = min(100.0, thirst + 30.0)
+	current_state = DogState.FOLLOWING_PLAYER
+	print("Dog drank! Thirst: ", thirst)
+
+func _on_sleep_complete():
+	energy = 100.0
+	GameState.is_dog_sleeping = true
+	_play_animation("idle") # Would be "sleep" if animation exists
+	print("Dog sleeping! Energy: ", energy)
 
 func toggle_menu() -> void:
 	if needs_menu_instance:
@@ -64,8 +121,46 @@ func toggle_menu() -> void:
 
 func _physics_process(delta: float) -> void:
 	GameState.dog_health = health
-	# Don't decay needs during tutorial
-	if not GameState.is_tutorial_complete:
+	
+	# Handle state-specific behavior
+	match current_state:
+		DogState.SLEEPING:
+			# Frozen - don't decay needs, don't move
+			return
+		DogState.EATING, DogState.DRINKING:
+			# Follow action path
+			_process_action_path(delta)
+			return
+		DogState.FOLLOWING_PLAYER:
+			_process_following_player(delta)
+
+func _process_action_path(_delta: float):
+	if action_path.is_empty():
+		# Reached destination
+		if action_callback.is_valid():
+			action_callback.call()
+		return
+	
+	var target = action_path[0]
+	var direction = (target - global_position).normalized()
+	var distance = global_position.distance_to(target)
+	
+	if distance < 5.0:
+		action_path.remove_at(0)
+		return
+	
+	velocity = direction * action_speed
+	move_and_slide()
+	
+	_play_animation("run")
+	if direction.x < 0:
+		animated_sprite_2d.flip_h = true
+	elif direction.x > 0:
+		animated_sprite_2d.flip_h = false
+
+func _process_following_player(delta: float):
+	# Don't decay needs during tutorial or when dog is sleeping
+	if not GameState.is_tutorial_complete or GameState.is_dog_sleeping:
 		pass # Skip decay
 	else:
 		hunger = max(0, hunger - hunger_decay * delta)
@@ -74,30 +169,6 @@ func _physics_process(delta: float) -> void:
 		hygiene = max(0, hygiene - hygiene_decay * delta)
 		
 		check_emergency_triggers(delta)
-
-var emergency_cooldown: float = 0.0
-
-func check_emergency_triggers(delta: float):
-	if emergency_cooldown > 0:
-		emergency_cooldown -= delta
-		return
-
-	# Emergency Vet Logic
-	if health < 20:
-		# Attempt to pay $50 for emergency care
-		if GameState.spend_money(50, "Vet"):
-			health = 50
-			emergency_cooldown = 10.0
-			print("Emergency Vet Care triggered!")
-	
-	# Emergency Food Logic
-	if hunger < 10 and GameState.food <= 0:
-		# Attempt to pay $20 for food
-		if GameState.spend_money(20, "Food"):
-			GameState.food += 7
-			hunger = 50
-			emergency_cooldown = 10.0
-			print("Emergency Food Purchase triggered!")
 	
 	var player = get_tree().get_first_node_in_group(player_group)
 	if not player:
@@ -145,6 +216,30 @@ func check_emergency_triggers(delta: float):
 			animated_sprite_2d.flip_h = false
 	else:
 		_play_animation("idle")
+
+var emergency_cooldown: float = 0.0
+
+func check_emergency_triggers(delta: float):
+	if emergency_cooldown > 0:
+		emergency_cooldown -= delta
+		return
+
+	# Emergency Vet Logic
+	if health < 20:
+		# Attempt to pay $50 for emergency care
+		if GameState.spend_money(50, "Vet"):
+			health = 50
+			emergency_cooldown = 10.0
+			print("Emergency Vet Care triggered!")
+	
+	# Emergency Food Logic
+	if hunger < 10 and GameState.food <= 0:
+		# Attempt to pay $20 for food
+		if GameState.spend_money(20, "Food"):
+			GameState.food += 7
+			hunger = 50
+			emergency_cooldown = 10.0
+			print("Emergency Food Purchase triggered!")
 
 func _play_animation(anim_name: String) -> void:
 	if not animated_sprite_2d:

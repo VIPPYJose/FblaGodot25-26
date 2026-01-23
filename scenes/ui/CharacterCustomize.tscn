@@ -38,7 +38,7 @@ alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 74
 text = "Select Your Character"
 horizontal_alignment = 1
 
@@ -59,18 +59,18 @@ alignment = 1
 [node name="PrevButton" type="Button" parent="VBoxContainer/CycleContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 58
 text = "<"
 
 [node name="CharacterName" type="Label" parent="VBoxContainer/CycleContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 58
 text = "Character 1"
 
 [node name="NextButton" type="Button" parent="VBoxContainer/CycleContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 58
 text = ">"
 
 [node name="VariantContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -79,29 +79,29 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="MaleButton" type="Button" parent="VBoxContainer/VariantContainer"]
-custom_minimum_size = Vector2(240, 80)
+custom_minimum_size = Vector2(240, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Male"
 
 [node name="FemaleButton" type="Button" parent="VBoxContainer/VariantContainer"]
-custom_minimum_size = Vector2(240, 80)
+custom_minimum_size = Vector2(240, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Female"
 
 [node name="NameInput" type="LineEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 placeholder_text = "Enter Your Name"
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(400, 120)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 58
 text = "Continue"
 
 [connection signal="pressed" from="VBoxContainer/CycleContainer/PrevButton" to="." method="_on_prev_button_pressed"]

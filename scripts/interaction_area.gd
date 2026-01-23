@@ -4,6 +4,7 @@ extends Area2D
 @export var target_position: Vector2
 @export var is_exit: bool = false
 @export var post_teleport_hint: String = ""
+@export var is_sleep: bool = false
 
 var tutorial_hint_scene = preload("res://scenes/ui/tutorial_hint.tscn")
 var hint_instance: CanvasLayer = null
@@ -34,7 +35,18 @@ func _on_body_exited(body: Node2D):
 
 func _input(event: InputEvent):
 	if player_in_area and (event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E)):
-		teleport()
+		if is_sleep:
+			trigger_sleep()
+		else:
+			teleport()
+
+func trigger_sleep():
+	if hint_instance:
+		hint_instance.hide_hint()
+	
+	# Curtain transition, then advance day
+	await SceneManager.fade_in_place({"pattern": "curtains"})
+	GameState.advance_day()
 
 func teleport():
 	var player = get_tree().get_first_node_in_group("player")

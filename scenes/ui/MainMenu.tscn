@@ -29,26 +29,26 @@ alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 100
 text = "My Little Buddy"
 horizontal_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Continue Game"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Start New Game"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Settings"
 
 [node name="SettingsPanel" type="Panel" parent="."]
@@ -78,15 +78,15 @@ alignment = 1
 
 [node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer"]
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Close"
 
 [connection signal="pressed" from="SettingsPanel/VBoxContainer/CloseButton" to="." method="_on_close_settings_pressed"]

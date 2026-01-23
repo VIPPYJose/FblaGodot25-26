@@ -95,12 +95,13 @@ func _on_pause_btn_pressed():
 	
 	current_pause_menu.get_node("Panel/VBox/FinancesBtn").pressed.connect(func():
 		var help_popup = load("res://scenes/ui/FinanceHelpPopup.tscn").instantiate()
-		add_child(help_popup)
+		get_tree().root.add_child(help_popup)
 		help_popup.get_node("Panel/VBox/CloseBtn").pressed.connect(help_popup.queue_free)
 	)
 	
 	current_pause_menu.get_node("Panel/VBox/SettingsBtn").pressed.connect(func():
-		print("Settings pressed - Placeholder")
+		var settings_menu = load("res://scenes/ui/SettingsMenu.tscn").instantiate()
+		get_tree().root.add_child(settings_menu)
 	)
 
 	# Connect to Emergency Fund signal

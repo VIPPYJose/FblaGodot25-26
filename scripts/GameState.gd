@@ -7,6 +7,7 @@ var pet_name: String = ""
 var player_name: String = ""
 
 var money: int = 150
+var master_volume: int = 70
 var current_day: int = 0
 var days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 var day_timer: float = 0.0
@@ -23,6 +24,7 @@ var has_prescription: bool = false # Added to track vet orders
 var is_tutorial_complete: bool = false
 var is_day_one: bool = true
 var tutorial_blocks_movement: bool = false # When true, blocks movement but allows menu inputs
+var is_dog_sleeping: bool = false # Freeze needs when dog sleeps
 
 # Signal emitted when a new day starts
 signal day_started(day_number: int)
@@ -51,7 +53,37 @@ signal history_updated
 signal vet_talk_finished
 signal open_shop_requested
 
-func _process(delta):
+func _ready():
+	apply_volume()
+
+func apply_volume():
+	var db = linear_to_db(master_volume / 100.0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), master_volume == 0)
+
+func _process(_delta):
+	# Day advancement is now handled via advance_day() called from sleep interaction
+	pass
+
+func advance_day():
+	# Decrement supplies
+	food = max(0, food - 1)
+	water = max(0, water - 1)
+	
+	# Increment day
+	current_day += 1
+	is_day_one = false
+	
+	# Check for weekly reset
+	if current_day % 7 == 0:
+		reset_weekly_budgets()
+	
+	# Wake up dog
+	is_dog_sleeping = false
+	
+	day_started.emit(current_day)
+
+func old_process_disabled(delta):
 	if get_tree().paused:
 		return
 		
@@ -215,6 +247,7 @@ func save_game(dog_data: Dictionary = {}):
 		"medication": medication,
 		"is_tutorial_complete": is_tutorial_complete,
 		"is_day_one": is_day_one,
+		"master_volume": master_volume,
 		# Finance Data
 		"savings_balance": savings_balance,
 		"budget_data": budget_data,
@@ -263,6 +296,7 @@ func load_game() -> bool:
 	medication = save_data.get("medication", "none")
 	is_tutorial_complete = save_data.get("is_tutorial_complete", false)
 	is_day_one = save_data.get("is_day_one", true)
+	master_volume = save_data.get("master_volume", 70)
 	
 	# Restore Finance Data
 	savings_balance = save_data.get("savings_balance", 200)

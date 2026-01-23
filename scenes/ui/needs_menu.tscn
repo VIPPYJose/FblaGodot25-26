@@ -31,14 +31,14 @@ layout_mode = 2
 [node name="Title" type="Label" parent="PanelContainer/VBoxContainer/TitleHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 58
 text = "Needs"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer/TitleHBox"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = " X "
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
@@ -54,15 +54,14 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hunger"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Hunger"
-label_settings = SubResource("LabelSettings_ljf80")
 
 [node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Hunger"]
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Hunger/HBox"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -71,7 +70,7 @@ show_percentage = false
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hunger/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "50"
 
 [node name="Thirst" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
@@ -80,14 +79,14 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Thirst"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Thirst"
 
 [node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Thirst"]
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Thirst/HBox"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -96,7 +95,7 @@ show_percentage = false
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Thirst/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "50"
 
 [node name="Energy" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
@@ -105,14 +104,14 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Energy"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Energy"
 
 [node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Energy"]
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Energy/HBox"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -121,7 +120,7 @@ show_percentage = false
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Energy/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "50"
 
 [node name="Hygiene" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
@@ -130,14 +129,14 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Hygiene"
 
 [node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene"]
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -146,7 +145,7 @@ show_percentage = false
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "50"
 
 [node name="Health" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
@@ -155,14 +154,14 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Health"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Health"
 
 [node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Health"]
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Health/HBox"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -171,7 +170,7 @@ show_percentage = false
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Health/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 38
 text = "30"
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]

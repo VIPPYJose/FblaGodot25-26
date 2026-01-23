@@ -15,6 +15,7 @@ border_width_bottom = 2
 border_color = Color(0.4, 0.6, 1, 1)
 
 [node name="FinanceHelpPopup" type="CanvasLayer"]
+layer = 11
 process_mode = 3
 script = ExtResource("1_script")
 
@@ -27,16 +28,16 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.5)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(600, 450)
+custom_minimum_size = Vector2(800, 650)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -225.0
-offset_right = 300.0
-offset_bottom = 225.0
+offset_left = -400.0
+offset_top = -325.0
+offset_right = 400.0
+offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
@@ -47,7 +48,7 @@ theme_override_constants/separation = 20
 
 [node name="Header" type="Label" parent="Panel/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 46
 text = "Finance Rules"
 horizontal_alignment = 1
 
@@ -57,7 +58,11 @@ layout_mode = 2
 [node name="Body" type="RichTextLabel" parent="Panel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
 bbcode_enabled = true
 text = "[ul]
 [b]Weekly Income:[/b] You receive [color=green]$150[/color] every week.
@@ -70,10 +75,10 @@ text = "[ul]
 [/ul]"
 
 [node name="CloseBtn" type="Button" parent="Panel/VBox"]
-custom_minimum_size = Vector2(120, 50)
+custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 34
 text = "Got it!"
 
 [connection signal="pressed" from="Panel/VBox/CloseBtn" to="." method="_on_close_btn_pressed"]

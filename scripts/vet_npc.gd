@@ -43,7 +43,12 @@ func start_dialogue():
 		has_talked_to_vet = true
 		if hint_instance:
 			hint_instance.hide_hint()
-		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "start")
+		
+		# Using custom balloon for larger text
+		var balloon_scene = load("res://dialogues/balloon.tscn")
+		var balloon = balloon_scene.instantiate()
+		get_tree().root.add_child(balloon)
+		balloon.start(dialogue_resource, "start")
 	else:
 		print("[VetNPC] DialogueManager not found!")
 

@@ -24,14 +24,14 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.3)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(500, 450)
+custom_minimum_size = Vector2(700, 650)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -540.0
+offset_left = -740.0
 offset_top = 40.0
 offset_right = -40.0
-offset_bottom = 490.0
+offset_bottom = 690.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
 
@@ -46,13 +46,14 @@ alignment = 1
 [node name="Title" type="Label" parent="Panel/VBox/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 text = "Shop menu"
 horizontal_alignment = 1
 
 [node name="CloseBtn" type="Button" parent="Panel/VBox/Header"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "X"
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBox"]
@@ -68,7 +69,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/VBox/Items/FoodItem"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 28
 text = "Dog food(Lasts for 5 days)    $20"
 
 [node name="Controls" type="HBoxContainer" parent="Panel/VBox/Items/FoodItem"]
@@ -77,20 +78,22 @@ alignment = 1
 theme_override_constants/separation = 15
 
 [node name="Plus" type="Button" parent="Panel/VBox/Items/FoodItem/Controls"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "+"
 
 [node name="Count" type="Label" parent="Panel/VBox/Items/FoodItem/Controls"]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
 [node name="Minus" type="Button" parent="Panel/VBox/Items/FoodItem/Controls"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "-"
 
 [node name="WaterItem" type="VBoxContainer" parent="Panel/VBox/Items"]
@@ -98,7 +101,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/VBox/Items/WaterItem"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 28
 text = "Water(Lasts for 5 days)    $10"
 
 [node name="Controls" type="HBoxContainer" parent="Panel/VBox/Items/WaterItem"]
@@ -107,20 +110,22 @@ alignment = 1
 theme_override_constants/separation = 15
 
 [node name="Plus" type="Button" parent="Panel/VBox/Items/WaterItem/Controls"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "+"
 
 [node name="Count" type="Label" parent="Panel/VBox/Items/WaterItem/Controls"]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
 [node name="Minus" type="Button" parent="Panel/VBox/Items/WaterItem/Controls"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "-"
 
 [node name="PrescriptionItem" type="HBoxContainer" parent="Panel/VBox/Items"]
@@ -130,7 +135,7 @@ alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="Panel/VBox/Items/PrescriptionItem"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 28
 text = "Perscription: $40"
 
 [node name="Footer" type="VBoxContainer" parent="Panel/VBox"]
@@ -139,15 +144,15 @@ theme_override_constants/separation = 10
 
 [node name="TotalLabel" type="Label" parent="Panel/VBox/Footer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 34
 text = "Total: $0"
 horizontal_alignment = 1
 
 [node name="PurchaseBtn" type="Button" parent="Panel/VBox/Footer"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Purchace"
 
 [connection signal="pressed" from="Panel/VBox/Header/CloseBtn" to="." method="_on_close_btn_pressed"]

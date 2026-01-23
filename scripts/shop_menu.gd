@@ -22,11 +22,17 @@ func show_shop():
 	# Reset cart when opening
 	food_cart_count = 0
 	water_cart_count = 0
-	prescription_selected = false
-	prescription_check.button_pressed = false
 	
-	# Only show prescription if the vet actually gave one
-	prescription_item.visible = GameState.has_prescription and GameState.medication != "antibiotics"
+	# Prescription logic: if needed, auto-select it and show it.
+	# Otherwise, hide it and don't include it in total.
+	prescription_item.visible = GameState.has_prescription and GameState.medication != "Antibiotics (5 days)"
+	
+	if prescription_item.visible:
+		prescription_selected = true
+		prescription_check.button_pressed = true
+	else:
+		prescription_selected = false
+		prescription_check.button_pressed = false
 	
 	update_ui()
 	visible = true
@@ -99,10 +105,9 @@ func _on_purchase_pressed():
 		if success and prescription_selected:
 			success = GameState.spend_money(PRESCRIPTION_PRICE, "Vet")
 			if success:
-				GameState.medication = "antibiotics"
+				GameState.medication = "Antibiotics (5 days)"
 				GameState.has_prescription = false # Prescription consumed
-				# Also heal the dog slightly as per previous logic if wanted, 
-				# but user only asked to change medication to antibiotics.
+				# Also heal the dog slightly as per previous logic
 				var dog = get_tree().get_first_node_in_group("dog")
 				if dog:
 					dog.health = min(100, dog.health + 40)

@@ -38,7 +38,7 @@ alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 74
 text = "Name Your Pet"
 horizontal_alignment = 1
 
@@ -53,17 +53,17 @@ scale = Vector2(8, 8)
 flip_h = true
 
 [node name="PetNameInput" type="LineEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 placeholder_text = "Enter Pet Name"
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(400, 120)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 58
 text = "Continue"
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

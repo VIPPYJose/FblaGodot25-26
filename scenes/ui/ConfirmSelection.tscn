@@ -64,12 +64,11 @@ anchor_bottom = 0.5
 offset_left = -300.0
 offset_top = 100.0
 offset_right = -100.0
-offset_bottom = 140.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 34
 text = "Player Name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,12 +101,11 @@ anchor_bottom = 0.5
 offset_left = 100.0
 offset_top = 100.0
 offset_right = 300.0
-offset_bottom = 140.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 34
 text = "Pet Name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -129,15 +127,15 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="YesButton" type="Button" parent="ButtonContainer"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 34
 text = "Yes"
 
 [node name="NoButton" type="Button" parent="ButtonContainer"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 34
 text = "No"
 
 [connection signal="mouse_entered" from="PlayerContainer" to="." method="_on_player_container_mouse_entered"]
