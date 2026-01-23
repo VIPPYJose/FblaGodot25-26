@@ -383,7 +383,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(2.2732878, 2.2703533)
+scale = Vector2(0.568, 0.567)
 motion_mode = 1
 script = ExtResource("1_g2els")
 
@@ -398,6 +398,6 @@ polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
 scale = Vector2(1.0052286, 1.0746742)
-zoom = Vector2(5.625, 5.625)
+zoom = Vector2(50, 50)
 process_callback = 0
 position_smoothing_enabled = true

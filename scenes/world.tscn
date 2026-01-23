@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxhdlhignafx1"]
+[gd_scene load_steps=6 format=3 uid="uid://bxhdlhignafx1"]
 
 [ext_resource type="Script" uid="uid://hg0x8uqv02wf" path="res://scripts/world.gd" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://od4pb2l47016" path="res://scenes/Dude1.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://bi8snp74053p0" path="res://scenes/dog.tscn" id="4_dog"]
+[ext_resource type="PackedScene"  path="res://scenes/maps/map (3) (1)/Map.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://bmod8p0dx5wf4" path="res://scenes/bottom_hud.tscn" id="5_hud"]
 
 [node name="world" type="Node2D"]
@@ -18,3 +19,6 @@ position = Vector2(62, -2)
 [node name="BottomHUD" parent="." instance=ExtResource("5_hud")]
 offset = Vector2(70592, 0)
 transform = Transform2D(1, 0, 0, 1, 70592, 0)
+
+[node name="map" parent="." instance=ExtResource("5_71j4m")]
+position = Vector2(-725, -317)

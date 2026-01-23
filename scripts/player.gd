@@ -8,6 +8,16 @@ var last_dir := Vector2.ZERO
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D if has_node("Sprite2D") else $playerspriteanim
 @onready var npc: CharacterBody2D = get_node_or_null("../Path2D/PathFollow2D/npc")
 
+func _ready():
+	# Set camera zoom to 5
+	var camera = get_node_or_null("Camera2D")
+	if camera:
+		camera.zoom = Vector2(5, 5)
+	
+	# Ensure player collides with everything
+	collision_mask = 1
+	collision_layer = 1
+
 func _physics_process(_delta: float) -> void:
 	var player_can_move = player_moveable()
 
@@ -17,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 	)
 
 	if !player_can_move:
-		input_dir = Vector2(0,0)
+		input_dir = Vector2(0, 0)
 
 	if input_dir != Vector2.ZERO:
 		input_dir = input_dir.normalized()
@@ -55,6 +65,9 @@ func _play_if_exists(anim_name: String):
 		sprite_2d.play(anim_name + "_dude1")
 
 func player_moveable():
+	# Block movement during tutorial
+	if GameState.tutorial_blocks_movement:
+		return false
 	if npc and not npc.player_can_move:
 		return false
 	return true

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnr8a74pk4etp"]
+
+[ext_resource type="PackedScene" path="res://scenes/maps/House/Carpet_&_Walls_2.tscn" id="1_jpari"]
+[ext_resource type="PackedScene" path="res://scenes/maps/House/Window_1.tscn" id="2_yr7t8"]
+[ext_resource type="PackedScene" path="res://scenes/maps/House/Couches_0.tscn" id="3_t7wni"]
+
+[node name="map" type="Node2D"]
+
+[node name="Carpet_&_Walls_2" parent="." instance=ExtResource("1_jpari")]
+
+[node name="Window_1" parent="." instance=ExtResource("2_yr7t8")]
+
+[node name="Couches_0" parent="." instance=ExtResource("3_t7wni")]

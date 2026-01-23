@@ -9,6 +9,8 @@ extends CanvasLayer
 @onready var energy_val = $PanelContainer/VBoxContainer/GridContainer/Energy/HBox/Value
 @onready var hygiene_bar = $PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox/ProgressBar
 @onready var hygiene_val = $PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox/Value
+@onready var health_bar = $PanelContainer/VBoxContainer/GridContainer/Health/HBox/ProgressBar
+@onready var health_val = $PanelContainer/VBoxContainer/GridContainer/Health/HBox/Value
 @onready var arrow = $Download7_44_10Pm
 
 var target_dog: Node2D
@@ -16,7 +18,7 @@ var target_dog: Node2D
 func _ready():
 	panel.hide()
 	arrow.hide()
-	$PanelContainer/VBoxContainer/TitleHBox/CloseButton.pressed.connect(func(): 
+	$PanelContainer/VBoxContainer/TitleHBox/CloseButton.pressed.connect(func():
 		panel.hide()
 		arrow.hide()
 	)
@@ -49,6 +51,9 @@ func update_ui():
 	
 	hygiene_bar.value = target_dog.hygiene
 	hygiene_val.text = str(round(target_dog.hygiene))
+	
+	health_bar.value = target_dog.health
+	health_val.text = str(round(target_dog.health))
 
 func is_mouse_over_panel() -> bool:
 	return panel.get_global_rect().has_point(panel.get_global_mouse_position())

@@ -1,0 +1,14 @@
+[gd_scene load_steps=0 format=3 uid="uid://c72hdhwbpin62"]
+
+[ext_resource type="PackedScene" path="./POV_fixing_0.tscn" id="0_id"]
+[ext_resource type="PackedScene" path="./Person_1.tscn" id="1_id"]
+[ext_resource type="PackedScene" path="./Items_2.tscn" id="2_id"]
+[ext_resource type="PackedScene" path="./Carpet_&_Shelves_3.tscn" id="3_id"]
+[ext_resource type="PackedScene" path="./Floor_4.tscn" id="4_id"]
+
+[node name="map" type="Node2D"]
+[node name="Floor_4" parent="." instance=ExtResource("4_id")]
+[node name="Carpet_&_Shelves_3" parent="." instance=ExtResource("3_id")]
+[node name="Items_2" parent="." instance=ExtResource("2_id")]
+[node name="Person_1" parent="." instance=ExtResource("1_id")]
+[node name="POV_fixing_0" parent="." instance=ExtResource("0_id")]

@@ -150,6 +150,31 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "50"
 
+[node name="Health" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Health"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Health"
+
+[node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Health"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Health/HBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 30.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Health/HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "30"
+
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0.5)

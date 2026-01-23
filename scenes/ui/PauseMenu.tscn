@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://pausemenu123"]
+[gd_scene load_steps=2 format=3 uid="uid://pausemenu123"]
+
+[ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_pause_script"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_pause_script")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15

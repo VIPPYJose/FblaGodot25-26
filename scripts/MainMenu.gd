@@ -12,7 +12,10 @@ func _ready():
 	settings_button.pressed.connect(_on_settings_pressed)
 
 func _on_continue_pressed():
-	pass
+	# Load saved game data before transitioning
+	if GameState.has_save_file():
+		GameState.load_game()
+	SceneManager.change_scene("res://scenes/ui/MainGame.tscn", {"pattern": "curtains"})
 
 func _on_start_pressed():
 	var dir = DirAccess.open("user://")

@@ -9,6 +9,12 @@ var last_dir := Vector2.ZERO
 @onready var npc: CharacterBody2D = get_node_or_null("../Path2D/PathFollow2D/npc")
 
 
+func _ready():
+	# Set camera zoom to 5
+	var camera = get_node_or_null("Camera2D")
+	if camera:
+		camera.zoom = Vector2(5, 5)
+
 func _physics_process(_delta: float) -> void:
 	var player_can_move = player_moveable()
 
@@ -18,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 	)
 
 	if !player_can_move:
-		input_dir = Vector2(0,0)
+		input_dir = Vector2(0, 0)
 
 	if input_dir != Vector2.ZERO:
 		input_dir = input_dir.normalized()

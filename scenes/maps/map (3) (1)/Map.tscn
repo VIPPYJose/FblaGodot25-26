@@ -1,0 +1,128 @@
+[gd_scene load_steps=34 format=4 uid="uid://map"]
+
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_32_0.tscn" id="0_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_31_1.tscn" id="1_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_31_2.tscn" id="2_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_31_3.tscn" id="3_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_30_4.tscn" id="4_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_29_5.tscn" id="5_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_28_6.tscn" id="6_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_27_7.tscn" id="7_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_42_8.tscn" id="8_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_22_9.tscn" id="9_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_19_10.tscn" id="10_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_20_11.tscn" id="11_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_23_12.tscn" id="12_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_25_13.tscn" id="13_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_24_14.tscn" id="14_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_25_15.tscn" id="15_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_18_16.tscn" id="16_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_17_17.tscn" id="17_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_16_18.tscn" id="18_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Layer_15_19.tscn" id="19_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/sidewalk_20.tscn" id="20_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/City_Road_21.tscn" id="21_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/City_Cement_22.tscn" id="22_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Middle_Tree_Layer_23.tscn" id="23_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Outer_Tree_Layers_24.tscn" id="24_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Inner_Tree_Layer_25.tscn" id="25_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Dog_Park_26.tscn" id="26_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Decor_27.tscn" id="27_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Houses_28.tscn" id="28_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Cars_29.tscn" id="29_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Fences_30.tscn" id="30_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Driveway_&_Grass_31.tscn" id="31_id"]
+[ext_resource type="PackedScene" path="res://scenes/maps/map (3) (1)/Road_32.tscn" id="32_id"]
+
+[node name="map" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Road_32" parent="." instance=ExtResource("32_id")]
+
+[node name="Driveway_&_Grass_31" parent="." instance=ExtResource("31_id")]
+
+[node name="Fences_30a" parent="." instance=ExtResource("30_id")]
+tile_map_data = PackedByteArray("AAA/AAwAAAADAAcBAAA+AAsAAAAEAAcBAAA+AAwAAAAFAAcBAABAAAwAAAADAAcBAABCAAwAAAAGAAcBAABBAAwAAAADAAcBAABCACkAAAAHAAcBAAA+AAQAAAAAAAgBAAA/AAQAAAADAAcBAABAAAQAAAADAAcBAABBAAQAAAADAAcBAABCAAQAAAADAAcBAABDAAQAAAADAAcBAABEAAQAAAADAAcBAABFAAQAAAADAAcBAABGAAQAAAADAAcBAABHAAQAAAADAAcBAABIAAQAAAADAAcBAABJAAQAAAADAAcBAABKAAQAAAADAAcBAABLAAQAAAADAAcBAABMAAQAAAADAAcBAABNAAQAAAADAAcBAABOAAQAAAADAAcBAABPAAQAAAADAAcBAABQAAQAAAADAAcBAABRAAQAAAADAAcBAABSAAQAAAADAAcBAABTAAQAAAADAAcBAABUAAQAAAADAAcBAABVAAQAAAADAAcBAABWAAQAAAADAAcBAABXAAQAAAADAAcBAABYAAQAAAADAAcBAABZAAQAAAADAAcBAABaAAQAAAADAAcBAABbAAQAAAADAAcBAABcAAQAAAADAAcBAABdAAQAAAAGAAcBAABdAAUAAAAHAAcBAABdAAYAAAAHAAcBAABdAAcAAAAHAAcBAABdAAgAAAAHAAcBAABdAAkAAAAHAAcBAABdAAoAAAAHAAcBAABdAAsAAAAHAAcBAABdAAwAAAAHAAcBAABdAA0AAAAHAAcBAABdAA4AAAAHAAcBAABdAA8AAAAHAAcBAABdABAAAAAHAAcBAABdABEAAAAHAAcBAABdABIAAAAHAAcBAABdABMAAAAHAAcBAABdABQAAAAHAAcBAABdABUAAAAHAAcBAABdABYAAAAHAAcBAABdABcAAAAHAAcBAABdABgAAAAHAAcBAABdABkAAAAHAAcBAABdABoAAAAHAAcBAABdABsAAAAHAAcBAABdABwAAAAHAAcBAABdAB0AAAAHAAcBAABdAB4AAAAHAAcBAABdAB8AAAAHAAcBAABdACAAAAAHAAcBAABdACEAAAAHAAcBAABdACIAAAAHAAcBAABdACMAAAAHAAcBAABdACQAAAAHAAcBAABdACUAAAAHAAcBAABdACYAAAAHAAcBAABdACcAAAAHAAcBAABdACgAAAAHAAcB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AAAfACMAAAABAAsBAAAaACMAAAADAAoBAAAXACUAAAAFAAoBAAAWACUAAAAGAAoBAAAVACUAAAAGAAoBAAAUACUAAAAEAAoBAAATACUAAAAEAAoBAAASACUAAAAHAAoBAAAXACQAAAAAAAsBAAASACQAAAABAAoBAAAXACMAAAABAAsBAAASACMAAAADAAoBAAAXAAsAAAAFAAgBAAAOABQAAAAFAAgBAAANABQAAAAEAAgBAAALABQAAAACAAgBAAAMABQAAAADAAgBAAALABUAAAAAAAkBAAALABcAAAACAAkBAAALABgAAAAAAAkBAAALABkAAAAFAAkBAAAMABkAAAACAAsBAAANABkAAAACAAsBAAAOABkAAAACAAsBAAAPABkAAAACAAsBAAAQABkAAAACAAsBAAARABkAAAAEAAkBAAALABYAAAADAAsBAABCACQAAAAHAAcBAABCACUAAAAHAAcBAABCACYAAAAHAAcBAABCACcAAAAHAAcBAABCACgAAAAHAAcBAABCAA0AAAAHAAcBAABCAA4AAAAHAAcBAABCAA8AAAAHAAcBAABCABAAAAAHAAcBAABCABEAAAAHAAcBAABCABIAAAAHAAcBAABCABMAAAAHAAcBAABCABQAAAAHAAcBAABCABUAAAAHAAcBAABCABYAAAAHAAcBAABCABcAAAAHAAcBAABCABgAAAAHAAcBAABCABkAAAAAAAwBAABCABoAAAAAAAwBAABCABsAAAAAAAwBAABCABwAAAAAAAwBAABCAB0AAAAHAAcBAABCAB4AAAAHAAcBAABCAB8AAAAHAAcBAABCACAAAAAHAAcBAABCACEAAAAHAAcBAABCACIAAAAHAAcBAABCACMAAAAHAAcBAAA+AAUAAAAEAAcBAAA+AAYAAAAEAAcBAAA+AAcAAAAEAAcBAAA+AAgAAAAEAAcBAAA+AAkAAAAEAAcBAAA+AAoAAAAEAAcBAABCACoAAAAEAAsBAAA=")
+collision_enabled = true
+
+[node name="Cars_29a" parent="." instance=ExtResource("29_id")]
+collision_enabled = true
+
+[node name="Houses_28a" parent="." instance=ExtResource("28_id")]
+collision_enabled = true
+
+[node name="Decor_27a" parent="." instance=ExtResource("27_id")]
+collision_enabled = true
+
+[node name="Dog_Park_26" parent="." instance=ExtResource("26_id")]
+
+[node name="Inner_Tree_Layer_25a" parent="." instance=ExtResource("25_id")]
+collision_enabled = true
+
+[node name="Outer_Tree_Layers_24a" parent="." instance=ExtResource("24_id")]
+collision_enabled = true
+
+[node name="Middle_Tree_Layer_23a" parent="." instance=ExtResource("23_id")]
+collision_enabled = true
+
+[node name="City_Cement_22" parent="." instance=ExtResource("22_id")]
+
+[node name="City_Road_21" parent="." instance=ExtResource("21_id")]
+
+[node name="sidewalk_20" parent="." instance=ExtResource("20_id")]
+
+[node name="Layer_15_19" parent="." instance=ExtResource("19_id")]
+tile_map_data = PackedByteArray()
+
+[node name="Layer_16_18a" parent="." instance=ExtResource("18_id")]
+collision_enabled = true
+
+[node name="Layer_17_17" parent="." instance=ExtResource("17_id")]
+tile_map_data = PackedByteArray()
+
+[node name="Layer_18_16" parent="." instance=ExtResource("16_id")]
+tile_map_data = PackedByteArray()
+
+[node name="Layer_25_15" parent="." instance=ExtResource("15_id")]
+position = Vector2(0, 1)
+
+[node name="Layer_24_14a" parent="." instance=ExtResource("14_id")]
+collision_enabled = true
+
+[node name="Layer_25_13" parent="." instance=ExtResource("13_id")]
+
+[node name="Layer_23_12a" parent="." instance=ExtResource("12_id")]
+collision_enabled = true
+
+[node name="Layer_20_11a" parent="." instance=ExtResource("11_id")]
+collision_enabled = true
+
+[node name="Layer_19_10" parent="." instance=ExtResource("10_id")]
+
+[node name="Layer_22_9" parent="." instance=ExtResource("9_id")]
+
+[node name="Layer_42_8a" parent="." instance=ExtResource("8_id")]
+collision_enabled = true
+
+[node name="Layer_27_7a" parent="." instance=ExtResource("7_id")]
+collision_enabled = true
+
+[node name="Layer_28_6" parent="." instance=ExtResource("6_id")]
+
+[node name="Layer_29_5a" parent="." instance=ExtResource("5_id")]
+collision_enabled = true
+
+[node name="Layer_30_4a" parent="." instance=ExtResource("4_id")]
+collision_enabled = true
+
+[node name="Layer_31_3a" parent="." instance=ExtResource("3_id")]
+collision_enabled = true
+
+[node name="Layer_31_2a" parent="." instance=ExtResource("2_id")]
+collision_enabled = true
+
+[node name="Layer_31_1a" parent="." instance=ExtResource("1_id")]
+collision_enabled = true
+
+[node name="Layer_32_0a" parent="." instance=ExtResource("0_id")]
+collision_enabled = true

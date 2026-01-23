@@ -32,4 +32,4 @@ func _on_continue_button_pressed():
 		return
 		
 	GameState.save_pet_name(p_name)
-	SceneManager.change_scene("res://scenes/ui/MainGame.tscn", {"pattern": "curtains"})
+	SceneManager.change_scene("res://scenes/ui/ConfirmSelection.tscn", {"pattern": "curtains"})
