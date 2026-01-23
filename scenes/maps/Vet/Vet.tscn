@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4f2nlbvifihu"]
+[gd_scene load_steps=9 format=3 uid="uid://4f2nlbvifihu"]
 
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/Floor_5.tscn" id="1_d4mai"]
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/Items_4.tscn" id="2_8p53o"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/Chairs_&_Desk_2.tscn" id="4_8c7ds"]
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/Person_1.tscn" id="5_n2bye"]
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/POV_Fix_0.tscn" id="6_ddgcn"]
+[ext_resource type="Script" uid="uid://dsfe7h4jaka31" path="res://scripts/vet_npc.gd" id="vet_npc_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdbq2"]
+size = Vector2(43, 20)
 
 [node name="map" type="Node2D"]
 scale = Vector2(2, 2)
@@ -21,3 +25,10 @@ scale = Vector2(2, 2)
 [node name="Person_1" parent="." instance=ExtResource("5_n2bye")]
 
 [node name="POV_Fix_0" parent="." instance=ExtResource("6_ddgcn")]
+
+[node name="vetNPC" type="Area2D" parent="."]
+script = ExtResource("vet_npc_script")
+
+[node name="talk" type="CollisionShape2D" parent="vetNPC"]
+position = Vector2(218, 74.5)
+shape = SubResource("RectangleShape2D_fdbq2")

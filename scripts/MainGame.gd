@@ -11,12 +11,15 @@ var hud_instance: CanvasLayer = null
 var tutorial_controller: Node = null
 
 var Day1Tutorial = preload("res://scripts/day1_tutorial.gd")
+@onready var shop_path = $ShopPath
+@onready var original_path = $VetPath
 
 func _ready():
 	spawn_player()
 	spawn_dog()
 	setup_hud()
 	setup_pause_menu()
+	_make_paths_visible()
 	
 	# Initialize Day 1 if it's a new game
 	if GameState.is_day_one and not GameState.is_tutorial_complete:
@@ -32,6 +35,18 @@ func _ready():
 	
 	# Connect to day started signal for health changes
 	GameState.day_started.connect(_on_day_started)
+	GameState.vet_talk_finished.connect(_on_vet_talk_finished)
+
+func _on_vet_talk_finished():
+	if GameState.is_day_one:
+		if original_path:
+			original_path.visible = false
+		if shop_path:
+			shop_path.visible = true
+			# Ensure the visual representation (Line2D) is also updated if needed
+			# _make_paths_visible() already creates Line2D as children.
+			# If shop_path was already visible, _make_paths_visible handles it.
+			# But we might need to recreate Line2D if we just made it visible.
 
 func start_day1_tutorial():
 	tutorial_controller = Day1Tutorial.new()
@@ -140,6 +155,7 @@ func spawn_dog():
 	dog.breed = GameState.dog_breed
 	dog.input_pickable = true
 	add_child(dog)
+	dog.add_to_group("dog")
 	
 	# Store reference for save/load
 	dog_instance = dog
@@ -167,3 +183,25 @@ func spawn_dog():
 	dog.mouse_exited.connect(func():
 		name_tag.visible = false
 	)
+
+func _make_paths_visible():
+	# Look for Path2D nodes and create Line2D to make them visible
+	# We'll check children of current node and also look for 'path2d' nodes specifically
+	var paths = []
+	for child in get_children():
+		if child is Path2D:
+			paths.append(child)
+	
+	# Also check globally for common names if not found
+	if paths.is_empty():
+		var global_path = get_node_or_null("Path2D")
+		if global_path and global_path is Path2D:
+			paths.append(global_path)
+			
+	for path in paths:
+		var line = Line2D.new()
+		line.points = path.curve.get_baked_points()
+		line.width = 4.0
+		line.default_color = Color(1, 1, 0, 0.5) # Semi-transparent yellow
+		path.add_child(line)
+		print("[MainGame] Made path visible: ", path.name)

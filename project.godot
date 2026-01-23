@@ -83,7 +83,7 @@ pause={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/old_man.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/old_man.dialogue", "res://dialogues/vet.dialogue", "res://dialogues/shop.dialogue")
 
 [rendering]
 

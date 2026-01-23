@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://7yx3qkk18h5w"
+path="res://.godot/imported/vet.dialogue-a4bf2489e0eef49abb4cd3385b94ec7e.tres"
+
+[deps]
+
+source_file="res://dialogues/vet.dialogue"
+dest_files=["res://.godot/imported/vet.dialogue-a4bf2489e0eef49abb4cd3385b94ec7e.tres"]
+
+[params]
+
+defaults=true

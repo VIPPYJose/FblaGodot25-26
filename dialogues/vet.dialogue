@@ -1,0 +1,10 @@
+~ start
+set GameState.tutorial_blocks_movement = true
+vet: Vet fees: $50.
+do GameState.spend_money(50, "Vet")
+if GameState.dog_health < 50
+	vet: Your dog needs some antibiotics for his flu. Go to the shop and buy some.
+	set GameState.has_prescription = true
+do GameState.vet_talk_finished.emit()
+set GameState.tutorial_blocks_movement = false
+=> END

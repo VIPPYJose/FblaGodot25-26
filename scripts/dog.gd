@@ -17,10 +17,10 @@ var energy: float = 100.0
 var hygiene: float = 90.0
 var health: float = 30.0 # Starts at 30 on Day 1
 
-var hunger_decay: float = 0.5
-var thirst_decay: float = 0.8
-var energy_decay: float = 0.3
-var hygiene_decay: float = 0.2
+var hunger_decay: float = 100.0 / 240.0 # ~0.417 per second (4 minutes to empty)
+var thirst_decay: float = 100.0 / 240.0
+var energy_decay: float = 100.0 / 240.0
+var hygiene_decay: float = 100.0 / 240.0
 
 # Initialize all pet needs for Day 1
 func initialize_day_one():
@@ -63,6 +63,7 @@ func toggle_menu() -> void:
 			needs_menu_instance.show_menu(self)
 
 func _physics_process(delta: float) -> void:
+	GameState.dog_health = health
 	# Don't decay needs during tutorial
 	if not GameState.is_tutorial_complete:
 		pass # Skip decay
@@ -71,6 +72,32 @@ func _physics_process(delta: float) -> void:
 		thirst = max(0, thirst - thirst_decay * delta)
 		energy = max(0, energy - energy_decay * delta)
 		hygiene = max(0, hygiene - hygiene_decay * delta)
+		
+		check_emergency_triggers(delta)
+
+var emergency_cooldown: float = 0.0
+
+func check_emergency_triggers(delta: float):
+	if emergency_cooldown > 0:
+		emergency_cooldown -= delta
+		return
+
+	# Emergency Vet Logic
+	if health < 20:
+		# Attempt to pay $50 for emergency care
+		if GameState.spend_money(50, "Vet"):
+			health = 50
+			emergency_cooldown = 10.0
+			print("Emergency Vet Care triggered!")
+	
+	# Emergency Food Logic
+	if hunger < 10 and GameState.food <= 0:
+		# Attempt to pay $20 for food
+		if GameState.spend_money(20, "Food"):
+			GameState.food += 7
+			hunger = 50
+			emergency_cooldown = 10.0
+			print("Emergency Food Purchase triggered!")
 	
 	var player = get_tree().get_first_node_in_group(player_group)
 	if not player:

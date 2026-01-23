@@ -109,16 +109,29 @@ func advance_step():
 	run_step()
 
 func end_tutorial():
-	"""Clean up and resume game."""
+	"""Clean up main tutorial and start vet visit sequence."""
 	tutorial_active = false
 	GameState.is_tutorial_complete = true
-	
-	# Remove tutorial hint UI
-	if tutorial_hint:
-		tutorial_hint.queue_free()
-		tutorial_hint = null
 	
 	# Allow movement again
 	GameState.tutorial_blocks_movement = false
 	
 	tutorial_completed.emit()
+	
+	# Start vet visit sequence (keep tutorial_hint for these hints)
+	await show_vet_hints()
+
+func show_vet_hints():
+	"""Show hints guiding player to vet."""
+	# Hint 1: Pet health is low (4 seconds)
+	tutorial_hint.show_hint("Your pet's health is low. Let's go and take them to the vet!", 4.0)
+	await tutorial_hint.hint_hidden
+	
+	# Hint 2: Follow path (4 seconds)
+	tutorial_hint.show_hint("Follow the path to the vet.", 4.0)
+	await tutorial_hint.hint_hidden
+	
+	# Now clean up tutorial hint - vet entrance will handle "press E" hint
+	if tutorial_hint:
+		tutorial_hint.queue_free()
+		tutorial_hint = null

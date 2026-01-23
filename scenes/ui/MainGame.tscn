@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://maingame123"]
+[gd_scene load_steps=29 format=3 uid="uid://maingame123"]
 
 [ext_resource type="Script" uid="uid://thcfk0conjk" path="res://scripts/MainGame.gd" id="1_maingame"]
 [ext_resource type="PackedScene" uid="uid://map" path="res://scenes/maps/map (3) (1)/Map.tscn" id="2_utfc0"]
 [ext_resource type="PackedScene" uid="uid://c72hdhwbpin62" path="res://scenes/maps/shop/Shop.tscn" id="3_rl3lx"]
 [ext_resource type="PackedScene" uid="uid://cnr8a74pk4etp" path="res://scenes/maps/House/House.tscn" id="4_p8prh"]
 [ext_resource type="PackedScene" uid="uid://4f2nlbvifihu" path="res://scenes/maps/Vet/Vet.tscn" id="5_mrp28"]
+[ext_resource type="Script" uid="uid://djopbckuyqam2" path="res://scripts/interaction_area.gd" id="interaction_area_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utfc0"]
 size = Vector2(112.5, 122.5)
@@ -55,13 +56,28 @@ size = Vector2(129.25, 142)
 size = Vector2(249.25, 172)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_331gq"]
-size = Vector2(108, 52)
+size = Vector2(52, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rl3lx"]
-size = Vector2(157, 52)
+size = Vector2(181.5, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl4kh"]
 size = Vector2(292, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3yci"]
+size = Vector2(95, 52)
+
+[sub_resource type="Curve2D" id="Curve2D_rl3lx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 740, 367, 0, 0, 0, 0, 1121, 396, 0, 0, 0, 0, 1172, 678, 0, 0, 0, 0, 1168, 863, 0, 0, 0, 0, 1164, 1170, 0, 0, 0, 0, 1122, 1194, 0, 0, 0, 0, 896, 1158, 0, 0, 0, 0, 724, 1152, 0, 0, 0, 0, 394, 1135, 0, 0, 0, 0, -63, 1178, 0, 0, 0, 0, -145, 1251, 0, 0, 0, 0, -218, 1322, 0, 0, 0, 0, -244, 1428, 0, 0, 0, 0, -236, 1522, 0, 0, 0, 0, -184, 1575, 0, 0, 0, 0, -125, 1633, 0, 0, 0, 0, -69, 1687, 0, 0, 0, 0, -9, 1681, 0, 0, 0, 0, 145, 1681, 0, 0, 0, 0, 218, 1719, 0, 0, 0, 0, 348, 1743, 0, 0, 0, 0, 1387, 1799, 0, 0, 0, 0, 1450, 1803)
+}
+point_count = 23
+
+[sub_resource type="Curve2D" id="Curve2D_shop"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1497, 1850, 0, 0, 0, 0, 1697, 1835, 0, 0, 0, 0, 1900, 1863, 0, 0, 0, 0, 1554, 2178, 0, 0, 0, 0, 1350, 2183, 0, 0, 0, 0, 1088, 2171, 0, 0, 0, 0, 734, 2175)
+}
+point_count = 7
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_maingame")
@@ -349,7 +365,7 @@ polygon = PackedVector2Array(-80.65137, 256.72037, -149.59134, 253.67383, -144, 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of park"]
 position = Vector2(1445, 1080)
 rotation = 3.1415927
-polygon = PackedVector2Array(41, 39, -822.9999, 35.000122, -829.9999, 1254.0001, 174.00012, 1260, 178.00012, 1000, 42.000122, 998, 39.000122, 519, 29.000122, 515, 32.000122, 1006, 170.00012, 1010, 170.00012, 1247, -781.9999, 1248.0001, -820.9999, 1248.0001, -814.9999, 45.000122, 33, 50, 30.000122, 453, 39.000122, 456)
+polygon = PackedVector2Array(41, 39, -822.9999, 35.000122, -829.9999, 1254.0001, 174.00012, 1260, 178.00012, 1000, 42.000122, 998, 37.000122, 605, 24.000122, 604, 32.000122, 1006, 170.00012, 1010, 170.00012, 1247, -781.9999, 1248.0001, -820.9999, 1248.0001, -814.9999, 45.000122, 33, 50, 30.000122, 453, 39.000122, 456)
 
 [node name="Tree" type="StaticBody2D" parent="Collisons"]
 
@@ -547,7 +563,6 @@ position = Vector2(-717, -320)
 
 [node name="Shop" parent="." instance=ExtResource("3_rl3lx")]
 position = Vector2(-1806, 1048)
-scale = Vector2(2, 2)
 
 [node name="House" parent="." instance=ExtResource("4_p8prh")]
 position = Vector2(245, -779)
@@ -558,20 +573,67 @@ position = Vector2(-1819, 2470)
 
 [node name="Interaction areas" type="Node" parent="."]
 
-[node name="My house" type="Area2D" parent="Interaction areas"]
+[node name="HouseEnter" type="Area2D" parent="Interaction areas"]
+script = ExtResource("interaction_area_script")
+hint_text = "Press E to enter the house"
+target_position = Vector2(500, -650)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/My house"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/HouseEnter"]
 position = Vector2(728, 251)
 shape = SubResource("RectangleShape2D_331gq")
 
-[node name="Vet" type="Area2D" parent="Interaction areas"]
+[node name="HouseExit" type="Area2D" parent="Interaction areas"]
+script = ExtResource("interaction_area_script")
+hint_text = "Press E to exit the house"
+target_position = Vector2(728, 320)
+is_exit = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/Vet"]
-position = Vector2(1497, 1779)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/HouseExit"]
+position = Vector2(596, -651)
+shape = SubResource("RectangleShape2D_331gq")
+
+[node name="VetEnter" type="Area2D" parent="Interaction areas"]
+script = ExtResource("interaction_area_script")
+hint_text = "Press E to enter the vet"
+target_position = Vector2(-1390, 2915)
+
+[node name="Enter" type="CollisionShape2D" parent="Interaction areas/VetEnter"]
+position = Vector2(1497, 1790)
 shape = SubResource("RectangleShape2D_rl3lx")
 
-[node name="Shop2" type="Area2D" parent="."]
+[node name="VetExit" type="Area2D" parent="Interaction areas"]
+script = ExtResource("interaction_area_script")
+hint_text = "Press E to exit the vet"
+target_position = Vector2(1497, 1850)
+is_exit = true
+post_teleport_hint = "Follow the path to the shop"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop2"]
+[node name="Exit" type="CollisionShape2D" parent="Interaction areas/VetExit"]
+position = Vector2(-1387, 2875)
+shape = SubResource("RectangleShape2D_rl3lx")
+
+[node name="ShopEnter" type="Area2D" parent="Interaction areas"]
+script = ExtResource("interaction_area_script")
+hint_text = "Press E to enter the shop"
+target_position = Vector2(-1375, 1590)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/ShopEnter"]
 position = Vector2(734, 2175)
 shape = SubResource("RectangleShape2D_vl4kh")
+
+[node name="ShopExit" type="Area2D" parent="Interaction areas"]
+script = ExtResource("interaction_area_script")
+hint_text = "Press E to exit the shop"
+target_position = Vector2(734, 2250)
+is_exit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/ShopExit"]
+position = Vector2(-1373, 1645)
+shape = SubResource("RectangleShape2D_u3yci")
+
+[node name="VetPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rl3lx")
+
+[node name="ShopPath" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_shop")

@@ -1,0 +1,159 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8y4v8w8v8w8v"]
+
+[ext_resource type="Script" path="res://scripts/shop_menu.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.12, 0.12, 0.12, 0.95)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[node name="ShopMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 450)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -540.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 490.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Shop menu"
+horizontal_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "X"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="FoodItem" type="VBoxContainer" parent="Panel/VBox/Items"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBox/Items/FoodItem"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Dog food(Lasts for 5 days)    $20"
+
+[node name="Controls" type="HBoxContainer" parent="Panel/VBox/Items/FoodItem"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 15
+
+[node name="Plus" type="Button" parent="Panel/VBox/Items/FoodItem/Controls"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Count" type="Label" parent="Panel/VBox/Items/FoodItem/Controls"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+
+[node name="Minus" type="Button" parent="Panel/VBox/Items/FoodItem/Controls"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "-"
+
+[node name="WaterItem" type="VBoxContainer" parent="Panel/VBox/Items"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBox/Items/WaterItem"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Water(Lasts for 5 days)    $10"
+
+[node name="Controls" type="HBoxContainer" parent="Panel/VBox/Items/WaterItem"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 15
+
+[node name="Plus" type="Button" parent="Panel/VBox/Items/WaterItem/Controls"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Count" type="Label" parent="Panel/VBox/Items/WaterItem/Controls"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+
+[node name="Minus" type="Button" parent="Panel/VBox/Items/WaterItem/Controls"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "-"
+
+[node name="PrescriptionItem" type="HBoxContainer" parent="Panel/VBox/Items"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/VBox/Items/PrescriptionItem"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Perscription: $40"
+
+[node name="Footer" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TotalLabel" type="Label" parent="Panel/VBox/Footer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Total: $0"
+horizontal_alignment = 1
+
+[node name="PurchaseBtn" type="Button" parent="Panel/VBox/Footer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Purchace"
+
+[connection signal="pressed" from="Panel/VBox/Header/CloseBtn" to="." method="_on_close_btn_pressed"]
+[connection signal="pressed" from="Panel/VBox/Items/FoodItem/Controls/Plus" to="." method="_on_food_plus_pressed"]
+[connection signal="pressed" from="Panel/VBox/Items/FoodItem/Controls/Minus" to="." method="_on_food_minus_pressed"]
+[connection signal="pressed" from="Panel/VBox/Items/WaterItem/Controls/Plus" to="." method="_on_water_plus_pressed"]
+[connection signal="pressed" from="Panel/VBox/Items/WaterItem/Controls/Minus" to="." method="_on_water_minus_pressed"]
+[connection signal="toggled" from="Panel/VBox/Items/PrescriptionItem/CheckBox" to="." method="_on_prescription_toggled"]
+[connection signal="pressed" from="Panel/VBox/Footer/PurchaseBtn" to="." method="_on_purchase_pressed"]

@@ -11,22 +11,22 @@ extends CanvasLayer
 @onready var hygiene_val = $PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox/Value
 @onready var health_bar = $PanelContainer/VBoxContainer/GridContainer/Health/HBox/ProgressBar
 @onready var health_val = $PanelContainer/VBoxContainer/GridContainer/Health/HBox/Value
-@onready var arrow = $Download7_44_10Pm
+# @onready var arrow = $Download7_44_10Pm # This node does not exist in the scene
 
 var target_dog: Node2D
 
 func _ready():
 	panel.hide()
-	arrow.hide()
+	# arrow.hide()
 	$PanelContainer/VBoxContainer/TitleHBox/CloseButton.pressed.connect(func():
 		panel.hide()
-		arrow.hide()
+		# arrow.hide()
 	)
 
 func show_menu(dog: Node2D):
 	target_dog = dog
 	panel.show()
-	arrow.show()
+	# arrow.show()
 	update_ui()
 
 func _process(_delta):
@@ -35,7 +35,7 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("ui_cancel") or (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not is_mouse_over_panel()):
 		panel.hide()
-		arrow.hide()
+		# arrow.hide()
 
 func update_ui():
 	if not target_dog: return

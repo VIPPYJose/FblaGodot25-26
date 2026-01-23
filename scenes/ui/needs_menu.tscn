@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddy2k6y6w8b2w"]
+[gd_scene load_steps=3 format=3 uid="uid://ddy2k6y6w8b2w"]
 
 [ext_resource type="Script" uid="uid://bnwm45xsk324o" path="res://scripts/needs_menu.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dykv6tnnuubxm" path="res://assets/placeholder/download 7.44.10 PM.png" id="2_upfti"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljf80"]
 
@@ -189,8 +188,3 @@ offset_right = -10.0
 offset_bottom = -34.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="Download7_44_10Pm" type="Sprite2D" parent="."]
-position = Vector2(1128, 603)
-scale = Vector2(0.063, 0.063)
-texture = ExtResource("2_upfti")
