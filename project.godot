@@ -34,7 +34,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/SimpleTODO/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [global_group]
 
@@ -88,4 +88,3 @@ locale/translations_pot_files=PackedStringArray("res://dialogues/old_man.dialogu
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-
