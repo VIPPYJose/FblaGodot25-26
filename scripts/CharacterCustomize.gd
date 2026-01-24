@@ -83,3 +83,4 @@ func _on_continue_button_pressed():
 	GameState.save_character(current_char_id, current_variant)
 	GameState.save_player_name(name_input.text.strip_edges())
 	SceneManager.change_scene("res://scenes/ui/PetSelect.tscn", {"pattern": "curtains"})
+

@@ -137,3 +137,4 @@ scroll_active = false
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/ReplaceContainer/ReplaceInput" to="." method="_on_replace_input_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ReplaceContainer/ReplaceToolbar/ReplaceSelectedButton" to="." method="_on_replace_selected_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ReplaceContainer/ReplaceToolbar/ReplaceAllButton" to="." method="_on_replace_all_button_pressed"]
+

@@ -63,3 +63,4 @@ one_shot = true
 [connection signal="pressed" from="VBoxContainer/Actions/AddItem" to="." method="add_item" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/Actions/DeleteColumn" to="." method="delete_column"]
 [connection signal="timeout" from="Timer" to="." method="request_save"]
+

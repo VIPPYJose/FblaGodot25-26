@@ -155,3 +155,4 @@ grow_vertical = 0
 position = Vector2(1128, 603)
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_upfti")
+

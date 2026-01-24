@@ -29,3 +29,4 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	get_tree().paused = false
 	SceneManager.change_scene("res://scenes/ui/MainMenu.tscn", {"pattern": "curtains"})
+

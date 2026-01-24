@@ -11,3 +11,4 @@ func _can_handle(object: Object) -> bool:
 func _parse_begin(object: Object):
 	add_property_editor("singleton_check", SingletonCheckProperty.new())
 	add_property_editor("singleton_name", SingletonNameProperty.new())
+

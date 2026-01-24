@@ -461,3 +461,4 @@ dialog_text = "You're now up to date!"
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_import_dialog_file_selected"]
 [connection signal="confirmed" from="CloseConfirmationDialog" to="." method="_on_close_confirmation_dialog_confirmed"]
 [connection signal="custom_action" from="CloseConfirmationDialog" to="." method="_on_close_confirmation_dialog_custom_action"]
+

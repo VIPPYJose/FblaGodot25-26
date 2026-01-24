@@ -255,3 +255,4 @@ theme_override_constants/separation = 10
 [connection signal="pressed" from="Panel/VBox/Content/TabContainer/Overview/DepositBtn" to="." method="_on_deposit_btn_pressed"]
 [connection signal="value_changed" from="Panel/VBox/Content/TabContainer/BudgetPlanner/FoodSlider" to="." method="_on_food_slider_value_changed"]
 [connection signal="value_changed" from="Panel/VBox/Content/TabContainer/BudgetPlanner/VetSlider" to="." method="_on_vet_slider_value_changed"]
+

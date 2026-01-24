@@ -46,3 +46,4 @@ func _drop_data(at_position: Vector2, data) -> void:
 	if files.size() == 0: return
 
 	resource_dropped.emit(load(files[0]))
+

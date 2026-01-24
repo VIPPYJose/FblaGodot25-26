@@ -175,3 +175,4 @@ func _on_vet_slider_value_changed(value):
 	GameState.budget_data["Vet"]["limit"] = int(value)
 	vet_limit_label.text = "$%d" % value
 	update_overview()
+

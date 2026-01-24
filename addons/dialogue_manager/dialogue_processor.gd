@@ -9,3 +9,4 @@ func _preprocess_line(raw_line: String) -> String:
 ## Override to modify the outgoing dialogue line.
 func _process_line(line: DMCompiledLine) -> void:
 	pass
+

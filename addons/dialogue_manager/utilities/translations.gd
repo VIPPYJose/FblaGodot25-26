@@ -310,3 +310,4 @@ static func import_translations_from_csv(from_path: String, text: String) -> Str
 				lines[i] = (line.substr(0, start_index) + keys.get(translation_key) + " [ID:" + translation_key + "]" + line.substr(end_index)).replace("!ESCAPED_COLON!", ":")
 
 	return "\n".join(lines)
+

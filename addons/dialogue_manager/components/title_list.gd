@@ -67,3 +67,4 @@ func _on_list_item_clicked(index: int, at_position: Vector2, mouse_button_index:
 	if mouse_button_index == MOUSE_BUTTON_LEFT:
 		var title = list.get_item_text(index)
 		title_selected.emit(title)
+

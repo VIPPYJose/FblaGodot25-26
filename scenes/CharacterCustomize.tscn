@@ -102,3 +102,4 @@ text = "Continue"
 [connection signal="pressed" from="VBoxContainer/VariantContainer/MaleButton" to="." method="_on_male_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VariantContainer/FemaleButton" to="." method="_on_female_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+

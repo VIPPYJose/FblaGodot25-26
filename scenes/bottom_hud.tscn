@@ -88,3 +88,4 @@ text = " 📝 "
 [node name="PauseBtn" type="Button" parent="TopRightHUD"]
 layout_mode = 2
 text = " ... "
+

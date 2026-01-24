@@ -57,3 +57,4 @@ func update_ui():
 
 func is_mouse_over_panel() -> bool:
 	return panel.get_global_rect().has_point(panel.get_global_mouse_position())
+

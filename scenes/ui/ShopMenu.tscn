@@ -162,3 +162,4 @@ text = "Purchace"
 [connection signal="pressed" from="Panel/VBox/Items/WaterItem/Controls/Minus" to="." method="_on_water_minus_pressed"]
 [connection signal="toggled" from="Panel/VBox/Items/PrescriptionItem/CheckBox" to="." method="_on_prescription_toggled"]
 [connection signal="pressed" from="Panel/VBox/Footer/PurchaseBtn" to="." method="_on_purchase_pressed"]
+

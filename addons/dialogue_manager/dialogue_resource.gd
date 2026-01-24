@@ -40,3 +40,4 @@ func get_titles() -> PackedStringArray:
 
 func _to_string() -> String:
 	return "<DialogueResource titles=\"%s\">" % [",".join(titles.keys())]
+

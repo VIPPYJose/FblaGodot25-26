@@ -58,3 +58,4 @@ text = "Read release notes"
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="pressed" from="VBox/Center/DownloadButton" to="." method="_on_download_button_pressed"]
 [connection signal="pressed" from="VBox/Center2/NotesButton" to="." method="_on_notes_button_pressed"]
+

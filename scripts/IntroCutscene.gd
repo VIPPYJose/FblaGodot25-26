@@ -81,3 +81,4 @@ func _on_toggle_pressed(toggle_index):
 			content.visible = !content.visible
 		else:
 			content.visible = false
+

@@ -295,3 +295,4 @@ func text_input(event: InputEvent) -> void:
 			elif event.keycode == KEY_ESCAPE:
 				text_field.release_focus()
 				accept_event()
+

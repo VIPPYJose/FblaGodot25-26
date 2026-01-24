@@ -80,3 +80,4 @@ text = "Continue"
 [connection signal="pressed" from="VBoxContainer/CycleContainer/PrevButton" to="." method="_on_prev_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CycleContainer/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+

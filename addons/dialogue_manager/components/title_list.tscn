@@ -25,3 +25,4 @@ allow_reselect = true
 [connection signal="theme_changed" from="." to="." method="_on_theme_changed"]
 [connection signal="text_changed" from="FilterEdit" to="." method="_on_filter_edit_text_changed"]
 [connection signal="item_clicked" from="List" to="." method="_on_list_item_clicked"]
+

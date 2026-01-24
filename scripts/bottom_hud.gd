@@ -139,3 +139,4 @@ func show_notification(text: String, color: Color):
 func _on_open_shop_requested():
 	if shop_menu_instance:
 		shop_menu_instance.show_shop()
+

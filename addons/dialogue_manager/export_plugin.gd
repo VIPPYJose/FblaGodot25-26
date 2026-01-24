@@ -24,3 +24,4 @@ func _export_file(path: String, type: String, features: PackedStringArray) -> vo
 	# Ignore C# stuff it not using dotnet
 	if path.begins_with(plugin_path) and not DMSettings.check_for_dotnet_solution() and path.ends_with(".cs"):
 		skip()
+

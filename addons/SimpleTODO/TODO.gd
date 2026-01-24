@@ -93,3 +93,4 @@ func update_full_counter():
 func _update_full_counter():
 	%Total.text = str("Total: %d" % column_container.get_children().reduce(func(accum: int, column: Node) -> int: return accum + column.item_container.get_child_count(), 0))
 	counter_queued = false
+

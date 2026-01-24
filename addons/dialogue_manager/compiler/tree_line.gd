@@ -44,3 +44,4 @@ func _to_string() -> String:
 		"\tnotes: %s\n" % [notes],
 		"\tchildren: []\n" if children.size() == 0 else "\tchildren: [\n" + ",\n".join(children.map(func(child): return str(child))) + "]\n",
 	"}"])
+

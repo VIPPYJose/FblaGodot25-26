@@ -123,3 +123,4 @@ func _on_needs_reload_dialog_confirmed() -> void:
 func _on_timer_timeout() -> void:
 	if not needs_reload:
 		check_for_update()
+

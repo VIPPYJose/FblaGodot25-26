@@ -401,3 +401,4 @@ scale = Vector2(1.0052286, 1.0746742)
 zoom = Vector2(50, 50)
 process_callback = 0
 position_smoothing_enabled = true
+

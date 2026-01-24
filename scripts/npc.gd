@@ -28,3 +28,4 @@ func _on_area_2d_body_exited(body):
 		player_in_range = false
 		if label:
 			label.hide()
+

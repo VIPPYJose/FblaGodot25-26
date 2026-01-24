@@ -945,3 +945,4 @@ func _on_banner_quick_open_pressed() -> void:
 
 func _on_banner_examples_pressed() -> void:
 	OS.shell_open("https://itch.io/c/5226650/godot-dialogue-manager-example-projects")
+

@@ -62,3 +62,4 @@ func teleport_to_vet():
 	
 	player_in_area = false
 	print("[Vet] Teleported player to vet at ", VET_ENTRANCE_POS)
+

@@ -169,3 +169,4 @@ func fade_in(setted_options: Dictionary = {}) -> void:
 	is_transitioning = false
 	transition_finished.emit()
 	options["on_fade_in"].call()
+

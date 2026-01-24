@@ -126,3 +126,4 @@ collision_enabled = true
 
 [node name="Layer_32_0a" parent="." instance=ExtResource("0_id")]
 collision_enabled = true
+

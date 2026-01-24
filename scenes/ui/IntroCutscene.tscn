@@ -153,3 +153,4 @@ autowrap_mode = 3
 [connection signal="pressed" from="TechnicalPanel/VBoxContainer/Section2/Header" to="." method="_on_toggle_pressed" binds= [2]]
 [connection signal="pressed" from="TechnicalPanel/VBoxContainer/Section3/Header" to="." method="_on_toggle_pressed" binds= [3]]
 [connection signal="pressed" from="TechnicalPanel/VBoxContainer/Section4/Header" to="." method="_on_toggle_pressed" binds= [4]]
+

@@ -66,3 +66,4 @@ func player_moveable():
 	if npc and not npc.player_can_move:
 		return false
 	return true
+

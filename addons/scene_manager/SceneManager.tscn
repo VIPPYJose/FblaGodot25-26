@@ -33,3 +33,4 @@ mouse_filter = 2
 libraries = {
 &"": SubResource("AnimationLibrary_bdiyj")
 }
+

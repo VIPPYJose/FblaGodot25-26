@@ -187,3 +187,4 @@ func load_data():
 			column_item.image_data = image
 			column_item.ready.connect(column_item.initialize.bind(data.get_value(section, item), item.to_int()), CONNECT_DEFERRED)
 			column.ready.connect(column_item.add_to_column.bind(column))
+

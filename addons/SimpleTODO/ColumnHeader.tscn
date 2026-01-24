@@ -23,3 +23,4 @@ horizontal_alignment = 1
 [node name="Minimize" type="Button" parent="."]
 layout_mode = 2
 tooltip_text = "Fold/Unfold"
+
