@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c_bHOPhSwT3"]
 
-[ext_resource type="TileSet" path="./tileset.tres" id="tileset_id"]
+[ext_resource type="TileSet" id="tileset_id" path="tileset.tres"]
 
 [node name="Carpet_&_Walls_2" type="TileMapLayer"]
 collision_enabled = false

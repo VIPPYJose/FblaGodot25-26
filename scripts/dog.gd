@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var breed: String = "basic_dog"
 
 # State machine
-enum DogState {FOLLOWING_PLAYER, EATING, DRINKING, SLEEPING}
+enum DogState {FOLLOWING_PLAYER, GOING_TO_FOOD, GOING_TO_WATER, GOING_TO_SLEEP, SLEEPING}
 var current_state: DogState = DogState.FOLLOWING_PLAYER
 
 var path: Array[Vector2] = []
@@ -77,11 +77,11 @@ func _input(event: InputEvent) -> void:
 	# Dog action keys (only when following player)
 	if current_state == DogState.FOLLOWING_PLAYER and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_1:
-			start_action("food path", DogState.EATING, _on_food_complete)
+			start_action("food path", DogState.GOING_TO_FOOD, _on_food_complete)
 		elif event.keycode == KEY_2:
-			start_action("water path", DogState.DRINKING, _on_water_complete)
+			start_action("water path", DogState.GOING_TO_WATER, _on_water_complete)
 		elif event.keycode == KEY_3:
-			start_action("Sleep path", DogState.SLEEPING, _on_sleep_complete)
+			start_action("Sleep path", DogState.GOING_TO_SLEEP, _on_sleep_complete)
 
 func start_action(path_name: String, state: DogState, callback: Callable):
 	var main_game = get_tree().current_scene
@@ -90,11 +90,16 @@ func start_action(path_name: String, state: DogState, callback: Callable):
 		print("Path not found: ", path_name)
 		return
 	
-	# Get baked points from path
-	action_path = Array(path_node.curve.get_baked_points())
+	# Get baked points and convert to GLOBAL coordinates
+	var local_points = path_node.curve.get_baked_points()
+	action_path.clear()
+	for point in local_points:
+		action_path.append(path_node.to_global(point))
+	
 	action_callback = callback
 	current_state = state
 	path.clear()
+	print("Started action: ", path_name, " with ", action_path.size(), " points")
 
 func _on_food_complete():
 	hunger = min(100.0, hunger + 30.0)
@@ -108,8 +113,9 @@ func _on_water_complete():
 
 func _on_sleep_complete():
 	energy = 100.0
+	current_state = DogState.SLEEPING
 	GameState.is_dog_sleeping = true
-	_play_animation("idle") # Would be "sleep" if animation exists
+	_play_animation("sleeping")
 	print("Dog sleeping! Energy: ", energy)
 
 func toggle_menu() -> void:
@@ -125,27 +131,34 @@ func _physics_process(delta: float) -> void:
 	# Handle state-specific behavior
 	match current_state:
 		DogState.SLEEPING:
-			# Frozen - don't decay needs, don't move
+			# Frozen - play sleep animation and stay put
+			_play_animation("sleeping")
+			velocity = Vector2.ZERO
 			return
-		DogState.EATING, DogState.DRINKING:
+		DogState.GOING_TO_FOOD, DogState.GOING_TO_WATER, DogState.GOING_TO_SLEEP:
 			# Follow action path
-			_process_action_path(delta)
+			_process_action_path()
 			return
 		DogState.FOLLOWING_PLAYER:
 			_process_following_player(delta)
 
-func _process_action_path(_delta: float):
+func _process_action_path():
 	if action_path.is_empty():
 		# Reached destination
+		velocity = Vector2.ZERO
+		_play_animation("idle")
+		
 		if action_callback.is_valid():
-			action_callback.call()
+			var cb = action_callback
+			action_callback = Callable()
+			cb.call()
 		return
 	
 	var target = action_path[0]
 	var direction = (target - global_position).normalized()
 	var distance = global_position.distance_to(target)
 	
-	if distance < 5.0:
+	if distance < 10.0:
 		action_path.remove_at(0)
 		return
 	

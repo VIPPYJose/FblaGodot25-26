@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c6g7mCspYSM"]
 
-[ext_resource type="TileSet" path="./tileset.tres" id="tileset_id"]
+[ext_resource type="TileSet" id="tileset_id" path="tileset.tres"]
 
 [node name="Window_1" type="TileMapLayer"]
-collision_enabled = true
+collision_enabled = false
 tile_set = ExtResource("tileset_id")
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 5, 0, 0, 0, 1, 0, 1, 0, 0, 0, 4, 0, 5, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 4, 0, 1, 0, 0, 0, 3, 0, 5, 0, 0, 0, 5, 0, 1, 0, 0, 0, 4, 0, 5, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnr8a74pk4etp"]
+[gd_scene load_steps=4 format=3 uid="uid://ciqs30qh7j8kh"]
 
 [ext_resource type="PackedScene" path="res://scenes/maps/House/Carpet_&_Walls_2.tscn" id="1_jpari"]
 [ext_resource type="PackedScene" path="res://scenes/maps/House/Window_1.tscn" id="2_yr7t8"]

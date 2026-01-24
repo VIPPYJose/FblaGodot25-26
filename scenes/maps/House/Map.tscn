@@ -1,0 +1,10 @@
+[gd_scene load_steps=0 format=3 uid="uid://c6gpu2ei3ohfj"]
+
+[ext_resource type="PackedScene" uid="uid://cVrGgBo_PSf" id="0_id" path="Couches_0.tscn"]
+[ext_resource type="PackedScene" uid="uid://cK1_xoAReRM" id="1_id" path="Window_1.tscn"]
+[ext_resource type="PackedScene" uid="uid://c2awm3IywQ1" id="2_id" path="Carpet_&_Walls_2.tscn"]
+
+[node name="map" type="Node2D"]
+[node name="Carpet_&_Walls_2" parent="." instance=ExtResource("2_id")]
+[node name="Window_1" parent="." instance=ExtResource("1_id")]
+[node name="Couches_0" parent="." instance=ExtResource("0_id")]
