@@ -18,7 +18,7 @@ var needs_menu_instance: CanvasLayer
 # Path following for actions
 var action_path: Array = []
 var action_callback: Callable
-var action_speed: float = 100.0
+var action_speed: float = 250.0
 
 var hunger: float = 80.0
 var thirst: float = 70.0
