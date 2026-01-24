@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var needs_btn = $Background/Margin/MainHBox/RightSection/NeedsBtn
 @onready var finance_btn = $TopRightHUD/FinanceBtn
 @onready var pause_btn = $TopRightHUD/PauseBtn
+@onready var home_btn = $Background/Margin/MainHBox/RightSection/BuildBtn
 
 var pause_menu_scene = preload("res://scenes/ui/PauseMenu.tscn")
 var finance_menu_scene = preload("res://scenes/ui/FinanceMenu.tscn")
@@ -24,6 +25,7 @@ func _ready():
 	needs_btn.pressed.connect(_on_needs_btn_pressed)
 	finance_btn.pressed.connect(_on_finance_btn_pressed)
 	pause_btn.pressed.connect(_on_pause_btn_pressed)
+	home_btn.pressed.connect(_on_home_btn_pressed)
 	
 	# Create supplies menu instance
 	supplies_menu_instance = supplies_menu_scene.instantiate()
@@ -139,3 +141,15 @@ func show_notification(text: String, color: Color):
 func _on_open_shop_requested():
 	if shop_menu_instance:
 		shop_menu_instance.show_shop()
+
+func _on_home_btn_pressed():
+	SceneManager.fade_in_place({
+		"pattern": "curtains",
+		"on_fade_out": func():
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				player.global_position = Vector2(750, 380)
+			var dog = get_tree().get_first_node_in_group("dog")
+			if dog:
+				dog.global_position = Vector2(800, 380) # Move dog near player
+	})

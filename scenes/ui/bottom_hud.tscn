@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c06gk2o2ya52f"]
 
-[ext_resource type="Script" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
+[ext_resource type="Script" uid="uid://85r1uj7416cu" path="res://scripts/bottom_hud.gd" id="1_hud_script"]
 
 [node name="BottomHUD" type="CanvasLayer"]
 process_mode = 3
@@ -49,7 +49,7 @@ size_flags_horizontal = 3
 [node name="TimeLabel" type="Label" parent="Background/Margin/MainHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Mon. 12:00 AM"
+text = "Monday Week 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
