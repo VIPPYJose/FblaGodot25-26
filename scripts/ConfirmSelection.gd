@@ -90,4 +90,3 @@ func _on_dog_container_mouse_entered():
 
 func _on_dog_container_mouse_exited():
 	dog_label.visible = false
-

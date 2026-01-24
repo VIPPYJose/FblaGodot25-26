@@ -269,4 +269,3 @@ func _play_animation(anim_name: String) -> void:
 		if animated_sprite_2d.sprite_frames.has_animation(anim_name_to_check):
 			animated_sprite_2d.play(anim_name_to_check)
 			return
-

@@ -836,4 +836,3 @@ shape = SubResource("RectangleShape2D_mu1ml")
 position = Vector2(1, 0)
 build_mode = 1
 polygon = PackedVector2Array(264, -776, 645, -780, 651, -556, 258, -549)
-

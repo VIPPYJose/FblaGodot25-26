@@ -122,4 +122,3 @@ func _on_purchase_pressed():
 	else:
 		print("Not enough money!")
 		# Could show a visual warning here
-
