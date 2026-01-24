@@ -82,4 +82,3 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 
 func _on_notes_button_pressed() -> void:
 	OS.shell_open(next_version_release.html_url)
-

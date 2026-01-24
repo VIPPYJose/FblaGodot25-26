@@ -232,4 +232,3 @@ static func translate(string: String) -> String:
 		_current_translation = load(translation_path if FileAccess.file_exists(translation_path) else (fallback_translation_path if FileAccess.file_exists(fallback_translation_path) else en_translation_path))
 		_current_locale = locale
 	return _current_translation.get_message(string)
-

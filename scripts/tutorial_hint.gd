@@ -49,4 +49,3 @@ func _on_animation_finished(anim_name: String):
 
 func is_hint_visible() -> bool:
 	return panel.modulate.a > 0.5
-

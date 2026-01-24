@@ -40,4 +40,3 @@ wait_time = 14400.0
 [connection signal="updated" from="DownloadDialog/DownloadUpdatePanel" to="." method="_on_download_update_panel_updated"]
 [connection signal="confirmed" from="NeedsReloadDialog" to="." method="_on_needs_reload_dialog_confirmed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-

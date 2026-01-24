@@ -59,4 +59,3 @@ text = "Resume"
 [node name="QuitBtn" type="Button" parent="Panel/VBox"]
 layout_mode = 2
 text = "Quit Game"
-

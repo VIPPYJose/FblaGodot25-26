@@ -55,4 +55,3 @@ static func get_titles_in_text(text: String, path: String) -> Dictionary:
 	var compilation: DMCompilation = DMCompilation.new()
 	compilation.build_line_tree(compilation.inject_imported_files(text, path))
 	return compilation.titles
-

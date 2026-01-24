@@ -142,4 +142,3 @@ text = "No"
 [connection signal="mouse_exited" from="PlayerContainer" to="." method="_on_player_container_mouse_exited"]
 [connection signal="mouse_entered" from="DogContainer" to="." method="_on_dog_container_mouse_entered"]
 [connection signal="mouse_exited" from="DogContainer" to="." method="_on_dog_container_mouse_exited"]
-

@@ -66,4 +66,3 @@ func _init(text: String, titles: Dictionary) -> void:
 
 func _to_string() -> String:
 	return "%s =>%s %s (%s)" % [text_without_goto, "<" if is_snippet else "", title, next_id]
-

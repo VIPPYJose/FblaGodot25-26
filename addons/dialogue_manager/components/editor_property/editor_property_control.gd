@@ -145,4 +145,3 @@ func _on_files_list_file_selected(file_path: String) -> void:
 func _on_quick_open_dialog_confirmed() -> void:
 	if quick_selected_file != "":
 		resource_changed.emit(load(quick_selected_file))
-

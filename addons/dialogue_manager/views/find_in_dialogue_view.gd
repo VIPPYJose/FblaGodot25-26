@@ -239,4 +239,3 @@ func _on_match_case_button_toggled(toggled_on: bool) -> void:
 
 
 #endregion
-

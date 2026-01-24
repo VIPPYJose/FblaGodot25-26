@@ -27,4 +27,3 @@ allow_rmb_select = true
 [connection signal="text_changed" from="FilterEdit" to="." method="_on_filter_edit_text_changed"]
 [connection signal="item_activated" from="List" to="." method="_on_list_item_activated"]
 [connection signal="item_clicked" from="List" to="." method="_on_list_item_clicked"]
-

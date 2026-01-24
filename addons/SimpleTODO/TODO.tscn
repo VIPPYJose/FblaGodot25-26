@@ -83,4 +83,3 @@ size_flags_vertical = 3
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/Button" to="." method="add_column" binds= [true]]
 [connection signal="text_changed" from="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer3/LineEdit" to="." method="filter_elements"]
-

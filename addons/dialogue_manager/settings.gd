@@ -369,4 +369,3 @@ static func check_for_dotnet_solution() -> bool:
 
 
 #endregion
-

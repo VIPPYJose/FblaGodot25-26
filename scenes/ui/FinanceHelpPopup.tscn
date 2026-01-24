@@ -82,4 +82,3 @@ theme_override_font_sizes/font_size = 34
 text = "Got it!"
 
 [connection signal="pressed" from="Panel/VBox/CloseBtn" to="." method="_on_close_btn_pressed"]
-

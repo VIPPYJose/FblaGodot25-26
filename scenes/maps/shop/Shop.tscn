@@ -29,4 +29,3 @@ script = ExtResource("shop_npc_script")
 [node name="talk" type="CollisionShape2D" parent="shopNPC"]
 position = Vector2(216, 175)
 shape = SubResource("RectangleShape2D_mkf6l")
-

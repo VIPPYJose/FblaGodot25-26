@@ -24,4 +24,3 @@ func _init(text: String) -> void:
 
 	tags = resolved_tags
 	text_without_tags = text
-

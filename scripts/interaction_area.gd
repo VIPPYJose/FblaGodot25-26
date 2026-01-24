@@ -77,4 +77,3 @@ func _exit_tree():
 	if hint_instance:
 		hint_instance.queue_free()
 		hint_instance = null
-

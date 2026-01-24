@@ -22,4 +22,3 @@ transform = Transform2D(1, 0, 0, 1, 70592, 0)
 
 [node name="map" parent="." instance=ExtResource("5_71j4m")]
 position = Vector2(-725, -317)
-

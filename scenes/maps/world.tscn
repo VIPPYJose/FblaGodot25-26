@@ -16,4 +16,3 @@ position = Vector2(1.1920929e-07, 5.684342e-14)
 position = Vector2(62, -2)
 
 [node name="BottomHUD" parent="." instance=ExtResource("5_hud")]
-

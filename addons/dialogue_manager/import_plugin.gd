@@ -108,4 +108,3 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		append_import_external_resource(path)
 
 	return err
-

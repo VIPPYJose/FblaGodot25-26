@@ -83,4 +83,3 @@ func _on_previous_button_pressed() -> void:
 func _on_next_button_pressed() -> void:
 	self.error_index += 1
 	_on_error_button_pressed()
-

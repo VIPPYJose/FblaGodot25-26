@@ -29,4 +29,3 @@ func _on_volume_changed(value):
 func _on_close_pressed():
 	settings_closed.emit()
 	queue_free()
-

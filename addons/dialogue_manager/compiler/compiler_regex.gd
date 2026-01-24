@@ -48,4 +48,3 @@ var TOKEN_DEFINITIONS: Dictionary = {
 	DMConstants.TOKEN_CONDITION: RegEx.create_from_string("^(if|elif|else)"),
 	DMConstants.TOKEN_BOOL: RegEx.create_from_string("^(true|false)")
 }
-

@@ -55,4 +55,3 @@ func _on_next_button_pressed():
 func _on_continue_button_pressed():
 	GameState.save_pet(breeds[current_breed_index]["id"])
 	SceneManager.change_scene("res://scenes/ui/PetName.tscn", {"pattern": "curtains"})
-
