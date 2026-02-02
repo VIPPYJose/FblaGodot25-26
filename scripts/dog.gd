@@ -187,6 +187,11 @@ func _process_following_player(delta: float):
 	if not player:
 		return
 
+	# Teleport if stuck (more than 250px away - target_distance is 67)
+	if global_position.distance_to(player.global_position) > 250:
+		global_position = player.global_position + Vector2(-10, 0)
+		path.clear()
+
 	if player.velocity == Vector2.ZERO:
 		_play_animation("idle")
 		return
@@ -239,16 +244,16 @@ func check_emergency_triggers(delta: float):
 
 	# Emergency Vet Logic
 	if health < 20:
-		# Attempt to pay $50 for emergency care
-		if GameState.spend_money(50, "Vet"):
+		# Attempt to pay vet fee for emergency care
+		if GameState.spend_money(GameState.vet_fee, "Vet"):
 			health = 50
 			emergency_cooldown = 10.0
 			print("Emergency Vet Care triggered!")
 	
 	# Emergency Food Logic
 	if hunger < 10 and GameState.food <= 0:
-		# Attempt to pay $20 for food
-		if GameState.spend_money(20, "Food"):
+		# Attempt to pay food cost for emergency food
+		if GameState.spend_money(GameState.food_cost, "Food"):
 			GameState.food += 7
 			hunger = 50
 			emergency_cooldown = 10.0

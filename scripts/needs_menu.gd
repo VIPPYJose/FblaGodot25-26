@@ -39,7 +39,7 @@ func _process(_delta):
 
 func update_ui():
 	if not target_dog: return
-	
+	#updates the ui with the current values of the dog from dog.gd
 	hunger_bar.value = target_dog.hunger
 	hunger_val.text = str(round(target_dog.hunger))
 	

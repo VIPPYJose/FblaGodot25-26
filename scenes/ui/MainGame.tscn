@@ -26,7 +26,7 @@ size = Vector2(509, 407)
 size = Vector2(345.5, 391.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdo6g"]
-size = Vector2(551.5, 347.5)
+size = Vector2(551.5, 310)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a01lx"]
 size = Vector2(190.5, 363.5)
@@ -72,15 +72,15 @@ size = Vector2(118, 74)
 
 [sub_resource type="Curve2D" id="Curve2D_rl3lx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 740, 367, 0, 0, 0, 0, 1121, 396, 0, 0, 0, 0, 1172, 678, 0, 0, 0, 0, 1168, 863, 0, 0, 0, 0, 1164, 1170, 0, 0, 0, 0, 1122, 1194, 0, 0, 0, 0, 896, 1158, 0, 0, 0, 0, 724, 1152, 0, 0, 0, 0, 394, 1135, 0, 0, 0, 0, -63, 1178, 0, 0, 0, 0, -145, 1251, 0, 0, 0, 0, -218, 1322, 0, 0, 0, 0, -244, 1428, 0, 0, 0, 0, -236, 1522, 0, 0, 0, 0, -184, 1575, 0, 0, 0, 0, -125, 1633, 0, 0, 0, 0, -69, 1687, 0, 0, 0, 0, -9, 1681, 0, 0, 0, 0, 145, 1681, 0, 0, 0, 0, 218, 1719, 0, 0, 0, 0, 348, 1743, 0, 0, 0, 0, 1387, 1799, 0, 0, 0, 0, 1450, 1803)
+"points": PackedVector2Array(0, 0, 0, 0, 740, 367, 0, 0, 0, 0, 1121, 396, 0, 0, 0, 0, 1172, 678, 0, 0, 0, 0, 1168, 863, 0, 0, 0, 0, 1164, 1170, 0, 0, 0, 0, 1122, 1194, 0, 0, 0, 0, 896, 1158, 0, 0, 0, 0, 724, 1152, 0, 0, 0, 0, 394, 1135, 0, 0, 0, 0, -63, 1178, 0, 0, 0, 0, -145, 1251, 0, 0, 0, 0, -218, 1322, 0, 0, 0, 0, -244, 1428, 0, 0, 0, 0, -236, 1522, 0, 0, 0, 0, -184, 1575, 0, 0, 0, 0, -125, 1633, 0, 0, 0, 0, -69, 1687, 0, 0, 0, 0, -9, 1681, 0, 0, 0, 0, 145, 1681, 0, 0, 0, 0, 243, 1709, 0, 0, 0, 0, 348, 1743, 0, 0, 0, 0, 1387, 1822, 0, 0, 0, 0, 1450, 1803)
 }
 point_count = 23
 
 [sub_resource type="Curve2D" id="Curve2D_shop"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1497, 1850, 0, 0, 0, 0, 1697, 1835, 0, 0, 0, 0, 1900, 1863, 0, 0, 0, 0, 1554, 2178, 0, 0, 0, 0, 1350, 2183, 0, 0, 0, 0, 1088, 2171, 0, 0, 0, 0, 734, 2175)
+"points": PackedVector2Array(0, 0, 0, 0, 1497, 1850, 0, 0, 0, 0, 1697, 1835, 0, 0, 0, 0, 1900, 1863, 0, 0, 0, 0, 1649, 2005, 0, 0, 0, 0, 1589, 2059, 0, 0, 0, 0, 1554, 2178, 0, 0, 0, 0, 1350, 2183, 0, 0, 0, 0, 1091, 2181, 0, 0, 0, 0, 958, 2192, 0, 0, 0, 0, 734, 2175)
 }
-point_count = 7
+point_count = 10
 
 [sub_resource type="Curve2D" id="Curve2D_p8prh"]
 _data = {
@@ -215,6 +215,35 @@ polygon = PackedVector2Array(-693, -171, -733, 2880, 2683, 2920, 2683, -171)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings7"]
 polygon = PackedVector2Array(98, 1477, 194, 1471, 198, 1307, 143, 1283, 99, 1300)
+
+[node name="Vet borders" type="StaticBody2D" parent="ManualCollisions"]
+position = Vector2(-1804, 1052)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Vet borders"]
+position = Vector2(-469, -502)
+build_mode = 1
+polygon = PackedVector2Array(688, 756, 691, 1139, 1113, 1140, 1106, 760)
+
+[node name="Vet collisons" type="StaticBody2D" parent="ManualCollisions"]
+position = Vector2(-1804, 1052)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Vet collisons"]
+position = Vector2(-475, 195)
+polygon = PackedVector2Array(717, 1494, 721, 1637, 758, 1633, 761, 1496)
+
+[node name="Vet collisons2" type="StaticBody2D" parent="ManualCollisions"]
+position = Vector2(-1804, 1052)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Vet collisons2"]
+position = Vector2(-475, 195)
+polygon = PackedVector2Array(717, 1494, 721, 1637, 758, 1633, 761, 1496)
+
+[node name="Vet collisons3" type="StaticBody2D" parent="ManualCollisions"]
+position = Vector2(-1804, 1052)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Vet collisons3"]
+position = Vector2(-171, 35)
+polygon = PackedVector2Array(717, 1494, 721, 1637, 758, 1633, 761, 1496)
 
 [node name="Collisons" type="Node" parent="."]
 
@@ -520,7 +549,7 @@ shape = SubResource("RectangleShape2D_mrp28")
 [node name="buildings3" type="StaticBody2D" parent="Collisons"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings3"]
-position = Vector2(624.25, 2006.75)
+position = Vector2(624.25, 1988)
 shape = SubResource("RectangleShape2D_qdo6g")
 
 [node name="buildings4" type="StaticBody2D" parent="Collisons"]
@@ -800,9 +829,23 @@ polygon = PackedVector2Array(698, 1049, 699, 1131, 776, 1130, 780, 1045)
 position = Vector2(-1804, 1052)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inside collisons/Vet borders"]
-position = Vector2(-469, -502)
+position = Vector2(-475, 195)
 build_mode = 1
-polygon = PackedVector2Array(688, 756, 691, 1139, 1113, 1140, 1106, 760)
+polygon = PackedVector2Array(717, 1220, 709, 1675, 1078, 1676, 1069, 1230)
+
+[node name="Vet collisons" type="StaticBody2D" parent="inside collisons"]
+position = Vector2(-1804, 1052)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inside collisons/Vet collisons"]
+position = Vector2(-170, 195)
+polygon = PackedVector2Array(717, 1494, 721, 1637, 758, 1633, 761, 1496)
+
+[node name="Vet collisons2" type="StaticBody2D" parent="inside collisons"]
+position = Vector2(-1804, 1052)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inside collisons/Vet collisons2"]
+position = Vector2(-475, 195)
+polygon = PackedVector2Array(718, 1335, 722, 1478, 759, 1474, 762, 1337)
 
 [node name="House collisons" type="Node" parent="."]
 

@@ -8,17 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="My Little Buddy"
 run/main_scene="res://scenes/ui/MainMenu.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameState="*res://scripts/GameState.gd"
-SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+SceneManager="*uid://j20v4cg7v8m1"
 Npc="*res://scripts/npc.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
@@ -34,7 +38,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/SimpleTODO/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [global_group]
 

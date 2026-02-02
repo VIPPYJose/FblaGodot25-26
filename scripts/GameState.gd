@@ -7,6 +7,13 @@ var pet_name: String = ""
 var player_name: String = ""
 
 var money: int = 150
+
+# Customizable Costs
+var food_cost: int = 20
+var water_cost: int = 10
+var medicine_cost: int = 40
+var vet_fee: int = 50
+var dog_house_cost: int = 300
 var master_volume: int = 70
 var current_day: int = 0
 var days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -248,6 +255,12 @@ func save_game(dog_data: Dictionary = {}):
 		"is_tutorial_complete": is_tutorial_complete,
 		"is_day_one": is_day_one,
 		"master_volume": master_volume,
+		# Customizable Costs
+		"food_cost": food_cost,
+		"water_cost": water_cost,
+		"medicine_cost": medicine_cost,
+		"vet_fee": vet_fee,
+		"dog_house_cost": dog_house_cost,
 		# Finance Data
 		"savings_balance": savings_balance,
 		"budget_data": budget_data,
@@ -297,6 +310,13 @@ func load_game() -> bool:
 	is_tutorial_complete = save_data.get("is_tutorial_complete", false)
 	is_day_one = save_data.get("is_day_one", true)
 	master_volume = save_data.get("master_volume", 70)
+	
+	# Restore Customizable Costs
+	food_cost = save_data.get("food_cost", 20)
+	water_cost = save_data.get("water_cost", 10)
+	medicine_cost = save_data.get("medicine_cost", 40)
+	vet_fee = save_data.get("vet_fee", 50)
+	dog_house_cost = save_data.get("dog_house_cost", 300)
 	
 	# Restore Finance Data
 	savings_balance = save_data.get("savings_balance", 200)

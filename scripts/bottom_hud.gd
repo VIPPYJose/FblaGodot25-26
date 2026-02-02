@@ -95,10 +95,9 @@ func _on_pause_btn_pressed():
 		SceneManager.change_scene("res://scenes/ui/MainMenu.tscn", {"pattern": "curtains"})
 	)
 	
-	current_pause_menu.get_node("Panel/VBox/FinancesBtn").pressed.connect(func():
-		var help_popup = load("res://scenes/ui/FinanceHelpPopup.tscn").instantiate()
+	current_pause_menu.get_node("Panel/VBox/HelpBtn").pressed.connect(func():
+		var help_popup = load("res://scenes/ui/HelpPopup.tscn").instantiate()
 		get_tree().root.add_child(help_popup)
-		help_popup.get_node("Panel/VBox/CloseBtn").pressed.connect(help_popup.queue_free)
 	)
 	
 	current_pause_menu.get_node("Panel/VBox/SettingsBtn").pressed.connect(func():

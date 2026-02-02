@@ -23,7 +23,14 @@ signal menu_closed
 # History Elements
 @onready var history_cash_label = $Panel/VBox/Content/TabContainer/AllTimeHistory/CashHeader
 @onready var history_spent_label = $Panel/VBox/Content/TabContainer/AllTimeHistory/SpentTotalLabel
-@onready var history_list = $Panel/VBox/Content/TabContainer/AllTimeHistory/ScrollContainer/HistoryList
+@onready var history_list = $Panel/VBox/Content/TabContainer/AllTimeHistory/BreakdownView/ScrollContainer/HistoryList
+
+# Graph Elements
+@onready var breakdown_btn = $Panel/VBox/Content/TabContainer/AllTimeHistory/ViewToggleContainer/BreakdownBtn
+@onready var graphs_btn = $Panel/VBox/Content/TabContainer/AllTimeHistory/ViewToggleContainer/GraphsBtn
+@onready var breakdown_view = $Panel/VBox/Content/TabContainer/AllTimeHistory/BreakdownView
+@onready var graph_view = $Panel/VBox/Content/TabContainer/AllTimeHistory/GraphView
+@onready var graph_canvas = $Panel/VBox/Content/TabContainer/AllTimeHistory/GraphView/GraphCanvas
 
 # Report Elements
 @onready var report_text = $Panel/VBox/Content/TabContainer/WeeklyReport/ReportLabel
@@ -129,20 +136,22 @@ func update_history():
 	for entry in GameState.transaction_history:
 		var h_box = HBoxContainer.new()
 		
-		var font_size = 35 # Increased for readability
-		
+		var font_size = 35 
+		#labels which day it is
 		var day_label = Label.new()
 		day_label.text = "[Day %d]" % entry["day"]
 		day_label.custom_minimum_size.x = 130
 		day_label.add_theme_font_size_override("font_size", font_size)
 		h_box.add_child(day_label)
 		
+		#labels the description of the transaction
 		var desc_label = Label.new()
 		desc_label.text = entry["description"]
 		desc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		desc_label.add_theme_font_size_override("font_size", font_size)
 		h_box.add_child(desc_label)
 		
+		#labels the amount of the transaction
 		var amount_label = Label.new()
 		var prefix = "+" if entry["amount"] >= 0 else ""
 		amount_label.text = "%s$%d" % [prefix, entry["amount"]]
@@ -175,3 +184,18 @@ func _on_vet_slider_value_changed(value):
 	GameState.budget_data["Vet"]["limit"] = int(value)
 	vet_limit_label.text = "$%d" % value
 	update_overview()
+
+# Graph view toggle handlers
+func _on_breakdown_btn_pressed():
+	breakdown_btn.button_pressed = true
+	graphs_btn.button_pressed = false
+	breakdown_view.visible = true
+	graph_view.visible = false
+
+func _on_graphs_btn_pressed():
+	breakdown_btn.button_pressed = false
+	graphs_btn.button_pressed = true
+	breakdown_view.visible = false
+	graph_view.visible = true
+	# Build graph data from transaction history
+	graph_canvas.build_graph_data(GameState.transaction_history)

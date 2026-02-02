@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b6o7q5ukcjskh"]
+[gd_scene format=3 uid="uid://b6o7q5ukcjskh"]
 
 [ext_resource type="Script" uid="uid://cgnpu08xwmatr" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bntw0ry0f7amg" path="res://assets/Humans/STYLE4FEMALE.png" id="2_jjswj"]
@@ -99,29 +99,29 @@ region = Rect2(352, 33, 16, 33)
 atlas = ExtResource("2_jjswj")
 region = Rect2(368, 33, 16, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhnbo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e305"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(96, 66, 16, 33)
+region = Rect2(96, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1ou5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyg1s"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(112, 66, 16, 33)
+region = Rect2(112, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xy26"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_75d34"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(128, 66, 16, 33)
+region = Rect2(128, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ybop7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtxdw"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(144, 66, 16, 33)
+region = Rect2(144, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjkp8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlg60"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(160, 66, 16, 33)
+region = Rect2(160, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnx85"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_72scd"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(176, 66, 16, 33)
+region = Rect2(176, 64, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xgcl"]
 atlas = ExtResource("2_jjswj")
@@ -147,29 +147,29 @@ region = Rect2(64, 66, 16, 33)
 atlas = ExtResource("2_jjswj")
 region = Rect2(80, 66, 16, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1sgdn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ui2o"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(192, 66, 16, 33)
+region = Rect2(192, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o74ra"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpeso"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(208, 66, 16, 33)
+region = Rect2(208, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1nord"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_emxqf"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(224, 66, 16, 33)
+region = Rect2(224, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hh7sy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt1v0"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(240, 66, 16, 33)
+region = Rect2(240, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6r6rx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6eu1"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(256, 66, 16, 33)
+region = Rect2(256, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgddb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo175"]
 atlas = ExtResource("2_jjswj")
-region = Rect2(272, 66, 16, 33)
+region = Rect2(272, 64, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8v2t"]
 atlas = ExtResource("2_jjswj")
@@ -291,22 +291,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fhnbo")
+"texture": SubResource("AtlasTexture_1e305")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k1ou5")
+"texture": SubResource("AtlasTexture_tyg1s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1xy26")
+"texture": SubResource("AtlasTexture_75d34")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ybop7")
+"texture": SubResource("AtlasTexture_wtxdw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fjkp8")
+"texture": SubResource("AtlasTexture_xlg60")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dnx85")
+"texture": SubResource("AtlasTexture_72scd")
 }],
 "loop": true,
 "name": &"move_down",
@@ -337,22 +337,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1sgdn")
+"texture": SubResource("AtlasTexture_4ui2o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o74ra")
+"texture": SubResource("AtlasTexture_xpeso")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1nord")
+"texture": SubResource("AtlasTexture_emxqf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hh7sy")
+"texture": SubResource("AtlasTexture_lt1v0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6r6rx")
+"texture": SubResource("AtlasTexture_v6eu1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qgddb")
+"texture": SubResource("AtlasTexture_qo175")
 }],
 "loop": true,
 "name": &"move_right",
@@ -382,22 +382,21 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1308735269 groups=["player"]]
 scale = Vector2(2.2732878, 2.2703533)
 motion_mode = 1
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=122308336]
 position = Vector2(0, -4.261163)
 sprite_frames = SubResource("SpriteFrames_a38lo")
-animation = &"move_up"
-frame_progress = 0.50472724
+animation = &"move_left"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=641838098]
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 6.6069007, 0, 9.249661, 3.0792403, 6.6069007, 3.5191326, -5.2855215)
 
-[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=893766209 groups=["player"]]
 scale = Vector2(1.0052286, 1.0746742)
 zoom = Vector2(1.5, 1.5)
 process_callback = 0

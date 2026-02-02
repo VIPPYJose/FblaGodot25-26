@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=3 uid="uid://brfibhbe70tiq"]
+[gd_scene format=3 uid="uid://brfibhbe70tiq"]
 
 [ext_resource type="Script" uid="uid://etk4tb5j4drl" path="res://scripts/dog.gd" id="1_dog_script"]
 [ext_resource type="Texture2D" uid="uid://b3tpu3qax8u7q" path="res://assets/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="2_v3i3p"]
@@ -1402,14 +1402,14 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Dog" type="CharacterBody2D"]
+[node name="Dog" type="CharacterBody2D" unique_id=959583671]
 script = ExtResource("1_dog_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1177474359]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ei5el")
 animation = &"rottie_sleeping"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2012217850]
 position = Vector2(0, -16)
 polygon = PackedVector2Array(-15, 14, -16, 16, -18, 15, -19, 14, -20, 13, -20, 9, -20, 7, -23, 8, -23, 15, -18, 20, -15, 22, -14, 24, -15, 26, -16, 28, -15, 30, -14, 30, -12, 31, -11, 30, -12, 28, -10, 27, -10, 24, -8, 23, -5, 23, -1, 23, 2, 23, 3, 26, 4, 29, 4, 30, 5, 31, 9, 31, 10, 31, 9, 28, 8, 25, 9, 23, 10, 20, 12, 19, 13, 17, 14, 13, 15, 12, 16, 13, 20, 13, 21, 11, 21, 7, 19, 5, 14, 3, 11, 4, 9, 5, 8, 8, 6, 10, 2, 13, -4, 12, -9, 12, -13, 12)
