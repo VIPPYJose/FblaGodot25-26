@@ -382,21 +382,37 @@ animations = [{
 "speed": 8.0
 }]
 
+<<<<<<< Updated upstream
 [node name="Player" type="CharacterBody2D" unique_id=1308735269 groups=["player"]]
+=======
+[node name="Player" type="CharacterBody2D" unique_id=1436800419 groups=["player"]]
+>>>>>>> Stashed changes
 scale = Vector2(2.2732878, 2.2703533)
 motion_mode = 1
 script = ExtResource("1_g2els")
 
+<<<<<<< Updated upstream
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=122308336]
+=======
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=218564292]
+>>>>>>> Stashed changes
 position = Vector2(0, -4.261163)
 sprite_frames = SubResource("SpriteFrames_a38lo")
 animation = &"move_left"
 
+<<<<<<< Updated upstream
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=641838098]
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 6.6069007, 0, 9.249661, 3.0792403, 6.6069007, 3.5191326, -5.2855215)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=893766209 groups=["player"]]
+=======
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1621175686]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 6.6069007, 0, 9.249661, 3.0792403, 6.6069007, 3.5191326, -5.2855215)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1707657076 groups=["player"]]
+>>>>>>> Stashed changes
 scale = Vector2(1.0052286, 1.0746742)
 zoom = Vector2(1.5, 1.5)
 process_callback = 0
