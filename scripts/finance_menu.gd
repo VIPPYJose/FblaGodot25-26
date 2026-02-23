@@ -47,22 +47,6 @@ func show_menu():
 	visible = true
 	update_ui()
 	update_history() # Ensure history is fresh
-	# Focus first button for controller navigation
-	var close_btn = get_node_or_null("Panel/VBox/Header/CloseBtn")
-	if close_btn:
-		close_btn.grab_focus()
-
-func _input(event: InputEvent):
-	# Controller support for finance menu
-	if visible:
-		# Controller accept button (A button) for clicking focused buttons
-		if event.is_action_pressed("controller_accept") or event.is_action_pressed("ui_accept"):
-			var focused = get_viewport().gui_get_focus_owner()
-			if focused and focused is Button:
-				focused.pressed.emit()
-		# Controller cancel (B button or pause) to close
-		elif event.is_action_pressed("ui_cancel") or event.is_action_pressed("controller_pause"):
-			hide_menu()
 
 func hide_menu():
 	visible = false

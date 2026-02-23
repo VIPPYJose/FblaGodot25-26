@@ -32,16 +32,8 @@ func _process(_delta):
 	if panel.visible:
 		update_ui()
 	
-	if (Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("controller_pause")) and panel.visible:
+	if Input.is_action_just_pressed("ui_cancel") and panel.visible:
 		hide_menu()
-
-func _input(event: InputEvent):
-	# Right joystick scrolling for menus
-	if panel.visible:
-		var scroll_up = Input.get_axis("controller_menu_scroll_down", "controller_menu_scroll_up")
-		if abs(scroll_up) > 0.3:
-			# Handle scrolling if there's a scroll container
-			pass  # ScrollContainers handle this automatically with focus
 
 func update_ui():
 	# Display supplies from GameState
@@ -59,12 +51,10 @@ func update_ui():
 	else:
 		water_label.text = "Water: %d days left" % GameState.water
 	
-	if GameState.medication == 0:
+	if GameState.medication == "none":
 		medication_label.text = "Medication: none prescribed"
-	elif GameState.medication == 1:
-		medication_label.text = "Medication: 1 day left"
 	else:
-		medication_label.text = "Medication: %d days left" % GameState.medication
+		medication_label.text = "Medication: %s" % GameState.medication
 
 func get_menu_visible() -> bool:
 	return panel.visible

@@ -1,6 +1,11 @@
-[gd_scene format=3 uid="uid://maingame123"]
+[gd_scene load_steps=40 format=3 uid="uid://maingame123"]
 
 [ext_resource type="Script" uid="uid://thcfk0conjk" path="res://scripts/MainGame.gd" id="1_maingame"]
+[ext_resource type="PackedScene" uid="uid://map" path="res://scenes/maps/map (3) (1)/Map.tscn" id="2_utfc0"]
+[ext_resource type="PackedScene" uid="uid://c72hdhwbpin62" path="res://scenes/maps/shop/Shop.tscn" id="3_rl3lx"]
+[ext_resource type="PackedScene" uid="uid://ciqs30qh7j8kh" path="res://scenes/maps/House/House.tscn" id="4_p8prh"]
+[ext_resource type="PackedScene" uid="uid://4f2nlbvifihu" path="res://scenes/maps/Vet/Vet.tscn" id="5_mrp28"]
+[ext_resource type="Script" uid="uid://djopbckuyqam2" path="res://scripts/interaction_area.gd" id="interaction_area_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utfc0"]
 size = Vector2(112.5, 122.5)
@@ -50,8 +55,6 @@ size = Vector2(129.25, 142)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x16ow"]
 size = Vector2(249.25, 172)
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_331gq"]
 size = Vector2(52, 52)
 
@@ -119,15 +122,9 @@ size = Vector2(57.3125, 56)
 size = Vector2(99.3125, 60)
 
 [node name="MainGame" type="Node2D"]
-=======
-[node name="MainGame" type="Node2D" unique_id=1111104484]
->>>>>>> Stashed changes
-=======
-[node name="MainGame" type="Node2D" unique_id=1111104484]
->>>>>>> Stashed changes
 script = ExtResource("1_maingame")
 
-[node name="Background" type="ColorRect" parent="." unique_id=516459027]
+[node name="Background" type="ColorRect" parent="."]
 offset_left = -2193.0
 offset_top = -858.0
 offset_right = 3585.0
@@ -135,92 +132,90 @@ offset_bottom = 3497.0
 mouse_filter = 2
 color = Color(0.7019608, 0.84705883, 0.99607843, 1)
 
-[node name="ManualCollisions" type="Node" parent="." unique_id=531445258]
+[node name="ManualCollisions" type="Node" parent="."]
 
-[node name="RiverBorder" type="StaticBody2D" parent="ManualCollisions" unique_id=1379488883]
+[node name="RiverBorder" type="StaticBody2D" parent="ManualCollisions"]
 position = Vector2(0, 1)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RiverBorder" unique_id=377170715]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RiverBorder"]
 polygon = PackedVector2Array(-662, 2885, -676, 2485, -597, 2523, -592, 2627, -305, 2641, -309, 2600, -277, 2605, -277, 2567, -211, 2568, -211, 2412, 172, 2391, 171, 2538, -145, 2541, -149, 2667, -498, 2667, -501, 2890)
 
-[node name="CentralBuildings" type="StaticBody2D" parent="ManualCollisions" unique_id=349371360]
+[node name="CentralBuildings" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/CentralBuildings" unique_id=1728027070]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/CentralBuildings"]
 polygon = PackedVector2Array(1282, 1140, 1271, 1271, 1380, 1275, 1380, 1136)
 
-[node name="LeftBuildings" type="StaticBody2D" parent="ManualCollisions" unique_id=789606030]
+[node name="LeftBuildings" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/LeftBuildings" unique_id=1246460023]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/LeftBuildings"]
 polygon = PackedVector2Array(-293, 1692, -270, 1959, -153, 1945, -132, 1720, -207, 1676)
 
-[node name="RightBuildings" type="StaticBody2D" parent="ManualCollisions" unique_id=513869671]
+[node name="RightBuildings" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings" unique_id=1202741455]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings"]
 polygon = PackedVector2Array(1891, 1927, 1878, 2189, 2127, 2205, 2099, 1910)
 
-[node name="ResidentialTopLeft" type="StaticBody2D" parent="ManualCollisions" unique_id=1048362982]
+[node name="ResidentialTopLeft" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/ResidentialTopLeft" unique_id=775938779]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/ResidentialTopLeft"]
 polygon = PackedVector2Array(-32, 1616, 21, 1586, 66, 1576, 57, 1417, 534, 1400, 578, 1400, 928, 1391, 937, 1638, 989, 1616, 1232, 1614, 1303, 1647, 1300, 1326, 1546, 1327, 1538, 1585, 1671, 1684, 1797, 1687, 1838, 1684, 1868, 1678, 1868, 1580, 2235, 1582, 2240, 1700, 2336, 1736, 2341, 1764, 2240, 1739, 2213, 1711, 2145, 1694, 2148, 1776, 2129, 1764, 2124, 1689, 2222, 1672, 2213, 1604, 1969, 1609, 1978, 1665, 2052, 1683, 2056, 1767, 2025, 1774, 2031, 1711, 1832, 1752, 1800, 1758, 1803, 1724, 1403, 1689, 1395, 1570, 1333, 1576, 1315, 1668, 932, 1674, 914, 1417, 418.96326, 1421.6868, 69, 1425, 87, 1517, 143, 1530, 126, 1614, 81, 1548, 66, 1611)
 
-[node name="RiverWallFullside2" type="StaticBody2D" parent="ManualCollisions" unique_id=390570139]
+[node name="RiverWallFullside2" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RiverWallFullside2" unique_id=982081641]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RiverWallFullside2"]
 polygon = PackedVector2Array(-337, 2557, -313, 2559, -310, 2341, 171, 2343, 172, 2540, -142, 2540, -148, 2671, -494, 2670, -498, 2885, -471, 2885, -473, 2693, -121, 2702, -116, 2563, 203, 2576, 204, 2319, 192, 2320, 192, 2281, 193, 2266, 180, 2269, 184, 2306, -323, 2311, -314, 2274, -336, 2258, -336, 2300)
 
-[node name="Riverwall" type="StaticBody2D" parent="ManualCollisions" unique_id=1512225444]
+[node name="Riverwall" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Riverwall" unique_id=61213574]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Riverwall"]
 polygon = PackedVector2Array(-691, 2881, -667, 2884, -662, 2467, -442, 2470, -434, 2492, -437, 2551, -413, 2556, -408, 2442, -418, 2446, -417, 2401, -423, 2396, -428, 2439, -664, 2441, -670, 2394, -685, 2394, -685, 2434, -693, 2453)
 
-[node name="Area2D" type="Area2D" parent="ManualCollisions" unique_id=1058170485]
+[node name="Area2D" type="Area2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Area2D" unique_id=1419735993]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Area2D"]
 polygon = PackedVector2Array(378, 2326, 983, 2326, 987, 2551, 384, 2555)
 
-[node name="Area2D2" type="Area2D" parent="ManualCollisions" unique_id=23486702]
+[node name="Area2D2" type="Area2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Area2D2" unique_id=2122796270]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Area2D2"]
 polygon = PackedVector2Array(1240, 2319, 1727, 2321, 1730, 2556, 1246, 2548)
 
-[node name="Area2D3" type="Area2D" parent="ManualCollisions" unique_id=184961935]
+[node name="Area2D3" type="Area2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Area2D3" unique_id=988531497]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/Area2D3"]
 polygon = PackedVector2Array(1903, 2319, 2678, 2322, 2676, 2550, 1909, 2548)
 
-[node name="RightBuildings2" type="StaticBody2D" parent="ManualCollisions" unique_id=502699789]
+[node name="RightBuildings2" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings2" unique_id=789047596]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings2"]
 polygon = PackedVector2Array(259, 1454, 286, 1685, 359, 1691, 355, 1448)
 
-[node name="RightBuildings3" type="StaticBody2D" parent="ManualCollisions" unique_id=1553112014]
+[node name="RightBuildings3" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings3" unique_id=440032812]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings3"]
 polygon = PackedVector2Array(-195, 958, -175, 1058, 29, 1054, 44, 971)
 
-[node name="RightBuildings4" type="StaticBody2D" parent="ManualCollisions" unique_id=1865499875]
+[node name="RightBuildings4" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings4" unique_id=657675079]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings4"]
 polygon = PackedVector2Array(-40, 1767, 40, 1740, 40, 1890, 129, 1893, 272, 1957, 351, 1957, 351, 1905, 917, 1900, 1117, 1863, 1311, 1909, 1784, 1893, 1764, 1926, 1609, 1964, 1597, 1988, 1809, 1924, 1803, 1871, 1312, 1869, 1198, 1835, 935, 1862, 335, 1869, 336, 1921, 244, 1915, 75, 1865, 72, 1723, -46, 1734)
 
-[node name="RightBuildings5" type="StaticBody2D" parent="ManualCollisions" unique_id=1141958558]
+[node name="RightBuildings5" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings5" unique_id=1243416165]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings5"]
 polygon = PackedVector2Array(1607, 2065, 1604, 2102, 1767, 2029, 1868, 2023, 2144, 2031, 2249, 2034, 2252, 1902, 2333, 1926, 2349, 1899, 2258, 1869, 2213, 1872, 2219, 1989, 1789, 1992)
 
-[node name="RightBuildings6" type="StaticBody2D" parent="ManualCollisions" unique_id=1771464547]
+[node name="RightBuildings6" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings6" unique_id=2108908576]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings6"]
 build_mode = 1
 polygon = PackedVector2Array(-693, -171, -733, 2880, 2683, 2920, 2683, -171)
 
-[node name="RightBuildings7" type="StaticBody2D" parent="ManualCollisions" unique_id=1162685221]
+[node name="RightBuildings7" type="StaticBody2D" parent="ManualCollisions"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings7" unique_id=256846683]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManualCollisions/RightBuildings7"]
 polygon = PackedVector2Array(98, 1477, 194, 1471, 198, 1307, 143, 1283, 99, 1300)
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [node name="Vet borders" type="StaticBody2D" parent="ManualCollisions"]
 position = Vector2(-1804, 1052)
 
@@ -251,404 +246,388 @@ position = Vector2(-171, 35)
 polygon = PackedVector2Array(717, 1494, 721, 1637, 758, 1633, 761, 1496)
 
 [node name="Collisons" type="Node" parent="."]
-=======
-[node name="Collisons" type="Node" parent="." unique_id=611729826]
->>>>>>> Stashed changes
-=======
-[node name="Collisons" type="Node" parent="." unique_id=611729826]
->>>>>>> Stashed changes
 
-[node name="house" type="StaticBody2D" parent="Collisons" unique_id=1155466375]
+[node name="house" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house" unique_id=718066673]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house"]
 position = Vector2(-51.25, 192.25)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house2" type="StaticBody2D" parent="Collisons" unique_id=1487398407]
+[node name="house2" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house2" unique_id=240908193]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house2"]
 position = Vector2(206, 190)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house3" type="StaticBody2D" parent="Collisons" unique_id=1770172994]
+[node name="house3" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house3" unique_id=1592148245]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house3"]
 position = Vector2(452, 192)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house4" type="StaticBody2D" parent="Collisons" unique_id=1801357529]
+[node name="house4" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house4" unique_id=1212438256]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house4"]
 position = Vector2(719, 190)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house5" type="StaticBody2D" parent="Collisons" unique_id=602130195]
+[node name="house5" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house5" unique_id=165606357]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house5"]
 position = Vector2(-216, 421)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house6" type="StaticBody2D" parent="Collisons" unique_id=366106949]
+[node name="house6" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house6" unique_id=1428732750]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house6"]
 position = Vector2(-55, 672)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house7" type="StaticBody2D" parent="Collisons" unique_id=1079777521]
+[node name="house7" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house7" unique_id=1562797770]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house7"]
 position = Vector2(200, 672)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house8" type="StaticBody2D" parent="Collisons" unique_id=2123564945]
+[node name="house8" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house8" unique_id=1962512102]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house8"]
 position = Vector2(458, 672)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house9" type="StaticBody2D" parent="Collisons" unique_id=1133341322]
+[node name="house9" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house9" unique_id=1352758491]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house9"]
 position = Vector2(712, 664)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="house10" type="StaticBody2D" parent="Collisons" unique_id=306159204]
+[node name="house10" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house10" unique_id=703832196]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/house10"]
 position = Vector2(967, 194)
 shape = SubResource("RectangleShape2D_utfc0")
 
-[node name="car" type="StaticBody2D" parent="Collisons" unique_id=798813390]
+[node name="car" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car" unique_id=163102286]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car"]
 position = Vector2(43, 264)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car2" type="StaticBody2D" parent="Collisons" unique_id=1900045888]
+[node name="car2" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car2" unique_id=1542314649]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car2"]
 position = Vector2(302, 264)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car3" type="StaticBody2D" parent="Collisons" unique_id=88458652]
+[node name="car3" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car3" unique_id=205384382]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car3"]
 position = Vector2(558, 258)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car4" type="StaticBody2D" parent="Collisons" unique_id=1748872444]
+[node name="car4" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car4" unique_id=1925065116]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car4"]
 position = Vector2(812, 259)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car5" type="StaticBody2D" parent="Collisons" unique_id=1065116545]
+[node name="car5" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car5" unique_id=1255018413]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car5"]
 position = Vector2(1065, 256)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car6" type="StaticBody2D" parent="Collisons" unique_id=496752970]
+[node name="car6" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car6" unique_id=1579076708]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car6"]
 position = Vector2(37, 604)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car7" type="StaticBody2D" parent="Collisons" unique_id=12788285]
+[node name="car7" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car7" unique_id=777340256]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car7"]
 position = Vector2(301, 613)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car8" type="StaticBody2D" parent="Collisons" unique_id=175982718]
+[node name="car8" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car8" unique_id=1534265130]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car8"]
 position = Vector2(558, 606)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car9" type="StaticBody2D" parent="Collisons" unique_id=1036294621]
+[node name="car9" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car9" unique_id=123156543]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car9"]
 position = Vector2(811, 612)
 shape = SubResource("RectangleShape2D_xgq8c")
 
-[node name="car10" type="StaticBody2D" parent="Collisons" unique_id=1008673230]
+[node name="car10" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car10" unique_id=1728921865]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/car10"]
 position = Vector2(-148.1875, 346.625)
 shape = SubResource("RectangleShape2D_ak1wj")
 
-[node name="fence of house" type="StaticBody2D" parent="Collisons" unique_id=1644929370]
+[node name="fence of house" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house" unique_id=1688850504]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house"]
 polygon = PackedVector2Array(-114, 225, -141, 220, -144, 39, 36, 39, 39, 188, 12, 189)
 
-[node name="fence of house2" type="StaticBody2D" parent="Collisons" unique_id=1401615335]
+[node name="fence of house2" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house2" unique_id=191557408]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house2"]
 position = Vector2(227, -27)
 polygon = PackedVector2Array(-114, 225, -141, 220, -144, 39, 36, 39, 39, 188, 12, 189)
 
-[node name="fence of house3" type="StaticBody2D" parent="Collisons" unique_id=2003886652]
+[node name="fence of house3" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house3" unique_id=1734443904]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house3"]
 position = Vector2(515, -1)
 polygon = PackedVector2Array(-114, 225, -141, 220, -144, 39, 36, 39, 39, 188, 12, 189)
 
-[node name="fence of house4" type="StaticBody2D" parent="Collisons" unique_id=566963692]
+[node name="fence of house4" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house4" unique_id=439252071]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house4"]
 position = Vector2(771, -6)
 polygon = PackedVector2Array(-114, 225, -141, 220, -144, 39, 36, 39, 39, 188, 12, 189)
 
-[node name="fence of house5" type="StaticBody2D" parent="Collisons" unique_id=2133460695]
+[node name="fence of house5" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house5" unique_id=1777153793]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house5"]
 position = Vector2(1026, 3)
 polygon = PackedVector2Array(-114, 225, -141, 220, -144, 39, 36, 39, 39, 188, 12, 189)
 
-[node name="fence of house6" type="StaticBody2D" parent="Collisons" unique_id=2104064212]
+[node name="fence of house6" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house6" unique_id=2107434045]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house6"]
 position = Vector2(-106, 932)
 rotation = 3.1415927
 polygon = PackedVector2Array(-118.999985, 194, -144.99998, 188, -144, 39, 36, 39, 42.000023, 217, 11.000023, 226)
 
-[node name="fence of house7" type="StaticBody2D" parent="Collisons" unique_id=1798683719]
+[node name="fence of house7" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house7" unique_id=435655105]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house7"]
 position = Vector2(147, 933)
 rotation = 3.1415927
 polygon = PackedVector2Array(-118.999985, 194, -144.99998, 188, -144, 39, 36, 39, 42.000023, 217, 11.000023, 226)
 
-[node name="fence of house8" type="StaticBody2D" parent="Collisons" unique_id=1837275479]
+[node name="fence of house8" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house8" unique_id=1256420648]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house8"]
 position = Vector2(410, 934)
 rotation = 3.1415927
 polygon = PackedVector2Array(-118.999985, 194, -144.99998, 188, -144, 39, 36, 39, 42.000023, 217, 11.000023, 226)
 
-[node name="fence of house9" type="StaticBody2D" parent="Collisons" unique_id=877735738]
+[node name="fence of house9" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house9" unique_id=588515341]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house9"]
 position = Vector2(667, 936)
 rotation = 3.1415927
 polygon = PackedVector2Array(-118.999985, 194, -144.99998, 188, -144, 39, 36, 39, 42.000023, 217, 11.000023, 226)
 
-[node name="fence of house10" type="StaticBody2D" parent="Collisons" unique_id=210317446]
+[node name="fence of house10" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house10" unique_id=1379714118]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of house10"]
 position = Vector2(-413, 366.00006)
 rotation = -1.600467
 polygon = PackedVector2Array(-80.65137, 256.72037, -149.59134, 253.67383, -144, 39, 36, 39, 35.02823, 168.11316, 2.9236145, 171.16206)
 
-[node name="fence of park" type="StaticBody2D" parent="Collisons" unique_id=295772403]
+[node name="fence of park" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of park" unique_id=1595935874]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisons/fence of park"]
 position = Vector2(1445, 1080)
 rotation = 3.1415927
 polygon = PackedVector2Array(41, 39, -822.9999, 35.000122, -829.9999, 1254.0001, 174.00012, 1260, 178.00012, 1000, 42.000122, 998, 37.000122, 605, 24.000122, 604, 32.000122, 1006, 170.00012, 1010, 170.00012, 1247, -781.9999, 1248.0001, -820.9999, 1248.0001, -814.9999, 45.000122, 33, 50, 30.000122, 453, 39.000122, 456)
 
-[node name="Tree" type="StaticBody2D" parent="Collisons" unique_id=1924104280]
+[node name="Tree" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree" unique_id=467117393]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree"]
 position = Vector2(1502, 903)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree2" type="StaticBody2D" parent="Collisons" unique_id=1934109915]
+[node name="Tree2" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree2" unique_id=2001369052]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree2"]
 position = Vector2(1711, 900)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree3" type="StaticBody2D" parent="Collisons" unique_id=1627464194]
+[node name="Tree3" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree3" unique_id=1025534658]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree3"]
 position = Vector2(1896, 899)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree4" type="StaticBody2D" parent="Collisons" unique_id=2115071757]
+[node name="Tree4" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree4" unique_id=300086913]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree4"]
 position = Vector2(2103, 904)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree5" type="StaticBody2D" parent="Collisons" unique_id=153895638]
+[node name="Tree5" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree5" unique_id=413720585]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree5"]
 position = Vector2(2164, 785)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree6" type="StaticBody2D" parent="Collisons" unique_id=1772199520]
+[node name="Tree6" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree6" unique_id=557377964]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree6"]
 position = Vector2(2166, 633)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree7" type="StaticBody2D" parent="Collisons" unique_id=668147329]
+[node name="Tree7" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree7" unique_id=1247712169]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree7"]
 position = Vector2(2165, 472)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree8" type="StaticBody2D" parent="Collisons" unique_id=1616335947]
+[node name="Tree8" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree8" unique_id=1932550133]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree8"]
 position = Vector2(2167, 286)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree9" type="StaticBody2D" parent="Collisons" unique_id=1383899977]
+[node name="Tree9" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree9" unique_id=1662794663]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree9"]
 position = Vector2(2125, 127)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree10" type="StaticBody2D" parent="Collisons" unique_id=1443976282]
+[node name="Tree10" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree10" unique_id=767101608]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree10"]
 position = Vector2(1940, 88)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree11" type="StaticBody2D" parent="Collisons" unique_id=2113936604]
+[node name="Tree11" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree11" unique_id=2038831897]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree11"]
 position = Vector2(1743, 12)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree12" type="StaticBody2D" parent="Collisons" unique_id=792523936]
+[node name="Tree12" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree12" unique_id=528546205]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree12"]
 position = Vector2(1534, -10)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree13" type="StaticBody2D" parent="Collisons" unique_id=566239141]
+[node name="Tree13" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree13" unique_id=1791578811]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree13"]
 position = Vector2(1368, -34)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree14" type="StaticBody2D" parent="Collisons" unique_id=203522410]
+[node name="Tree14" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree14" unique_id=527420043]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree14"]
 position = Vector2(1547, 789)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree15" type="StaticBody2D" parent="Collisons" unique_id=1679163170]
+[node name="Tree15" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree15" unique_id=1293626132]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree15"]
 position = Vector2(1702, 807)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="Tree16" type="StaticBody2D" parent="Collisons" unique_id=1969484768]
+[node name="Tree16" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree16" unique_id=363550675]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/Tree16"]
 position = Vector2(1930, 793)
 shape = SubResource("CircleShape2D_rl3lx")
 
-[node name="buildings" type="StaticBody2D" parent="Collisons" unique_id=19475325]
+[node name="buildings" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings" unique_id=2099725944]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings"]
 position = Vector2(654.5, 1462.5)
 shape = SubResource("RectangleShape2D_p8prh")
 
-[node name="buildings2" type="StaticBody2D" parent="Collisons" unique_id=1948734838]
+[node name="buildings2" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings2" unique_id=504767519]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings2"]
 position = Vector2(-484.75, 1582.75)
 shape = SubResource("RectangleShape2D_mrp28")
 
-[node name="buildings3" type="StaticBody2D" parent="Collisons" unique_id=953278552]
+[node name="buildings3" type="StaticBody2D" parent="Collisons"]
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings3"]
 position = Vector2(624.25, 1988)
-=======
-=======
->>>>>>> Stashed changes
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings3" unique_id=1633134473]
-position = Vector2(624.25, 2006.75)
->>>>>>> Stashed changes
 shape = SubResource("RectangleShape2D_qdo6g")
 
-[node name="buildings4" type="StaticBody2D" parent="Collisons" unique_id=181310443]
+[node name="buildings4" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings4" unique_id=507819264]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings4"]
 position = Vector2(199.75, 1933.75)
 shape = SubResource("RectangleShape2D_a01lx")
 
-[node name="buildings5" type="StaticBody2D" parent="Collisons" unique_id=1792512670]
+[node name="buildings5" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings5" unique_id=578356492]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings5"]
 position = Vector2(1603, 1566.5)
 shape = SubResource("RectangleShape2D_8ht4s")
 
-[node name="buildings6" type="StaticBody2D" parent="Collisons" unique_id=2000401633]
+[node name="buildings6" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings6" unique_id=1389262479]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings6"]
 position = Vector2(2444, 2121.75)
 shape = SubResource("RectangleShape2D_subro")
 
-[node name="buildings7" type="StaticBody2D" parent="Collisons" unique_id=1485435017]
+[node name="buildings7" type="StaticBody2D" parent="Collisons"]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings7" unique_id=1391605627]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings7"]
 position = Vector2(2003.75, 2068.75)
 shape = SubResource("RectangleShape2D_j74j7")
 
-[node name="buildings8" type="StaticBody2D" parent="Collisons" unique_id=1952090508]
+[node name="buildings8" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings8" unique_id=366632787]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings8"]
 position = Vector2(2425.5, 1471)
 shape = SubResource("RectangleShape2D_xgklt")
 
-[node name="buildings9" type="StaticBody2D" parent="Collisons" unique_id=1041055301]
+[node name="buildings9" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings9" unique_id=2077570766]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings9"]
 position = Vector2(1936, 1645)
 shape = SubResource("RectangleShape2D_gy3b1")
 
-[node name="buildings10" type="StaticBody2D" parent="Collisons" unique_id=1528291446]
+[node name="buildings10" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings10" unique_id=1625345238]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings10"]
 position = Vector2(1438.25, 2084)
 shape = SubResource("RectangleShape2D_jr0ft")
 
-[node name="buildings11" type="StaticBody2D" parent="Collisons" unique_id=1633051813]
+[node name="buildings11" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings11" unique_id=142325478]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings11"]
 position = Vector2(1323.625, 2716)
 shape = SubResource("RectangleShape2D_hk16l")
 
-[node name="buildings12" type="StaticBody2D" parent="Collisons" unique_id=596498964]
+[node name="buildings12" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings12" unique_id=1292844073]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings12"]
 position = Vector2(-483, 2199)
 shape = SubResource("RectangleShape2D_jr0ft")
 
-[node name="buildings13" type="StaticBody2D" parent="Collisons" unique_id=439465801]
+[node name="buildings13" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings13" unique_id=640530224]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings13"]
 position = Vector2(-519, 1940)
 shape = SubResource("RectangleShape2D_jr0ft")
 
-[node name="buildings14" type="StaticBody2D" parent="Collisons" unique_id=653748032]
+[node name="buildings14" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings14" unique_id=22819954]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings14"]
 position = Vector2(-6, 2173)
 shape = SubResource("RectangleShape2D_jr0ft")
 
-[node name="buildings15" type="StaticBody2D" parent="Collisons" unique_id=411061256]
+[node name="buildings15" type="StaticBody2D" parent="Collisons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings15" unique_id=1612884850]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings15"]
 position = Vector2(-88.625, 1450)
 shape = SubResource("RectangleShape2D_x16ow")
 
-[node name="buildings16" type="StaticBody2D" parent="Collisons" unique_id=1279636780]
+[node name="buildings16" type="StaticBody2D" parent="Collisons"]
 visible = false
 position = Vector2(-214, 1828.5)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
 [node name="world" parent="." instance=ExtResource("2_utfc0")]
 position = Vector2(-717, -320)
@@ -900,7 +879,3 @@ shape = SubResource("RectangleShape2D_mu1ml")
 position = Vector2(1, 0)
 build_mode = 1
 polygon = PackedVector2Array(264, -776, 645, -780, 651, -556, 258, -549)
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

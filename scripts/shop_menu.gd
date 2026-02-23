@@ -25,18 +25,6 @@ func _ready():
 	visible = false
 	update_ui()
 
-func _input(event: InputEvent):
-	# Controller support for shop menu
-	if visible:
-		# Controller accept button (A button) for clicking focused buttons
-		if event.is_action_pressed("controller_accept") or event.is_action_pressed("ui_accept"):
-			var focused = get_viewport().gui_get_focus_owner()
-			if focused and focused is Button:
-				focused.pressed.emit()
-		# Controller cancel (B button or pause) to close
-		elif event.is_action_pressed("ui_cancel") or event.is_action_pressed("controller_pause"):
-			_on_close_btn_pressed()
-
 func show_shop():
 	# Reset cart when opening
 	food_cart_count = 0
@@ -49,7 +37,7 @@ func show_shop():
 	
 	# Prescription logic: if needed, auto-select it and show it.
 	# Otherwise, hide it and don't include it in total.
-	prescription_item.visible = GameState.has_prescription and GameState.medication == 0
+	prescription_item.visible = GameState.has_prescription and GameState.medication != "Antibiotics (5 days)"
 	
 	if prescription_item.visible:
 		prescription_selected = true
@@ -130,7 +118,7 @@ func _on_purchase_pressed():
 		if success and prescription_selected:
 			success = GameState.spend_money(GameState.medicine_cost, "Vet")
 			if success:
-				GameState.medication = 5  # 5 days of medication
+				GameState.medication = "Antibiotics (5 days)"
 				GameState.has_prescription = false # Prescription consumed
 				# Also heal the dog slightly as per previous logic
 				var dog = get_tree().get_first_node_in_group("dog")

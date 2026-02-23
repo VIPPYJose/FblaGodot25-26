@@ -23,7 +23,7 @@ var DAY_DURATION: float = 300.0
 # Supplies Group (player inventory, NOT pet needs)
 var food: int = 0 # Days of food remaining
 var water: int = 0 # Days of water remaining
-var medication: int = 0 # Days of medication remaining (0 = none prescribed)
+var medication: String = "none" # Current medication status
 var dog_health: float = 100.0 # Utility for dialogue/UI
 var has_prescription: bool = false # Added to track vet orders
 
@@ -76,7 +76,6 @@ func advance_day():
 	# Decrement supplies
 	food = max(0, food - 1)
 	water = max(0, water - 1)
-	medication = max(0, medication - 1)
 	
 	# Increment day
 	current_day += 1
@@ -207,7 +206,7 @@ func get_budget_status(category: String) -> float:
 func initialize_day_one():
 	food = 0
 	water = 0
-	medication = 0
+	medication = "none"
 	is_day_one = true
 	is_tutorial_complete = false
 	# Reset finances for new game
@@ -307,12 +306,7 @@ func load_game() -> bool:
 	day_timer = save_data.get("day_timer", 0.0)
 	food = save_data.get("food", 0)
 	water = save_data.get("water", 0)
-	# Handle both old string format and new int format for backward compatibility
-	var med_data = save_data.get("medication", 0)
-	if med_data is String:
-		medication = 0  # Old save file with string, reset to 0
-	else:
-		medication = med_data
+	medication = save_data.get("medication", "none")
 	is_tutorial_complete = save_data.get("is_tutorial_complete", false)
 	is_day_one = save_data.get("is_day_one", true)
 	master_volume = save_data.get("master_volume", 70)

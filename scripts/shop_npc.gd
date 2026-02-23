@@ -26,7 +26,7 @@ func _on_body_exited(body: Node2D):
 			hint_instance.hide_hint()
 
 func _input(event: InputEvent):
-	if player_in_area and (event.is_action_pressed("interact") or event.is_action_pressed("controller_interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E)):
+	if player_in_area and (event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E)):
 		start_dialogue()
 
 func start_dialogue():

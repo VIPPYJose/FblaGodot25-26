@@ -55,10 +55,7 @@ func get_current_game_state() -> String:
 	# Supplies
 	state_text += "Food Supply: " + str(gs.food) + " days remaining\n"
 	state_text += "Water Supply: " + str(gs.water) + " days remaining\n"
-	if gs.medication == 0:
-		state_text += "Medication: none prescribed\n"
-	else:
-		state_text += "Medication: " + str(gs.medication) + " days remaining\n"
+	state_text += "Medication: " + str(gs.medication) + "\n"
 	
 	# Dog stats (if dog exists in scene)
 	var dog = get_tree().get_first_node_in_group("dog")
