@@ -51,6 +51,7 @@ size = Vector2(129.25, 142)
 size = Vector2(249.25, 172)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_331gq"]
 size = Vector2(52, 52)
 
@@ -118,6 +119,9 @@ size = Vector2(57.3125, 56)
 size = Vector2(99.3125, 60)
 
 [node name="MainGame" type="Node2D"]
+=======
+[node name="MainGame" type="Node2D" unique_id=1111104484]
+>>>>>>> Stashed changes
 =======
 [node name="MainGame" type="Node2D" unique_id=1111104484]
 >>>>>>> Stashed changes
@@ -216,6 +220,7 @@ polygon = PackedVector2Array(-693, -171, -733, 2880, 2683, 2920, 2683, -171)
 polygon = PackedVector2Array(98, 1477, 194, 1471, 198, 1307, 143, 1283, 99, 1300)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="Vet borders" type="StaticBody2D" parent="ManualCollisions"]
 position = Vector2(-1804, 1052)
 
@@ -246,6 +251,9 @@ position = Vector2(-171, 35)
 polygon = PackedVector2Array(717, 1494, 721, 1637, 758, 1633, 761, 1496)
 
 [node name="Collisons" type="Node" parent="."]
+=======
+[node name="Collisons" type="Node" parent="." unique_id=611729826]
+>>>>>>> Stashed changes
 =======
 [node name="Collisons" type="Node" parent="." unique_id=611729826]
 >>>>>>> Stashed changes
@@ -552,9 +560,12 @@ shape = SubResource("RectangleShape2D_mrp28")
 [node name="buildings3" type="StaticBody2D" parent="Collisons" unique_id=953278552]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings3"]
 position = Vector2(624.25, 1988)
 =======
+=======
+>>>>>>> Stashed changes
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/buildings3" unique_id=1633134473]
 position = Vector2(624.25, 2006.75)
 >>>>>>> Stashed changes
@@ -636,6 +647,7 @@ shape = SubResource("RectangleShape2D_x16ow")
 [node name="buildings16" type="StaticBody2D" parent="Collisons" unique_id=1279636780]
 visible = false
 position = Vector2(-214, 1828.5)
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
 [node name="world" parent="." instance=ExtResource("2_utfc0")]
@@ -888,5 +900,7 @@ shape = SubResource("RectangleShape2D_mu1ml")
 position = Vector2(1, 0)
 build_mode = 1
 polygon = PackedVector2Array(264, -776, 645, -780, 651, -556, 258, -549)
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
