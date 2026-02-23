@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://dbjmntf564hv1"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cgnpu08xwmatr" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://pmq44lgc11fo" path="res://assets/Humans/STYLE2MALE.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://ckecy7ovt46md" path="res://assets/Humans/STYLE2FEMALE.png" id="3_dqkch"]
 
@@ -391,9 +391,10 @@ script = ExtResource("1_g2els")
 [node name="playerspriteanim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4.261163)
 sprite_frames = SubResource("SpriteFrames_a38lo")
-animation = &"move_left_dude1"
+animation = &"move_up_dude1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 6.6069007, 0, 9.249661, 3.0792403, 6.6069007, 3.5191326, -5.2855215)
 

@@ -18,10 +18,23 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	var player_can_move = player_moveable()
 
-	input_dir = Vector2(
+	# Get keyboard input
+	var keyboard_dir = Vector2(
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down"),
 	)
+	
+	# Get controller left joystick input
+	var controller_dir = Vector2(
+		Input.get_axis("controller_move_left", "controller_move_right"),
+		Input.get_axis("controller_move_up", "controller_move_down"),
+	)
+	
+	# Combine inputs (controller takes priority if both are active)
+	if controller_dir.length() > 0.2:  # Deadzone check
+		input_dir = controller_dir
+	else:
+		input_dir = keyboard_dir
 
 	if !player_can_move:
 		input_dir = Vector2(0, 0)

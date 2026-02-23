@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://pausemenu123"]
+[gd_scene format=3 uid="uid://pausemenu123"]
 
-[ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_pause_script"]
+[ext_resource type="Script" uid="uid://id8fjt4sr1cd" path="res://scripts/PauseMenu.gd" id="1_pause_script"]
 
-[node name="PauseMenu" type="CanvasLayer"]
-layer = 10
+[node name="PauseMenu" type="CanvasLayer" unique_id=296097537]
 process_mode = 3
+layer = 10
 script = ExtResource("1_pause_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1667778809]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=1648175102]
 custom_minimum_size = Vector2(700, 700)
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,46 +29,46 @@ offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Panel"]
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1700120550]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Header" type="HBoxContainer" parent="Panel/VBox"]
+[node name="Header" type="HBoxContainer" parent="Panel/VBox" unique_id=1266326995]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Panel/VBox/Header"]
+[node name="Title" type="Label" parent="Panel/VBox/Header" unique_id=765850928]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 58
 text = "    Pause Menu"
 horizontal_alignment = 1
 
-[node name="CloseBtn" type="Button" parent="Panel/VBox/Header"]
+[node name="CloseBtn" type="Button" parent="Panel/VBox/Header" unique_id=1432563196]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = " X "
 
-[node name="SettingsBtn" type="Button" parent="Panel/VBox"]
+[node name="SettingsBtn" type="Button" parent="Panel/VBox" unique_id=961913629]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Settings"
 
-[node name="FinancesBtn" type="Button" parent="Panel/VBox"]
+[node name="HelpBtn" type="Button" parent="Panel/VBox" unique_id=507784386]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "Finance Help"
+text = "Help"
 
-[node name="ResumeBtn" type="Button" parent="Panel/VBox"]
+[node name="ResumeBtn" type="Button" parent="Panel/VBox" unique_id=771301827]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Resume"
 
-[node name="QuitBtn" type="Button" parent="Panel/VBox"]
+[node name="QuitBtn" type="Button" parent="Panel/VBox" unique_id=870772093]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42

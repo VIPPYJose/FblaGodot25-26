@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://7ctkpcd14j74"]
+
+[ext_resource type="Script" uid="uid://bor6fgddrjiyq" path="res://scripts/CostCustomization.gd" id="1_cost_script"]
+
+[node name="CostCustomization" type="Control" unique_id=1243349786]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cost_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1389066874]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.18, 0.15, 1)
+
+[node name="Header" type="VBoxContainer" parent="." unique_id=172518310]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 10.0
+offset_right = 400.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Header" unique_id=1973620764]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Customize Costs"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Header" unique_id=1514418483]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 24
+text = "Set custom prices for items in your game"
+horizontal_alignment = 1
+
+[node name="CostColumns" type="HBoxContainer" parent="." unique_id=1960619990]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -100.0
+offset_right = 600.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="FoodColumn" type="VBoxContainer" parent="CostColumns" unique_id=17362549]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="FoodLabel" type="Label" parent="CostColumns/FoodColumn" unique_id=444887683]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Food Cost"
+horizontal_alignment = 1
+
+[node name="FoodInput" type="LineEdit" parent="CostColumns/FoodColumn" unique_id=1391231672]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "$20"
+alignment = 1
+
+[node name="WaterColumn" type="VBoxContainer" parent="CostColumns" unique_id=1865686221]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="WaterLabel" type="Label" parent="CostColumns/WaterColumn" unique_id=1863721985]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Water Cost"
+horizontal_alignment = 1
+
+[node name="WaterInput" type="LineEdit" parent="CostColumns/WaterColumn" unique_id=1088711434]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "$10"
+alignment = 1
+
+[node name="MedicineColumn" type="VBoxContainer" parent="CostColumns" unique_id=960467091]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MedicineLabel" type="Label" parent="CostColumns/MedicineColumn" unique_id=1385043574]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Medicine Cost"
+horizontal_alignment = 1
+
+[node name="MedicineInput" type="LineEdit" parent="CostColumns/MedicineColumn" unique_id=1876949189]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "$40"
+alignment = 1
+
+[node name="VetColumn" type="VBoxContainer" parent="CostColumns" unique_id=2120023058]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VetLabel" type="Label" parent="CostColumns/VetColumn" unique_id=746750500]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Vet Fee"
+horizontal_alignment = 1
+
+[node name="VetInput" type="LineEdit" parent="CostColumns/VetColumn" unique_id=103408100]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "$50"
+alignment = 1
+
+[node name="DogHouseColumn" type="VBoxContainer" parent="CostColumns" unique_id=586343878]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DogHouseLabel" type="Label" parent="CostColumns/DogHouseColumn" unique_id=1516597851]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Dog House"
+horizontal_alignment = 1
+
+[node name="DogHouseInput" type="LineEdit" parent="CostColumns/DogHouseColumn" unique_id=1169745428]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "$300"
+alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="." unique_id=617783393]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -90.0
+offset_right = 250.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="BackButton" type="Button" parent="ButtonContainer" unique_id=190697245]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="ContinueButton" type="Button" parent="ButtonContainer" unique_id=172832736]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Continue"

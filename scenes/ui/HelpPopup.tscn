@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://uil6r6smfr7w"]
+
+[ext_resource type="Script" path="res://scripts/help_popup.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.15, 0.15, 0.2, 0.95)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.6, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chat"]
+bg_color = Color(0.1, 0.1, 0.15, 1.0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.5, 0.8, 1)
+
+[node name="HelpPopup" type="CanvasLayer"]
+layer = 11
+process_mode = 3
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(1200, 700)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -350.0
+offset_right = 600.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="MainHBox" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LeftSection" type="VBoxContainer" parent="Panel/MainHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Header" type="Label" parent="Panel/MainHBox/LeftSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Game Rules"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MainHBox/LeftSection"]
+layout_mode = 2
+
+[node name="Body" type="RichTextLabel" parent="Panel/MainHBox/LeftSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+bbcode_enabled = true
+text = "[ul]
+[b]Weekly Income:[/b] You receive [color=green]$150[/color] every week.
+
+[b]Budgets:[/b] Set limits for Food & Vet to control spending. Budgets reset every 7 days.
+
+[b]Emergency Savings:[/b] Start with $200. This fund is used [b]automatically[/b] if you can't afford essential items (Food/Vet).
+
+[color=yellow]Warning:[/color] Relying on savings is risky! Keep a buffer for real emergencies.
+[/ul]"
+
+[node name="CloseBtn" type="Button" parent="Panel/MainHBox/LeftSection"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Got it!"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MainHBox"]
+layout_mode = 2
+
+[node name="RightSection" type="VBoxContainer" parent="Panel/MainHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ChatHeader" type="Label" parent="Panel/MainHBox/RightSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Ask Help Assistant"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MainHBox/RightSection"]
+layout_mode = 2
+
+[node name="ChatContainer" type="PanelContainer" parent="Panel/MainHBox/RightSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_chat")
+
+[node name="ChatScroll" type="ScrollContainer" parent="Panel/MainHBox/RightSection/ChatContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ChatHistory" type="VBoxContainer" parent="Panel/MainHBox/RightSection/ChatContainer/ChatScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="WelcomeLabel" type="Label" parent="Panel/MainHBox/RightSection/ChatContainer/ChatScroll/ChatHistory"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.6, 0.7, 0.9, 1)
+text = "Ask me anything about the game!
+Examples: 'How do I move?', 'What is my dog's hunger?'"
+autowrap_mode = 2
+
+[node name="StatusLabel" type="Label" parent="Panel/MainHBox/RightSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1, 0.8, 0.3, 1)
+text = ""
+horizontal_alignment = 1
+
+[node name="InputContainer" type="HBoxContainer" parent="Panel/MainHBox/RightSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="QuestionInput" type="LineEdit" parent="Panel/MainHBox/RightSection/InputContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Type your question here..."
+
+[node name="SendBtn" type="Button" parent="Panel/MainHBox/RightSection/InputContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Ask"
+
+[connection signal="pressed" from="Panel/MainHBox/LeftSection/CloseBtn" to="." method="_on_close_btn_pressed"]
+[connection signal="text_submitted" from="Panel/MainHBox/RightSection/InputContainer/QuestionInput" to="." method="_on_question_submitted"]
+[connection signal="pressed" from="Panel/MainHBox/RightSection/InputContainer/SendBtn" to="." method="_on_send_btn_pressed"]

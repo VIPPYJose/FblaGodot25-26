@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cbql562wibngp"]
+[gd_scene format=3 uid="uid://cbql562wibngp"]
 
 [ext_resource type="Script" uid="uid://cgnpu08xwmatr" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ckecy7ovt46md" path="res://assets/Humans/STYLE2FEMALE.png" id="2_3flik"]
@@ -99,29 +99,29 @@ region = Rect2(352, 33, 16, 33)
 atlas = ExtResource("2_3flik")
 region = Rect2(368, 33, 16, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_71l7q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x154p"]
 atlas = ExtResource("2_3flik")
-region = Rect2(96, 66, 16, 33)
+region = Rect2(96, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfr4m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4voh"]
 atlas = ExtResource("2_3flik")
-region = Rect2(112, 66, 16, 33)
+region = Rect2(112, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f18j2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k68y"]
 atlas = ExtResource("2_3flik")
-region = Rect2(128, 66, 16, 33)
+region = Rect2(128, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bsq4q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j25j"]
 atlas = ExtResource("2_3flik")
-region = Rect2(144, 66, 16, 33)
+region = Rect2(144, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t73jn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkqh4"]
 atlas = ExtResource("2_3flik")
-region = Rect2(160, 66, 16, 33)
+region = Rect2(160, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vh85p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqem3"]
 atlas = ExtResource("2_3flik")
-region = Rect2(176, 66, 16, 33)
+region = Rect2(176, 64, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ewgi"]
 atlas = ExtResource("2_3flik")
@@ -147,29 +147,29 @@ region = Rect2(64, 66, 16, 33)
 atlas = ExtResource("2_3flik")
 region = Rect2(80, 66, 16, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahbyx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uliqr"]
 atlas = ExtResource("2_3flik")
-region = Rect2(192, 66, 16, 33)
+region = Rect2(192, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfkh0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jag2q"]
 atlas = ExtResource("2_3flik")
-region = Rect2(208, 66, 16, 33)
+region = Rect2(208, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sfc6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjefx"]
 atlas = ExtResource("2_3flik")
-region = Rect2(224, 66, 16, 33)
+region = Rect2(224, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_elvwh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u5vt"]
 atlas = ExtResource("2_3flik")
-region = Rect2(240, 66, 16, 33)
+region = Rect2(240, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4d1yj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hykcx"]
 atlas = ExtResource("2_3flik")
-region = Rect2(256, 66, 16, 33)
+region = Rect2(256, 64, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5n2y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_03ave"]
 atlas = ExtResource("2_3flik")
-region = Rect2(272, 66, 16, 33)
+region = Rect2(272, 64, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sni63"]
 atlas = ExtResource("2_3flik")
@@ -291,22 +291,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_71l7q")
+"texture": SubResource("AtlasTexture_x154p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kfr4m")
+"texture": SubResource("AtlasTexture_u4voh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f18j2")
+"texture": SubResource("AtlasTexture_2k68y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bsq4q")
+"texture": SubResource("AtlasTexture_1j25j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t73jn")
+"texture": SubResource("AtlasTexture_kkqh4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vh85p")
+"texture": SubResource("AtlasTexture_wqem3")
 }],
 "loop": true,
 "name": &"move_down",
@@ -337,22 +337,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ahbyx")
+"texture": SubResource("AtlasTexture_uliqr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hfkh0")
+"texture": SubResource("AtlasTexture_jag2q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8sfc6")
+"texture": SubResource("AtlasTexture_jjefx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_elvwh")
+"texture": SubResource("AtlasTexture_5u5vt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4d1yj")
+"texture": SubResource("AtlasTexture_hykcx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p5n2y")
+"texture": SubResource("AtlasTexture_03ave")
 }],
 "loop": true,
 "name": &"move_right",
@@ -382,21 +382,21 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=405700239 groups=["player"]]
 scale = Vector2(2.2732878, 2.2703533)
 motion_mode = 1
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1542859971]
 position = Vector2(0, -4.261163)
 sprite_frames = SubResource("SpriteFrames_a38lo")
-animation = &"move_up"
+animation = &"move_down"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1467659400]
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 6.6069007, 0, 9.249661, 3.0792403, 6.6069007, 3.5191326, -5.2855215)
 
-[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1556704275 groups=["player"]]
 scale = Vector2(1.0052286, 1.0746742)
 zoom = Vector2(1.5, 1.5)
 process_callback = 0

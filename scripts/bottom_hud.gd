@@ -39,6 +39,22 @@ func _ready():
 	
 	update_ui()
 
+func _input(event: InputEvent):
+	# Controller button mappings (only when not in a menu)
+	if get_tree().paused:
+		return
+		
+	if event.is_action_pressed("controller_finance"):  # View button (2 boxes)
+		_on_finance_btn_pressed()
+	elif event.is_action_pressed("controller_pause"):  # Menu button (3 lines)
+		_on_pause_btn_pressed()
+	elif event.is_action_pressed("controller_supplies"):  # D-pad up
+		_on_supplies_btn_pressed()
+	elif event.is_action_pressed("controller_needs"):  # D-pad left
+		_on_needs_btn_pressed()
+	elif event.is_action_pressed("controller_home"):  # D-pad right
+		_on_home_btn_pressed()
+
 func _process(_delta):
 	update_ui()
 
@@ -95,10 +111,9 @@ func _on_pause_btn_pressed():
 		SceneManager.change_scene("res://scenes/ui/MainMenu.tscn", {"pattern": "curtains"})
 	)
 	
-	current_pause_menu.get_node("Panel/VBox/FinancesBtn").pressed.connect(func():
-		var help_popup = load("res://scenes/ui/FinanceHelpPopup.tscn").instantiate()
+	current_pause_menu.get_node("Panel/VBox/HelpBtn").pressed.connect(func():
+		var help_popup = load("res://scenes/ui/HelpPopup.tscn").instantiate()
 		get_tree().root.add_child(help_popup)
-		help_popup.get_node("Panel/VBox/CloseBtn").pressed.connect(help_popup.queue_free)
 	)
 	
 	current_pause_menu.get_node("Panel/VBox/SettingsBtn").pressed.connect(func():

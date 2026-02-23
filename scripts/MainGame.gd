@@ -19,7 +19,13 @@ func _ready():
 	spawn_dog()
 	setup_hud()
 	setup_pause_menu()
-	_make_paths_visible()
+	# Only show tutorial paths if it's Day 1 and tutorial isn't complete
+	if GameState.is_day_one and not GameState.is_tutorial_complete:
+		_make_paths_visible()
+	else:
+		# Ensure they are hidden if they exist
+		if original_path: original_path.visible = false
+		if shop_path: shop_path.visible = false
 	
 	# Background Music
 	var music_player = AudioStreamPlayer.new()
@@ -52,6 +58,16 @@ func _ready():
 	GameState.day_started.connect(_on_day_started)
 	GameState.vet_talk_finished.connect(_on_vet_talk_finished)
 
+var home_hint_shown = false
+func _on_shop_closed():
+	if GameState.is_day_one and not home_hint_shown:
+		home_hint_shown = true
+		# Show hint after shop
+		var tutorial_hint_scene = preload("res://scenes/ui/tutorial_hint.tscn")
+		var hint = tutorial_hint_scene.instantiate()
+		get_tree().root.add_child(hint)
+		hint.show_hint("Press the home button 🏠 to go home.", 6.0)
+
 func _on_vet_talk_finished():
 	if GameState.is_day_one:
 		if original_path:
@@ -62,6 +78,11 @@ func _on_vet_talk_finished():
 			# _make_paths_visible() already creates Line2D as children.
 			# If shop_path was already visible, _make_paths_visible handles it.
 			# But we might need to recreate Line2D if we just made it visible.
+
+func _on_shop_entered():
+	# Hide shop path when entering shop
+	if shop_path:
+		shop_path.visible = false
 
 func start_day1_tutorial():
 	tutorial_controller = Day1Tutorial.new()
@@ -118,6 +139,10 @@ func setup_hud():
 		add_child(hud)
 		# Store reference for tutorial
 		hud_instance = hud
+		
+		# Connect to shop closed signal for home hint
+		if hud.shop_menu_instance:
+			hud.shop_menu_instance.shop_closed.connect(_on_shop_closed)
 
 func spawn_player():
 	var variant = GameState.character_variant

@@ -7,6 +7,13 @@ var pet_name: String = ""
 var player_name: String = ""
 
 var money: int = 150
+
+# Customizable Costs
+var food_cost: int = 20
+var water_cost: int = 10
+var medicine_cost: int = 40
+var vet_fee: int = 50
+var dog_house_cost: int = 300
 var master_volume: int = 70
 var current_day: int = 0
 var days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -16,7 +23,7 @@ var DAY_DURATION: float = 300.0
 # Supplies Group (player inventory, NOT pet needs)
 var food: int = 0 # Days of food remaining
 var water: int = 0 # Days of water remaining
-var medication: String = "none" # Current medication status
+var medication: int = 0 # Days of medication remaining (0 = none prescribed)
 var dog_health: float = 100.0 # Utility for dialogue/UI
 var has_prescription: bool = false # Added to track vet orders
 
@@ -69,6 +76,7 @@ func advance_day():
 	# Decrement supplies
 	food = max(0, food - 1)
 	water = max(0, water - 1)
+	medication = max(0, medication - 1)
 	
 	# Increment day
 	current_day += 1
@@ -199,7 +207,7 @@ func get_budget_status(category: String) -> float:
 func initialize_day_one():
 	food = 0
 	water = 0
-	medication = "none"
+	medication = 0
 	is_day_one = true
 	is_tutorial_complete = false
 	# Reset finances for new game
@@ -248,6 +256,12 @@ func save_game(dog_data: Dictionary = {}):
 		"is_tutorial_complete": is_tutorial_complete,
 		"is_day_one": is_day_one,
 		"master_volume": master_volume,
+		# Customizable Costs
+		"food_cost": food_cost,
+		"water_cost": water_cost,
+		"medicine_cost": medicine_cost,
+		"vet_fee": vet_fee,
+		"dog_house_cost": dog_house_cost,
 		# Finance Data
 		"savings_balance": savings_balance,
 		"budget_data": budget_data,
@@ -293,10 +307,22 @@ func load_game() -> bool:
 	day_timer = save_data.get("day_timer", 0.0)
 	food = save_data.get("food", 0)
 	water = save_data.get("water", 0)
-	medication = save_data.get("medication", "none")
+	# Handle both old string format and new int format for backward compatibility
+	var med_data = save_data.get("medication", 0)
+	if med_data is String:
+		medication = 0  # Old save file with string, reset to 0
+	else:
+		medication = med_data
 	is_tutorial_complete = save_data.get("is_tutorial_complete", false)
 	is_day_one = save_data.get("is_day_one", true)
 	master_volume = save_data.get("master_volume", 70)
+	
+	# Restore Customizable Costs
+	food_cost = save_data.get("food_cost", 20)
+	water_cost = save_data.get("water_cost", 10)
+	medicine_cost = save_data.get("medicine_cost", 40)
+	vet_fee = save_data.get("vet_fee", 50)
+	dog_house_cost = save_data.get("dog_house_cost", 300)
 	
 	# Restore Finance Data
 	savings_balance = save_data.get("savings_balance", 200)

@@ -1,14 +1,21 @@
 extends CanvasLayer
+signal shop_closed
 
 @onready var food_count_label = $Panel/VBox/Items/FoodItem/Controls/Count
 @onready var water_count_label = $Panel/VBox/Items/WaterItem/Controls/Count
 @onready var total_label = $Panel/VBox/Footer/TotalLabel
 @onready var prescription_item = $Panel/VBox/Items/PrescriptionItem
 @onready var prescription_check = $Panel/VBox/Items/PrescriptionItem/CheckBox
+@onready var food_label = $Panel/VBox/Items/FoodItem/Label
+@onready var water_label = $Panel/VBox/Items/WaterItem/Label
 
-const FOOD_PRICE = 20
-const WATER_PRICE = 10
-const PRESCRIPTION_PRICE = 40
+# Use GameState costs instead of hardcoded constants
+var FOOD_PRICE: int:
+	get: return GameState.food_cost
+var WATER_PRICE: int:
+	get: return GameState.water_cost
+var PRESCRIPTION_PRICE: int:
+	get: return GameState.medicine_cost
 
 var food_cart_count = 0
 var water_cart_count = 0
@@ -18,14 +25,31 @@ func _ready():
 	visible = false
 	update_ui()
 
+func _input(event: InputEvent):
+	# Controller support for shop menu
+	if visible:
+		# Controller accept button (A button) for clicking focused buttons
+		if event.is_action_pressed("controller_accept") or event.is_action_pressed("ui_accept"):
+			var focused = get_viewport().gui_get_focus_owner()
+			if focused and focused is Button:
+				focused.pressed.emit()
+		# Controller cancel (B button or pause) to close
+		elif event.is_action_pressed("ui_cancel") or event.is_action_pressed("controller_pause"):
+			_on_close_btn_pressed()
+
 func show_shop():
 	# Reset cart when opening
 	food_cart_count = 0
 	water_cart_count = 0
 	
+	# Update item labels with current prices from GameState
+	food_label.text = "Dog food (Lasts for 5 days)    $" + str(GameState.food_cost)
+	water_label.text = "Water (Lasts for 5 days)    $" + str(GameState.water_cost)
+	prescription_check.text = "Prescription: $" + str(GameState.medicine_cost)
+	
 	# Prescription logic: if needed, auto-select it and show it.
 	# Otherwise, hide it and don't include it in total.
-	prescription_item.visible = GameState.has_prescription and GameState.medication != "Antibiotics (5 days)"
+	prescription_item.visible = GameState.has_prescription and GameState.medication == 0
 	
 	if prescription_item.visible:
 		prescription_selected = true
@@ -42,15 +66,16 @@ func update_ui():
 	food_count_label.text = str(food_cart_count)
 	water_count_label.text = str(water_cart_count)
 	
-	var total = (food_cart_count * FOOD_PRICE) + (water_cart_count * WATER_PRICE)
+	var total = (food_cart_count * GameState.food_cost) + (water_cart_count * GameState.water_cost)
 	if prescription_selected:
-		total += PRESCRIPTION_PRICE
+		total += GameState.medicine_cost
 		
 	total_label.text = "Total: $" + str(total)
 
 func _on_close_btn_pressed():
 	visible = false
 	get_tree().paused = false
+	shop_closed.emit()
 
 func _on_food_plus_pressed():
 	food_cart_count += 1
@@ -99,13 +124,13 @@ func _on_purchase_pressed():
 		# Actually, since GameState.spend_money subtracts money, I'll do this:
 		var success = true
 		if food_cart_count > 0:
-			success = GameState.spend_money(food_cart_count * FOOD_PRICE, "Food")
+			success = GameState.spend_money(food_cart_count * GameState.food_cost, "Food")
 		if success and water_cart_count > 0:
-			success = GameState.spend_money(water_cart_count * WATER_PRICE, "Food") # Water usually in food budget
+			success = GameState.spend_money(water_cart_count * GameState.water_cost, "Food") # Water usually in food budget
 		if success and prescription_selected:
-			success = GameState.spend_money(PRESCRIPTION_PRICE, "Vet")
+			success = GameState.spend_money(GameState.medicine_cost, "Vet")
 			if success:
-				GameState.medication = "Antibiotics (5 days)"
+				GameState.medication = 5  # 5 days of medication
 				GameState.has_prescription = false # Prescription consumed
 				# Also heal the dog slightly as per previous logic
 				var dog = get_tree().get_first_node_in_group("dog")
@@ -119,6 +144,7 @@ func _on_purchase_pressed():
 			print("Purchase successful!")
 			visible = false
 			get_tree().paused = false
+			shop_closed.emit()
 	else:
 		print("Not enough money!")
 		# Could show a visual warning here
