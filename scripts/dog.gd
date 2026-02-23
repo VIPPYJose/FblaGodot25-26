@@ -71,7 +71,7 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 		toggle_menu()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
+	if (event is InputEventKey and event.pressed and event.keycode == KEY_P) or event.is_action_pressed("controller_needs"):
 		toggle_menu()
 	
 	# Dog action keys (only when following player)

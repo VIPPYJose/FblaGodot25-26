@@ -5,6 +5,7 @@ extends Area2D
 @export var is_exit: bool = false
 @export var post_teleport_hint: String = ""
 @export var is_sleep: bool = false
+@export var is_shop_enter: bool = false  # Set to true for shop enter area
 
 var tutorial_hint_scene = preload("res://scenes/ui/tutorial_hint.tscn")
 var hint_instance: CanvasLayer = null
@@ -34,7 +35,7 @@ func _on_body_exited(body: Node2D):
 			hint_instance.hide_hint()
 
 func _input(event: InputEvent):
-	if player_in_area and (event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E)):
+	if player_in_area and (event.is_action_pressed("interact") or event.is_action_pressed("controller_interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E)):
 		if is_sleep:
 			trigger_sleep()
 		else:
@@ -62,6 +63,12 @@ func teleport():
 		dog.global_position = target_position + Vector2(40, 0)
 		if "path" in dog:
 			dog.path.clear()
+	
+	# Check if this is shop enter - hide shop path (check by name or flag)
+	if is_shop_enter or name == "ShopEnter":
+		var main_game = get_tree().current_scene
+		if main_game and main_game.has_method("_on_shop_entered"):
+			main_game._on_shop_entered()
 	
 	if hint_instance:
 		hint_instance.hide_hint()

@@ -11,8 +11,13 @@ func _ready():
 	close_btn.pressed.connect(_on_resume_pressed)
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("pause"):
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("pause") or event.is_action_pressed("controller_pause"):
 		toggle_pause()
+	# Controller accept button (A button) for clicking focused buttons
+	if event.is_action_pressed("controller_accept") or event.is_action_pressed("ui_accept"):
+		var focused = get_viewport().gui_get_focus_owner()
+		if focused and focused is Button:
+			focused.pressed.emit()
 
 func toggle_pause():
 	var new_pause_state = !get_tree().paused

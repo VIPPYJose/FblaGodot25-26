@@ -79,6 +79,11 @@ func _on_vet_talk_finished():
 			# If shop_path was already visible, _make_paths_visible handles it.
 			# But we might need to recreate Line2D if we just made it visible.
 
+func _on_shop_entered():
+	# Hide shop path when entering shop
+	if shop_path:
+		shop_path.visible = false
+
 func start_day1_tutorial():
 	tutorial_controller = Day1Tutorial.new()
 	add_child(tutorial_controller)

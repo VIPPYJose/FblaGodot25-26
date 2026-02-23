@@ -14,7 +14,7 @@ func _ready():
 		label.hide()
 
 func _process(_delta):
-	if player_in_range and Input.is_action_just_pressed("interact"):
+	if player_in_range and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("controller_interact")):
 		DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialugue_start)
 
 func _on_area_2d_body_entered(body):
