@@ -77,3 +77,24 @@ project.godot          Main settings and plugin list
 For more details, check the [project structure](https://github.com/FblaGodot/MyLittleBuddy) on GitHub.
 
 ---
+
+## License
+
+This project is licensed under the **MIT License** - see the individual addon LICENSE files for details on third-party libraries:
+
+- **Dialogue Manager**: MIT License (Nathan Hoad)
+- **Scene Manager**: MIT License (GlassBrick)
+- **SimpleTODO**: MIT License (KoBeWi)
+- **Godot Engine**: MIT License (Godot Foundation)
+
+**Commercial Assets**: Dog sprites, character sprites, and background music are used under their original purchase agreements. They may not be redistributed separately.
+
+---
+
+## Authors
+
+**FBLA My Little Buddy 2025-2026**
+
+Made by the FBLA My Little Buddy 25-26 team: Jose Gerald, Uday Kamboj, and Vivaan Pillai.
+
+---
