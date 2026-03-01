@@ -15,3 +15,37 @@ We built this game using some awesome open-source tools. Here's what each one do
 All of these are open-source under the MIT License, which means we can use them for free and modify them if we need to.
 
 ---
+
+
+---
+
+## Folder & File Guide
+
+### Quick Overview
+
+```
+project.godot          Main settings and plugin list
+/addons/               Dialogue Manager, Scene Manager, SimpleTODO
+/assets/               Art (dogs, characters, fonts, music)
+/scenes/               Game screens (.tscn files)
+  /ui/                 HUD, menus, shop
+  /maps/               Locations (house, shop, vet, world)
+/scripts/              Game logic (.gd files)
+/dialogues/            NPC conversation files (.dialogue)
+```
+
+### Key Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `GameState.gd` | Central data hub (money, pet stats, day counter) |
+| `MainGame.gd` | Main game loop |
+| `player.gd` | Player movement |
+| `dog.gd` | Pet AI and needs system |
+| `shop_menu.gd` | Shop interface |
+| `finance_menu.gd` | Budget tracking |
+| `day1_tutorial.gd` | Tutorial system |
+
+For more details, check the [project structure](https://github.com/FblaGodot/MyLittleBuddy) on GitHub.
+
+---
