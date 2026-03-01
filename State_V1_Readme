@@ -1,1 +1,17 @@
 
+---
+
+## Libraries We're Using
+
+We built this game using some awesome open-source tools. Here's what each one does:
+
+| Library | Who Made It | What It Does |
+|---------|-----------|------------|
+| **Dialogue Manager** | Nathan Hoad | Handles all the NPC conversations. Lets us write dialogue in simple `.dialogue` files instead of coding it all out. |
+| **Scene Manager** | GlassBrick | Smoothly transitions between scenes with cool effects like curtains, fades, and dissolves. |
+| **SimpleTODO** | KoBeWi | A dev tool for keeping notes and tasks organized in the Godot editor. |
+| **Godot Engine** | Godot Foundation | The game engine that runs everything. Version 4.5. |
+
+All of these are open-source under the MIT License, which means we can use them for free and modify them if we need to.
+
+---
