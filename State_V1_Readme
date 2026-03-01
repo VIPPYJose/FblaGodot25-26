@@ -1,3 +1,33 @@
+# My Little Buddy
+
+A fun pet care simulation game where you raise and care for a virtual dog. Manage your pet's needs, handle your finances, chat with NPCs, and experience a complete day cycle. Built with Godot 4.5.
+
+## Quick Navigation
+
+- [What's This Game About?](#whats-this-game-about)
+- [Libraries We're Using](#libraries-were-using)
+- [How Everything Connects](#how-everything-connects)
+- [Folder & File Guide](#folder--file-guide)
+- [Getting Started](#getting-started)
+- [Plugin Integration](#plugin-integration)
+- [Help](#help)
+- [License](#license)
+- [Authors](#authors)
+- [Credits](#credits)
+
+---
+
+## What's This Game About?
+
+You start a new game by creating a character and choosing from 8 different dog breeds. Then you spend your days looking after your pet:
+
+- **Feed & hydrate your dog** - Buy food and water from the shop to keep hunger and thirst in check
+- **Keep your dog healthy** - Watch out for health issues and visit the vet when needed
+- **Manage your allowance** - You get 150 gold per week to spend on supplies, vet visits, and emergencies
+- **Chat with NPCs** - Talk to the shop owner, vet, and townspeople to learn more about the game world
+- **Watch time pass** - Each in-game day takes 5 minutes. Your dog's needs decay over time, just like a real pet
+
+When you start, there's a Day 1 tutorial that walks you through the basics. After that, you're free to play however you want.
 
 ---
 
@@ -16,8 +46,6 @@ All of these are open-source under the MIT License, which means we can use them 
 
 ---
 
-
----
 
 ## Folder & File Guide
 
