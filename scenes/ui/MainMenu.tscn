@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ioy26noyt2y8"]
+[gd_scene format=3 uid="uid://ioy26noyt2y8"]
 
 [ext_resource type="Script" uid="uid://dafne5w3fuy3j" path="res://scripts/MainMenu.gd" id="1_main_menu"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1906922704]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_main_menu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=72098600]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,31 +27,31 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1867514079]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "My Little Buddy"
 horizontal_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=1019976172]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Continue Game"
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1083574426]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Start New Game"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1428832491]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Settings"
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="SettingsPanel" type="Panel" parent="." unique_id=859833001]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -66,7 +66,7 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel" unique_id=1750045366]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,13 +76,13 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer" unique_id=404732113]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer" unique_id=2005851487]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4

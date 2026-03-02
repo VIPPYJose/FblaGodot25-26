@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://rxu5txwaemg7"]
+
+[ext_resource type="FontFile" uid="uid://bxqrwbuj77lyb" path="res://assets/fonts/body.ttf" id="1_j1m2g"]
+
+[sub_resource type="FontVariation" id="FontVariation_j2vut"]
+base_font = ExtResource("1_j1m2g")
+
+[resource]
+default_font = SubResource("FontVariation_j2vut")
+default_font_size = 32
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = SubResource("FontVariation_j2vut")

@@ -6,6 +6,53 @@ var dog_breed: String = "Golden_Retriever"
 var pet_name: String = ""
 var player_name: String = ""
 
+# Component-based character customization (layered system)
+var char_body: int = 1
+var char_hairstyle: int = 1
+var char_outfit: int = 1
+var char_eyes: int = 1
+var char_accessory: int = 1
+var uses_component_system: bool = false  # true when new customizer is used
+
+## Maps component index (1-5) to SpriteFrames .tres paths for in-game animations
+const COMPONENT_ANIM_PATHS := {
+	"body": [
+		"res://resources/character_components_animations/body/Body_01.tres",
+		"res://resources/character_components_animations/body/Body_02.tres",
+		"res://resources/character_components_animations/body/Body_03.tres",
+		"res://resources/character_components_animations/body/Body_04.tres",
+		"res://resources/character_components_animations/body/Body_07.tres",
+	],
+	"hairstyle": [
+		"res://resources/character_components_animations/hairstyle/Hairstyle_01_04.tres",
+		"res://resources/character_components_animations/hairstyle/Hairstyle_02_04.tres",
+		"res://resources/character_components_animations/hairstyle/Hairstyle_05_04.tres",
+		"res://resources/character_components_animations/hairstyle/Hairstyle_06_04.tres",
+		"res://resources/character_components_animations/hairstyle/Hairstyle_19_04.tres",
+	],
+	"eyes": [
+		"res://resources/character_components_animations/eyes/Eyes_01.tres",
+		"res://resources/character_components_animations/eyes/Eyes_03.tres",
+		"res://resources/character_components_animations/eyes/Eyes_04.tres",
+		"res://resources/character_components_animations/eyes/Eyes_05.tres",
+		"res://resources/character_components_animations/eyes/Eyes_06.tres",
+	],
+	"outfit": [
+		"res://resources/character_components_animations/outfit/Outfit_01_03.tres",
+		"res://resources/character_components_animations/outfit/Outfit_02_01.tres",
+		"res://resources/character_components_animations/outfit/Outfit_04_02.tres",
+		"res://resources/character_components_animations/outfit/Outfit_07_02.tres",
+		"res://resources/character_components_animations/outfit/Outfit_10_04.tres",
+	],
+	"accessory": [
+		"res://resources/character_components_animations/accessory/Accessory_03_Backpack_01.tres",
+		"res://resources/character_components_animations/accessory/Accessory_04_Snapback_01.tres",
+		"res://resources/character_components_animations/accessory/Accessory_04_Snapback_04.tres",
+		"res://resources/character_components_animations/accessory/Accessory_11_Beanie_01.tres",
+		"res://resources/character_components_animations/accessory/Accessory_15_Glasses_01.tres",
+	],
+}
+
 var money: int = 150
 
 # Customizable Costs
@@ -222,6 +269,30 @@ func initialize_day_one():
 func save_character(id: int, variant: String):
 	character_id = id
 	character_variant = variant
+	uses_component_system = false
+
+func save_character_components(body: int, hairstyle: int, outfit: int, eyes: int, accessory: int) -> void:
+	char_body = body
+	char_hairstyle = hairstyle
+	char_outfit = outfit
+	char_eyes = eyes
+	char_accessory = accessory
+	uses_component_system = true
+
+func get_character_components() -> Dictionary:
+	return {
+		"body": char_body,
+		"hairstyle": char_hairstyle,
+		"outfit": char_outfit,
+		"eyes": char_eyes,
+		"accessory": char_accessory,
+	}
+
+func get_component_sprite_frames(category: String, option: int) -> SpriteFrames:
+	var paths: Array = COMPONENT_ANIM_PATHS.get(category, [])
+	var idx := clampi(option, 1, paths.size()) - 1
+	var path: String = paths[idx] if idx < paths.size() else paths[0]
+	return load(path) as SpriteFrames
 
 func save_pet(breed: String):
 	dog_breed = breed
@@ -272,7 +343,14 @@ func save_game(dog_data: Dictionary = {}):
 		"dog_thirst": dog_data.get("thirst", 100.0),
 		"dog_energy": dog_data.get("energy", 100.0),
 		"dog_hygiene": dog_data.get("hygiene", 100.0),
-		"dog_health": dog_data.get("health", 30.0)
+		"dog_health": dog_data.get("health", 30.0),
+		# Component-based character data
+		"uses_component_system": uses_component_system,
+		"char_body": char_body,
+		"char_hairstyle": char_hairstyle,
+		"char_outfit": char_outfit,
+		"char_eyes": char_eyes,
+		"char_accessory": char_accessory,
 	}
 	
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -332,6 +410,14 @@ func load_game() -> bool:
 	})
 	transaction_history = save_data.get("transaction_history", [])
 	all_time_spent = save_data.get("all_time_spent", 0)
+	
+	# Restore component-based character data
+	uses_component_system = save_data.get("uses_component_system", false)
+	char_body = save_data.get("char_body", 1)
+	char_hairstyle = save_data.get("char_hairstyle", 1)
+	char_outfit = save_data.get("char_outfit", 1)
+	char_eyes = save_data.get("char_eyes", 1)
+	char_accessory = save_data.get("char_accessory", 1)
 	
 	print("Game loaded successfully!")
 	return true

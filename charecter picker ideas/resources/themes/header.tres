@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://daxws2q1mrcwx"]
+
+[ext_resource type="FontFile" uid="uid://h40h1lws5pqp" path="res://assets/fonts/header.ttf" id="1_w2yee"]
+
+[sub_resource type="FontVariation" id="FontVariation_g265w"]
+base_font = ExtResource("1_w2yee")
+
+[resource]
+default_font = SubResource("FontVariation_g265w")
+default_font_size = 48
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 48
+Label/fonts/font = SubResource("FontVariation_g265w")

@@ -1,0 +1,665 @@
+[gd_scene format=3 uid="uid://ccwpmegeo0m0"]
+
+[ext_resource type="Material" uid="uid://dmkx7n2qh5wvp" path="res://assets/effects/materials/flowing_gradient_bg.tres" id="1_t4jcs"]
+[ext_resource type="Theme" uid="uid://b8k2m4xqawfq1" path="res://resources/themes/menu_button.tres" id="2_1t7mc"]
+[ext_resource type="Theme" uid="uid://daxws2q1mrcwx" path="res://resources/themes/header.tres" id="3_j8wee"]
+[ext_resource type="Theme" uid="uid://rxu5txwaemg7" path="res://resources/themes/body.tres" id="4_u6spu"]
+[ext_resource type="ButtonGroup" uid="uid://bds83keio2gnv" path="res://resources/character_selection_button_groups/body.tres" id="5_assrq"]
+[ext_resource type="ButtonGroup" uid="uid://b38da7m7iif8g" path="res://resources/character_selection_button_groups/hairstyle.tres" id="6_koje7"]
+[ext_resource type="ButtonGroup" uid="uid://ejmlvf60s2by" path="res://resources/character_selection_button_groups/outfit.tres" id="7_7akr6"]
+[ext_resource type="ButtonGroup" uid="uid://bave2i60ci523" path="res://resources/character_selection_button_groups/eyes.tres" id="8_lsiu1"]
+[ext_resource type="ButtonGroup" uid="uid://cq0dph2lvkmfh" path="res://resources/character_selection_button_groups/accessory.tres" id="9_w1bb4"]
+[ext_resource type="Texture2D" uid="uid://dus0slqsfauwj" path="res://assets/sprites/Character Components/Body/Body_01.png" id="10_mouwx"]
+[ext_resource type="Texture2D" uid="uid://cyodck0dsg36l" path="res://assets/sprites/Character Components/Body/Body_02.png" id="11_q54q4"]
+[ext_resource type="Texture2D" uid="uid://bk0l8iidhe0l5" path="res://assets/sprites/Character Components/Body/Body_03.png" id="12_xj1d6"]
+[ext_resource type="Texture2D" uid="uid://bg852dcb5jj3l" path="res://assets/sprites/Character Components/Body/Body_04.png" id="13_wron4"]
+[ext_resource type="Texture2D" uid="uid://c4jgvaxt6ujtv" path="res://assets/sprites/Character Components/Body/Body_07.png" id="14_n03dh"]
+[ext_resource type="Texture2D" uid="uid://dy28elkb6p7rc" path="res://assets/sprites/Character Components/Hairstyle/Hairstyle_01_04.png" id="15_l5lu5"]
+[ext_resource type="Texture2D" uid="uid://bne4nfkgemrb3" path="res://assets/sprites/Character Components/Hairstyle/Hairstyle_02_04.png" id="16_qqlam"]
+[ext_resource type="Texture2D" uid="uid://bj1hh43e0m1j7" path="res://assets/sprites/Character Components/Hairstyle/Hairstyle_05_04.png" id="17_4rhsd"]
+[ext_resource type="Texture2D" uid="uid://dnhfeucok16k2" path="res://assets/sprites/Character Components/Hairstyle/Hairstyle_06_04.png" id="18_jrtvc"]
+[ext_resource type="Texture2D" uid="uid://cf0v0yimrkwuj" path="res://assets/sprites/Character Components/Hairstyle/Hairstyle_19_04.png" id="19_bfh2g"]
+[ext_resource type="Texture2D" uid="uid://4j4xff1up5y5" path="res://assets/sprites/Character Components/Eyes/Eyes_01.png" id="20_i0b12"]
+[ext_resource type="Texture2D" uid="uid://c3da8t64ag7gp" path="res://assets/sprites/Character Components/Eyes/Eyes_03.png" id="21_6ik8q"]
+[ext_resource type="Texture2D" uid="uid://ciwoqr3e0bx5" path="res://assets/sprites/Character Components/Eyes/Eyes_04.png" id="22_2y0hv"]
+[ext_resource type="Texture2D" uid="uid://d0frn0l07fvlm" path="res://assets/sprites/Character Components/Eyes/Eyes_05.png" id="23_dnura"]
+[ext_resource type="Texture2D" uid="uid://e6lry8rjsmco" path="res://assets/sprites/Character Components/Eyes/Eyes_06.png" id="24_wicgy"]
+[ext_resource type="Texture2D" uid="uid://j5jqf847hfkd" path="res://assets/sprites/Character Components/Accessory/Accessory_03_Backpack_01.png" id="25_i25g8"]
+[ext_resource type="Texture2D" uid="uid://crsgnewtrcnd7" path="res://assets/sprites/Character Components/Accessory/Accessory_04_Snapback_01.png" id="26_vqhmw"]
+[ext_resource type="Texture2D" uid="uid://v2mb833d0c6" path="res://assets/sprites/Character Components/Accessory/Accessory_04_Snapback_04.png" id="27_wgp57"]
+[ext_resource type="Texture2D" uid="uid://ctl57lkny6oe0" path="res://assets/sprites/Character Components/Accessory/Accessory_11_Beanie_01.png" id="28_5pnva"]
+[ext_resource type="Texture2D" uid="uid://uuc1413mdc4c" path="res://assets/sprites/Character Components/Accessory/Accessory_15_Glasses_01.png" id="29_bkys1"]
+[ext_resource type="Texture2D" uid="uid://gv6n75cc47e3" path="res://assets/sprites/Character Components/Outfit/Outfit_01_03.png" id="30_7oqor"]
+[ext_resource type="Texture2D" uid="uid://mynxjy8sfxel" path="res://assets/sprites/Character Components/Outfit/Outfit_02_01.png" id="31_11s18"]
+[ext_resource type="Texture2D" uid="uid://ygthvnqoxpcb" path="res://assets/sprites/Character Components/Outfit/Outfit_04_02.png" id="32_vrn4y"]
+[ext_resource type="Texture2D" uid="uid://cs2bi8xdda72j" path="res://assets/sprites/Character Components/Outfit/Outfit_07_02.png" id="33_s3pt5"]
+[ext_resource type="Texture2D" uid="uid://jy4c0ia3smum" path="res://assets/sprites/Character Components/Outfit/Outfit_10_04.png" id="34_kqrc5"]
+[ext_resource type="Script" uid="uid://jbcfewop3qry" path="res://scripts/character_selecter.gd" id="35_charscript"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8l75"]
+atlas = ExtResource("10_mouwx")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ynb"]
+atlas = ExtResource("11_q54q4")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u42n"]
+atlas = ExtResource("12_xj1d6")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gllb"]
+atlas = ExtResource("13_wron4")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbqp1"]
+atlas = ExtResource("14_n03dh")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cndh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8l75")
+}],
+"loop": true,
+"name": &"Option1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ynb")
+}],
+"loop": true,
+"name": &"Option2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u42n")
+}],
+"loop": true,
+"name": &"Option3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gllb")
+}],
+"loop": true,
+"name": &"Option4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbqp1")
+}],
+"loop": true,
+"name": &"Option5",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uxkx"]
+atlas = ExtResource("15_l5lu5")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krjox"]
+atlas = ExtResource("16_qqlam")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jutka"]
+atlas = ExtResource("17_4rhsd")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77bix"]
+atlas = ExtResource("18_jrtvc")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbi56"]
+atlas = ExtResource("19_bfh2g")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ynrl2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uxkx")
+}],
+"loop": true,
+"name": &"Option1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krjox")
+}],
+"loop": true,
+"name": &"Option2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jutka")
+}],
+"loop": true,
+"name": &"Option3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77bix")
+}],
+"loop": true,
+"name": &"Option4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbi56")
+}],
+"loop": true,
+"name": &"Option5",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hodwu"]
+atlas = ExtResource("20_i0b12")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6xcm"]
+atlas = ExtResource("21_6ik8q")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt4h7"]
+atlas = ExtResource("22_2y0hv")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhoal"]
+atlas = ExtResource("23_dnura")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt2vd"]
+atlas = ExtResource("24_wicgy")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgi7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hodwu")
+}],
+"loop": true,
+"name": &"Option1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6xcm")
+}],
+"loop": true,
+"name": &"Option2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt4h7")
+}],
+"loop": true,
+"name": &"Option3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhoal")
+}],
+"loop": true,
+"name": &"Option4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt2vd")
+}],
+"loop": true,
+"name": &"Option5",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1x1q"]
+atlas = ExtResource("30_7oqor")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqhiu"]
+atlas = ExtResource("31_11s18")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihpg4"]
+atlas = ExtResource("32_vrn4y")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwc86"]
+atlas = ExtResource("33_s3pt5")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpjsg"]
+atlas = ExtResource("34_kqrc5")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bbxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1x1q")
+}],
+"loop": true,
+"name": &"Option1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqhiu")
+}],
+"loop": true,
+"name": &"Option2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihpg4")
+}],
+"loop": true,
+"name": &"Option3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwc86")
+}],
+"loop": true,
+"name": &"Option4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpjsg")
+}],
+"loop": true,
+"name": &"Option5",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy884"]
+atlas = ExtResource("25_i25g8")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_visbf"]
+atlas = ExtResource("26_vqhmw")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkpq3"]
+atlas = ExtResource("27_wgp57")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llyyx"]
+atlas = ExtResource("28_5pnva")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uckt"]
+atlas = ExtResource("29_bkys1")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kusbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy884")
+}],
+"loop": true,
+"name": &"Option1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_visbf")
+}],
+"loop": true,
+"name": &"Option2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkpq3")
+}],
+"loop": true,
+"name": &"Option3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llyyx")
+}],
+"loop": true,
+"name": &"Option4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uckt")
+}],
+"loop": true,
+"name": &"Option5",
+"speed": 5.0
+}]
+
+[node name="character_selecter" type="Control" unique_id=635538908]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("35_charscript")
+
+[node name="BG" type="ColorRect" parent="." unique_id=51920976]
+material = ExtResource("1_t4jcs")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=286610779]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6984375
+anchor_top = 0.837037
+anchor_right = 0.8229167
+anchor_bottom = 0.9296296
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_1t7mc")
+text = "Confirm"
+metadata/_edit_use_anchors_ = true
+
+[node name="CustomizationOptions" type="TabContainer" parent="." unique_id=1854839497]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13854167
+anchor_top = 0.19074073
+anchor_right = 0.5286458
+anchor_bottom = 0.6074074
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1t7mc")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Body" type="VBoxContainer" parent="CustomizationOptions" unique_id=560873736]
+layout_mode = 2
+theme = ExtResource("3_j8wee")
+theme_override_constants/separation = 15
+metadata/_tab_index = 0
+
+[node name="CheckBox" type="CheckBox" parent="CustomizationOptions/Body" unique_id=530670859]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_pressed = true
+button_group = ExtResource("5_assrq")
+text = "Option 1"
+
+[node name="CheckBox2" type="CheckBox" parent="CustomizationOptions/Body" unique_id=1197125586]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("5_assrq")
+text = "Option 2"
+
+[node name="CheckBox3" type="CheckBox" parent="CustomizationOptions/Body" unique_id=1570312153]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("5_assrq")
+text = "Option 3"
+
+[node name="CheckBox4" type="CheckBox" parent="CustomizationOptions/Body" unique_id=1845069291]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("5_assrq")
+text = "Option 4"
+
+[node name="CheckBox5" type="CheckBox" parent="CustomizationOptions/Body" unique_id=559350757]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("5_assrq")
+text = "Option 5"
+
+[node name="Hairstyle" type="VBoxContainer" parent="CustomizationOptions" unique_id=302304977]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_j8wee")
+theme_override_constants/separation = 15
+metadata/_tab_index = 1
+
+[node name="CheckBox" type="CheckBox" parent="CustomizationOptions/Hairstyle" unique_id=1865783331]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_pressed = true
+button_group = ExtResource("6_koje7")
+text = "Option 1"
+
+[node name="CheckBox2" type="CheckBox" parent="CustomizationOptions/Hairstyle" unique_id=622889028]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("6_koje7")
+text = "Option 2"
+
+[node name="CheckBox3" type="CheckBox" parent="CustomizationOptions/Hairstyle" unique_id=1432448486]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("6_koje7")
+text = "Option 3"
+
+[node name="CheckBox4" type="CheckBox" parent="CustomizationOptions/Hairstyle" unique_id=2079291734]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("6_koje7")
+text = "Option 4"
+
+[node name="CheckBox5" type="CheckBox" parent="CustomizationOptions/Hairstyle" unique_id=1020131694]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("6_koje7")
+text = "Option 5"
+
+[node name="Outfit" type="VBoxContainer" parent="CustomizationOptions" unique_id=320078535]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_j8wee")
+theme_override_constants/separation = 15
+metadata/_tab_index = 2
+
+[node name="CheckBox" type="CheckBox" parent="CustomizationOptions/Outfit" unique_id=1991749596]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_pressed = true
+button_group = ExtResource("7_7akr6")
+text = "Option 1"
+
+[node name="CheckBox2" type="CheckBox" parent="CustomizationOptions/Outfit" unique_id=1918471165]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("7_7akr6")
+text = "Option 2"
+
+[node name="CheckBox3" type="CheckBox" parent="CustomizationOptions/Outfit" unique_id=1348329560]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("7_7akr6")
+text = "Option 3"
+
+[node name="CheckBox4" type="CheckBox" parent="CustomizationOptions/Outfit" unique_id=1231449435]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("7_7akr6")
+text = "Option 4"
+
+[node name="CheckBox5" type="CheckBox" parent="CustomizationOptions/Outfit" unique_id=498688745]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("7_7akr6")
+text = "Option 5"
+
+[node name="Eyes" type="VBoxContainer" parent="CustomizationOptions" unique_id=1758475032]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_j8wee")
+theme_override_constants/separation = 15
+metadata/_tab_index = 3
+
+[node name="CheckBox" type="CheckBox" parent="CustomizationOptions/Eyes" unique_id=1407902440]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_pressed = true
+button_group = ExtResource("8_lsiu1")
+text = "Option 1"
+
+[node name="CheckBox2" type="CheckBox" parent="CustomizationOptions/Eyes" unique_id=730327799]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("8_lsiu1")
+text = "Option 2"
+
+[node name="CheckBox3" type="CheckBox" parent="CustomizationOptions/Eyes" unique_id=906302273]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("8_lsiu1")
+text = "Option 3"
+
+[node name="CheckBox4" type="CheckBox" parent="CustomizationOptions/Eyes" unique_id=1824095983]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("8_lsiu1")
+text = "Option 4"
+
+[node name="CheckBox5" type="CheckBox" parent="CustomizationOptions/Eyes" unique_id=267494233]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("8_lsiu1")
+text = "Option 5"
+
+[node name="Accessory" type="VBoxContainer" parent="CustomizationOptions" unique_id=339016749]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_j8wee")
+theme_override_constants/separation = 15
+metadata/_tab_index = 4
+
+[node name="CheckBox" type="CheckBox" parent="CustomizationOptions/Accessory" unique_id=1009463041]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_pressed = true
+button_group = ExtResource("9_w1bb4")
+text = "Option 1"
+
+[node name="CheckBox2" type="CheckBox" parent="CustomizationOptions/Accessory" unique_id=2106268062]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("9_w1bb4")
+text = "Option 2"
+
+[node name="CheckBox3" type="CheckBox" parent="CustomizationOptions/Accessory" unique_id=1400465514]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("9_w1bb4")
+text = "Option 3"
+
+[node name="CheckBox4" type="CheckBox" parent="CustomizationOptions/Accessory" unique_id=822745475]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("9_w1bb4")
+text = "Option 4"
+
+[node name="CheckBox5" type="CheckBox" parent="CustomizationOptions/Accessory" unique_id=1578056681]
+layout_mode = 2
+theme = ExtResource("4_u6spu")
+button_group = ExtResource("9_w1bb4")
+text = "Option 5"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1319092021]
+layout_mode = 0
+anchor_left = 0.13854167
+anchor_top = 0.712963
+anchor_right = 0.5286458
+anchor_bottom = 0.78333336
+offset_right = 6.1035156e-05
+theme_override_constants/separation = 22
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1157090792]
+layout_mode = 2
+theme = ExtResource("3_j8wee")
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer" unique_id=571370055]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_1t7mc")
+max_length = 25
+caret_blink = true
+
+[node name="CharacterPivot" type="Control" parent="." unique_id=1845707437]
+layout_mode = 1
+anchor_left = 0.7609375
+anchor_top = 0.51203704
+anchor_right = 0.7609375
+anchor_bottom = 0.51203704
+metadata/_edit_use_anchors_ = true
+
+[node name="Components" type="Control" parent="." unique_id=307748654]
+layout_mode = 1
+anchor_left = 0.7609375
+anchor_top = 0.38796297
+anchor_right = 0.7817708
+anchor_bottom = 0.425
+scale = Vector2(7.5, 7.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Body" type="AnimatedSprite2D" parent="Components" unique_id=268518826]
+sprite_frames = SubResource("SpriteFrames_6cndh")
+animation = &"Option5"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hairstyle" type="AnimatedSprite2D" parent="Components" unique_id=256470868]
+sprite_frames = SubResource("SpriteFrames_ynrl2")
+animation = &"Option5"
+metadata/_edit_use_anchors_ = true
+
+[node name="Eyes" type="AnimatedSprite2D" parent="Components" unique_id=663806729]
+sprite_frames = SubResource("SpriteFrames_lgi7g")
+animation = &"Option3"
+metadata/_edit_use_anchors_ = true
+
+[node name="Outfit" type="AnimatedSprite2D" parent="Components" unique_id=1928217093]
+sprite_frames = SubResource("SpriteFrames_3bbxe")
+animation = &"Option5"
+metadata/_edit_use_anchors_ = true
+
+[node name="Accessory" type="AnimatedSprite2D" parent="Components" unique_id=1427823114]
+sprite_frames = SubResource("SpriteFrames_kusbf")
+animation = &"Option5"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackToMenu" type="Button" parent="." unique_id=1817367613]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22760417
+anchor_top = 0.837037
+anchor_right = 0.42447916
+anchor_bottom = 0.9296296
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_1t7mc")
+text = "Back To Menu"
+metadata/_edit_use_anchors_ = true

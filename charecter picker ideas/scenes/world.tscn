@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://t7hdlxqvq8bl"]
+
+[ext_resource type="Texture2D" uid="uid://csf51ole48d34" path="res://icon.svg" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://dq464kkwnenn6" path="res://scenes/player.tscn" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://b2rw60qjx4sfa" path="res://scenes/msg_icon_button.tscn" id="3_msg_btn"]
+[ext_resource type="PackedScene" uid="uid://pegap51mbh4b" path="res://scenes/screen.tscn" id="4_screen"]
+[ext_resource type="Script" uid="uid://bgtjj5058t3j5" path="res://scripts/world.gd" id="5_world_script"]
+[ext_resource type="PackedScene" uid="uid://b0bev8uday4n2" path="res://scenes/test_npc.tscn" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://map" path="res://scenes/map (3) (1)/Map.tscn" id="7_i7141"]
+[ext_resource type="Script" path="res://scripts/teleport_area.gd" id="8_teleport_script"]
+[ext_resource type="Theme" uid="uid://rxu5txwaemg7" path="res://resources/themes/body.tres" id="9_theme"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
+size = Vector2(97, 62)
+
+[node name="world" type="Node2D" unique_id=216442450]
+y_sort_enabled = true
+script = ExtResource("5_world_script")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1021448160]
+position = Vector2(183.00002, 430.99997)
+scale = Vector2(0.3691401, 0.2836369)
+texture = ExtResource("1_rwgxs")
+
+[node name="map" parent="." unique_id=887610060 instance=ExtResource("7_i7141")]
+position = Vector2(-750, -680)
+
+[node name="player" parent="." unique_id=206497308 instance=ExtResource("2_4wyf3")]
+
+[node name="UICanvas" type="CanvasLayer" parent="." unique_id=1404524607]
+
+[node name="MessageScreen" parent="UICanvas" unique_id=1345792750 instance=ExtResource("4_screen")]
+visible = false
+anchor_bottom = 0.88
+
+[node name="MsgIconButton" parent="UICanvas" unique_id=1513644544 instance=ExtResource("3_msg_btn")]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -89.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 89.0
+grow_horizontal = 0
+state = 1
+
+[node name="test_npc" parent="." unique_id=326007248 instance=ExtResource("6_qfnet")]
+position = Vector2(292, 49)
+
+[node name="Telport area" type="Area2D" parent="." unique_id=176287063]
+script = ExtResource("8_teleport_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Telport area" unique_id=21811]
+position = Vector2(181.5, 234)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Telport area" unique_id=143907654]
+
+[node name="EToInteract" type="Label" parent="Telport area/CanvasLayer" unique_id=1441723814]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -74.0
+offset_right = 291.0
+offset_bottom = -41.0
+grow_vertical = 0
+theme = ExtResource("9_theme")
+text = "Press E to enter backyard"

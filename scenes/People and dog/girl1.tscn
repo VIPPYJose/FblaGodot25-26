@@ -398,6 +398,6 @@ polygon = PackedVector2Array(0, -5.2855215, -3.5191326, -5.2855215, -3.0792403, 
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1626097865 groups=["player"]]
 scale = Vector2(1.0052286, 1.0746742)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2.5, 2.5)
 process_callback = 0
 position_smoothing_enabled = true

@@ -1,0 +1,18 @@
+---
+description: Place new/organized files in folders by purpose; ask if unsure
+alwaysApply: true
+---
+
+# File organization
+
+When creating or organizing files, put them in the folder that matches their purpose and the folder’s name.
+
+- **Scripts** (e.g. `.gd`) → `scripts/` (or the relevant subfolder if one exists).
+- **Scenes** (e.g. `.tscn`) → `scenes/`, and in a subfolder when it fits (e.g. `scenes/menu/` for menu screens).
+- **Assets** (sprites, audio, etc.) → `assets/`, under the appropriate subfolder (e.g. `assets/sprites/...`).
+- **Themes/resources** (e.g. `.tres`) → `resources/` (or the matching subfolder like `resources/themes/`).
+- **Documentation** → `context/feature_documentation/` or `context/` as appropriate.
+
+**If it’s unclear** which folder a file belongs in (e.g. new type of asset, new category, or ambiguous name), **ask the user** before creating or moving the file. Do not guess.
+
+When moving or reorganizing existing files, follow the same rule: match folder names to file purpose, and ask if the right place is not obvious.

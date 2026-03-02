@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://charcust123"]
+[gd_scene load_steps=2 format=3 uid="uid://5lab7o31toeo"]
 
-[ext_resource type="Script" path="res://scripts/CharacterCustomize.gd" id="1_char_cust"]
+[ext_resource type="Script" uid="uid://bd7520is8f3xb" path="res://scripts/CharacterCustomize.gd" id="1_char_cust"]
 
 [node name="CharacterCustomize" type="Control"]
 layout_mode = 3
@@ -18,94 +18,119 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15, 0.15, 0.18, 1)
+color = Color(0.12, 0.1, 0.16, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LeftPanel" type="VBoxContainer" parent="Panel/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Panel/HSplitContainer/LeftPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "Customize Your Character"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="Panel/HSplitContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 0
+
+[node name="NameContainer" type="HBoxContainer" parent="Panel/HSplitContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NameLabel" type="Label" parent="Panel/HSplitContainer/LeftPanel/NameContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Name:"
+
+[node name="NameInput" type="LineEdit" parent="Panel/HSplitContainer/LeftPanel/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+placeholder_text = "Enter Your Name"
+max_length = 25
+caret_blink = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/HSplitContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BackButton" type="Button" parent="Panel/HSplitContainer/LeftPanel/ButtonContainer"]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Back"
+
+[node name="RandomizeButton" type="Button" parent="Panel/HSplitContainer/LeftPanel/ButtonContainer"]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Randomize"
+
+[node name="ContinueButton" type="Button" parent="Panel/HSplitContainer/LeftPanel/ButtonContainer"]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Continue"
+
+[node name="RightPanel" type="VBoxContainer" parent="Panel/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PreviewTitle" type="Label" parent="Panel/HSplitContainer/RightPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Preview"
+horizontal_alignment = 1
+
+[node name="PreviewBG" type="ColorRect" parent="Panel/HSplitContainer/RightPanel"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.08, 0.07, 0.12, 1)
+
+[node name="PreviewCenter" type="Control" parent="Panel/HSplitContainer/RightPanel/PreviewBG"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -450.0
-offset_right = 400.0
-offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
-alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 74
-text = "Select Your Character"
-horizontal_alignment = 1
+[node name="Components" type="Control" parent="Panel/HSplitContainer/RightPanel/PreviewBG/PreviewCenter"]
+position = Vector2(-24, -48)
+scale = Vector2(6, 6)
 
-[node name="PreviewContainer" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="Body" type="AnimatedSprite2D" parent="Panel/HSplitContainer/RightPanel/PreviewBG/PreviewCenter/Components"]
 
-[node name="CharacterPreview" type="AnimatedSprite2D" parent="VBoxContainer/PreviewContainer"]
-position = Vector2(200, 200)
-scale = Vector2(8, 8)
+[node name="Eyes" type="AnimatedSprite2D" parent="Panel/HSplitContainer/RightPanel/PreviewBG/PreviewCenter/Components"]
 
-[node name="CycleContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-alignment = 1
+[node name="Hairstyle" type="AnimatedSprite2D" parent="Panel/HSplitContainer/RightPanel/PreviewBG/PreviewCenter/Components"]
 
-[node name="PrevButton" type="Button" parent="VBoxContainer/CycleContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 58
-text = "<"
+[node name="Outfit" type="AnimatedSprite2D" parent="Panel/HSplitContainer/RightPanel/PreviewBG/PreviewCenter/Components"]
 
-[node name="CharacterName" type="Label" parent="VBoxContainer/CycleContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 58
-text = "Character 1"
-
-[node name="NextButton" type="Button" parent="VBoxContainer/CycleContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 58
-text = ">"
-
-[node name="VariantContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="MaleButton" type="Button" parent="VBoxContainer/VariantContainer"]
-custom_minimum_size = Vector2(240, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Male"
-
-[node name="FemaleButton" type="Button" parent="VBoxContainer/VariantContainer"]
-custom_minimum_size = Vector2(240, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Female"
-
-[node name="NameInput" type="LineEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-placeholder_text = "Enter Your Name"
-alignment = 1
-
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(400, 120)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 58
-text = "Continue"
-
-[connection signal="pressed" from="VBoxContainer/CycleContainer/PrevButton" to="." method="_on_prev_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CycleContainer/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VariantContainer/MaleButton" to="." method="_on_male_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VariantContainer/FemaleButton" to="." method="_on_female_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[node name="Accessory" type="AnimatedSprite2D" parent="Panel/HSplitContainer/RightPanel/PreviewBG/PreviewCenter/Components"]

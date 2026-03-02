@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://drocwg65imo3"]
+
+[ext_resource type="Script" uid="uid://blp4l6ktpjxgd" path="res://scripts/starting_menu.gd" id="1_script"]
+[ext_resource type="Material" uid="uid://dmkx7n2qh5wvp" path="res://assets/effects/materials/flowing_gradient_bg.tres" id="3_bg_material"]
+[ext_resource type="Theme" uid="uid://b8k2m4xqawfq1" path="res://resources/themes/menu_button.tres" id="4_menu_btn"]
+[ext_resource type="Theme" uid="uid://c8svy16old3pt" path="res://resources/themes/title.tres" id="5_title"]
+
+[node name="starting_menu" type="Control" unique_id=718346632]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BG" type="ColorRect" parent="." unique_id=465529778]
+material = ExtResource("3_bg_material")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=411394965]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17395833
+anchor_top = 0.13703704
+anchor_right = 0.82604164
+anchor_bottom = 0.24814814
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_override_constants/separation = 25
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleContainer" type="MarginContainer" parent="VBoxContainer2" unique_id=882841701]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleHBox" type="HBoxContainer" parent="VBoxContainer2/TitleContainer" unique_id=456363282]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="PlaceholderTitle" type="Label" parent="VBoxContainer2/TitleContainer/TitleHBox" unique_id=1128911715]
+layout_mode = 2
+theme = ExtResource("5_title")
+text = "Maplewood Mysteries"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tagline" type="Label" parent="VBoxContainer2" unique_id=1293360281]
+layout_mode = 2
+theme = ExtResource("4_menu_btn")
+theme_override_constants/outline_size = 5
+text = "Insert Tagline Here"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=218327498]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15520833
+anchor_top = 0.75555557
+anchor_right = 0.84479165
+anchor_bottom = 0.8388889
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 53
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Button" parent="VBoxContainer" unique_id=1460336622]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_menu_btn")
+text = "Credits"
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=1791185362]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_menu_btn")
+text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=1999941040]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_menu_btn")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1314812024]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_menu_btn")
+text = "Quit"

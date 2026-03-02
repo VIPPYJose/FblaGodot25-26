@@ -1,0 +1,38 @@
+---
+description: Ask after features about documentation; write short docs to context/feature_documentation/
+alwaysApply: true
+---
+
+# Feature documentation
+
+## After completing a feature
+
+When you finish implementing a feature (or a substantial change that behaves like a feature):
+
+1. **Ask**: "Do you want documentation for this feature?"
+2. **If yes**: Create short documentation (see format below) and save it in the `context/feature_documentation/` folder.
+3. **If no**: Do nothing further.
+
+## When the user asks for feature documentation
+
+When the user explicitly asks for documentation of a feature (e.g. "document this feature", "write docs for X"):
+
+- Create **short** documentation in the same style.
+- Save it in `context/feature_documentation/` (one file per feature or logical area).
+
+## Short documentation format
+
+Keep each doc concise:
+
+- **Title**: Clear name of the feature.
+- **What it does**: 1–3 sentences.
+- **Where it lives**: Main files/scenes/scripts (paths or names).
+- **How to use / key behavior**: Bullet points or a short paragraph.
+- **Optional**: 1–2 notes (caveats, dependencies, or follow-ups).
+
+Use Markdown. One file per feature; name files clearly (e.g. `character-select.md`, `settings-menu.md`).
+
+## File location
+
+- **Folder**: `context/feature_documentation/`.
+- Create the folder if it does not exist.

@@ -1,0 +1,7 @@
+[gd_resource type="GradientTexture1D" format=3 uid="uid://c4m8x2vqp7wkl"]
+
+[ext_resource type="Gradient" uid="uid://b2qx8vk7n5mhd" path="res://assets/effects/gradients/menu_bg_gradient.tres" id="1_gradient"]
+
+[resource]
+gradient = ExtResource("1_gradient")
+width = 256

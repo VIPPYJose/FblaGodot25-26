@@ -3,7 +3,7 @@ class_name SpendingGraph
 
 # Graph data
 var spending_points: Array[Vector2] = []  # (day, cumulative_spending)
-var income_points: Array[Vector2] = []    # (day, cumulative_income)
+var cash_points: Array[Vector2] = []    # (day, current_cash_balance)
 
 # Graph dimensions
 var margin_left: int = 80
@@ -33,16 +33,24 @@ func _ready():
 func build_graph_data(transaction_history: Array):
 	# Reset data
 	spending_points.clear()
-	income_points.clear()
+	cash_points.clear()
 	
 	# Sort by day (oldest first for graph)
 	var sorted_transactions = transaction_history.duplicate()
 	sorted_transactions.sort_custom(func(a, b): return a["day"] < b["day"])
 	
 	var cumulative_spending: float = 0.0
-	var cumulative_income: float = 0.0
+	var current_cash: float = 150.0  # Starting cash balance
 	max_day = 0
 	max_amount = 0.0
+	var min_amount: float = 0.0  # Track minimum for negative balances
+	
+	# Add starting point at day 0
+	cash_points.append(Vector2(0, current_cash))
+	if current_cash > max_amount:
+		max_amount = current_cash
+	if current_cash < min_amount:
+		min_amount = current_cash
 	
 	# Build cumulative points
 	for entry in sorted_transactions:
@@ -53,43 +61,101 @@ func build_graph_data(transaction_history: Array):
 			max_day = day
 		
 		if amount < 0:
-			# Spending (negative)
+			# Spending (negative) - subtract from cash
 			cumulative_spending += abs(amount)
 			spending_points.append(Vector2(day, cumulative_spending))
 			if cumulative_spending > max_amount:
 				max_amount = cumulative_spending
+			
+			current_cash += amount  # amount is negative, so this subtracts
+			cash_points.append(Vector2(day, current_cash))
+			if current_cash > max_amount:
+				max_amount = current_cash
+			if current_cash < min_amount:
+				min_amount = current_cash
 		else:
-			# Income (positive)
-			cumulative_income += amount
-			income_points.append(Vector2(day, cumulative_income))
-			if cumulative_income > max_amount:
-				max_amount = cumulative_income
+			# Income (positive) - add to cash
+			current_cash += amount
+			cash_points.append(Vector2(day, current_cash))
+			if current_cash > max_amount:
+				max_amount = current_cash
+			if current_cash < min_amount:
+				min_amount = current_cash
 	
-	# Calculate increments based on max values
-	if max_day > 0:
-		if max_day <= 7:
-			day_increment = 1
-		elif max_day <= 21:
-			day_increment = 3
-		elif max_day <= 49:
-			day_increment = 7
-		else:
-			day_increment = 14
-	
+	# Adjust max_amount to include negative values if needed
+	# max_amount should represent the range from -max_amount to +max_amount
+	if min_amount < 0:
+		max_amount = max(max_amount, abs(min_amount))
+	# Add some padding for better visualization
 	if max_amount > 0:
-		if max_amount <= 50:
-			amount_increment = 10.0
-		elif max_amount <= 200:
-			amount_increment = 25.0
-		elif max_amount <= 500:
-			amount_increment = 50.0
+		max_amount *= 1.1  # 10% padding
+	
+	# Calculate increments based on max values - auto-scale to fit data
+	# The graph area size stays fixed, but numbers scale with data
+	# For days: aim for about 6-10 grid lines for readability
+	if max_day > 0:
+		var target_grid_lines = 8.0
+		var base_increment = max_day / target_grid_lines
+		# Round to nice numbers using logarithmic scaling
+		if base_increment <= 1.5:
+			day_increment = 1
+		elif base_increment <= 3:
+			day_increment = 2
+		elif base_increment <= 6:
+			day_increment = 5
+		elif base_increment <= 10:
+			day_increment = 7
+		elif base_increment <= 20:
+			day_increment = 14
+		elif base_increment <= 50:
+			day_increment = 30
 		else:
+			# For very large ranges, round to nearest power of 10
+			var log_val = log(base_increment) / log(10)
+			var magnitude = pow(10, floor(log_val))
+			var multiplier = round(base_increment / magnitude)
+			day_increment = int(magnitude * multiplier)
+			# Ensure at least 1
+			if day_increment < 1:
+				day_increment = 1
+	
+	# For amounts: aim for about 6-10 grid lines, use nice round numbers
+	if max_amount > 0:
+		var target_grid_lines = 8.0
+		var base_increment = max_amount / target_grid_lines
+		# Round to nice numbers (1, 5, 10, 25, 50, 100, 250, 500, 1000, etc.)
+		if base_increment <= 2:
+			amount_increment = 1.0
+		elif base_increment <= 7.5:
+			amount_increment = 5.0
+		elif base_increment <= 15:
+			amount_increment = 10.0
+		elif base_increment <= 37.5:
+			amount_increment = 25.0
+		elif base_increment <= 75:
+			amount_increment = 50.0
+		elif base_increment <= 150:
 			amount_increment = 100.0
+		elif base_increment <= 375:
+			amount_increment = 250.0
+		elif base_increment <= 750:
+			amount_increment = 500.0
+		elif base_increment <= 1500:
+			amount_increment = 1000.0
+		else:
+			# For very large amounts, round to nearest power of 1000
+			var log_val = log(base_increment) / log(1000)
+			var magnitude = pow(1000, floor(log_val))
+			var multiplier = round(base_increment / magnitude)
+			amount_increment = magnitude * multiplier
+			# Ensure at least 1
+			if amount_increment < 1:
+				amount_increment = 1.0
 	
 	queue_redraw()
 
 func _draw():
-	if spending_points.is_empty() and income_points.is_empty():
+	if spending_points.is_empty() and cash_points.is_empty():
 		# Draw "No data" message
 		draw_string(
 			get_theme_default_font(),
@@ -118,8 +184,8 @@ func _draw():
 	# Draw lines
 	if spending_points.size() > 0:
 		draw_spending_line()
-	if income_points.size() > 0:
-		draw_income_line()
+	if cash_points.size() > 0:
+		draw_cash_line()
 	
 	# Draw legend
 	draw_legend()
@@ -189,9 +255,50 @@ func draw_grid():
 			break  # Safety
 	
 	# Horizontal grid lines (amounts)
+	# Check if we need to handle negative values
+	var min_cash: float = 0.0
+	if cash_points.size() > 0:
+		for cp in cash_points:
+			if cp.y < min_cash:
+				min_cash = cp.y
+	
+	# Calculate zero line position
+	var zero_y = margin_top + graph_height / 2.0
+	
+	# Draw negative grid lines if needed
+	if min_cash < 0:
+		var amount = -amount_increment
+		while amount >= -max_amount:
+			var normalized_y = amount / max_amount
+			var y = zero_y - normalized_y * (graph_height / 2.0)
+			draw_line(
+				Vector2(margin_left, y),
+				Vector2(size.x - margin_right, y),
+				Color(0.3, 0.3, 0.3),
+				1.0
+			)
+			
+			# Amount label
+			var label_pos = Vector2(5, y + 5)
+			draw_string(
+				get_theme_default_font(),
+				label_pos,
+				"$" + str(int(amount)),
+				HORIZONTAL_ALIGNMENT_LEFT,
+				-1,
+				18,
+				Color.WHITE
+			)
+			
+			amount -= amount_increment
+			if amount_increment == 0:
+				break  # Safety
+	
+	# Draw positive grid lines
 	var amount = 0.0
 	while amount <= max_amount:
-		var y = size.y - margin_bottom - (amount / max_amount) * graph_height
+		var normalized_y = amount / max_amount
+		var y = zero_y - normalized_y * (graph_height / 2.0)
 		draw_line(
 			Vector2(margin_left, y),
 			Vector2(size.x - margin_right, y),
@@ -233,15 +340,32 @@ func draw_spending_line():
 	for point in points:
 		draw_circle(point, 5.0, Color(1.0, 0.4, 0.4))
 
-func draw_income_line():
+func draw_cash_line():
 	# Prevent division by zero
 	if max_day <= 0 or max_amount <= 0:
 		return
 	
 	var points = PackedVector2Array()
-	for point in income_points:
+	# Calculate zero line position: map 0 to middle of graph
+	# Range is from -max_amount to +max_amount, so zero is at normalized_y = 0
+	# y position = middle of graph area
+	var zero_y = margin_top + graph_height / 2.0
+	
+	# Check if we have negative values to determine if we need zero line
+	var has_negative = false
+	if cash_points.size() > 0:
+		for cp in cash_points:
+			if cp.y < 0:
+				has_negative = true
+				break
+	
+	for point in cash_points:
 		var x = margin_left + (point.x / float(max_day)) * graph_width
-		var y = size.y - margin_bottom - (point.y / max_amount) * graph_height
+		# Map value from [-max_amount, max_amount] to graph height
+		# normalized_y: -1 (bottom) to +1 (top), with 0 at center
+		var normalized_y = point.y / max_amount
+		# Map to y position: center of graph + offset
+		var y = zero_y - normalized_y * (graph_height / 2.0)
 		points.append(Vector2(x, y))
 	
 	if points.size() >= 2:
@@ -250,6 +374,15 @@ func draw_income_line():
 	# Draw points
 	for point in points:
 		draw_circle(point, 5.0, Color(0.4, 1.0, 0.4))
+	
+	# Draw zero line if there are negative values
+	if has_negative:
+		draw_line(
+			Vector2(margin_left, zero_y),
+			Vector2(size.x - margin_right, zero_y),
+			Color(0.5, 0.5, 0.5),
+			1.0
+		)
 
 func draw_legend():
 	# Legend background
@@ -268,12 +401,12 @@ func draw_legend():
 		Color(1.0, 0.4, 0.4)
 	)
 	
-	# Income legend
+	# Current Cash legend
 	draw_circle(Vector2(legend_x, legend_y + 35), 6.0, Color(0.4, 1.0, 0.4))
 	draw_string(
 		get_theme_default_font(),
 		Vector2(legend_x + 15, legend_y + 40),
-		"Income",
+		"Current Cash",
 		HORIZONTAL_ALIGNMENT_LEFT,
 		-1,
 		18,
@@ -341,10 +474,12 @@ func check_hover(mouse_pos: Vector2):
 			nearest_data = point_data
 			is_spending = true
 	
-	# Check income points
-	for point_data in income_points:
+	# Check cash points
+	var zero_y = margin_top + graph_height / 2.0
+	for point_data in cash_points:
 		var x = margin_left + (point_data.x / float(max_day)) * graph_width
-		var y = size.y - margin_bottom - (point_data.y / max_amount) * graph_height
+		var normalized_y = point_data.y / max_amount
+		var y = zero_y - normalized_y * (graph_height / 2.0)
 		var point = Vector2(x, y)
 		var dist = mouse_pos.distance_to(point)
 		
@@ -356,7 +491,7 @@ func check_hover(mouse_pos: Vector2):
 	
 	if nearest_point.x >= 0 and tooltip_label:
 		hovered_point = nearest_point
-		var type_str = "Spent" if is_spending else "Income"
+		var type_str = "Spent" if is_spending else "Current Cash"
 		tooltip_label.text = "Day %d\n%s: $%.0f" % [int(nearest_data.x), type_str, nearest_data.y]
 		tooltip_label.position = nearest_point + Vector2(15, -50)
 		tooltip_label.visible = true

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://c36d3pm30avww"]
+
+[ext_resource type="Material" uid="uid://dmkx7n2qh5wvp" path="res://assets/effects/materials/flowing_gradient_bg.tres" id="1_2fbfq"]
+[ext_resource type="Script" uid="uid://c68yc71dmfp2g" path="res://scripts/credits.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://c8svy16old3pt" path="res://resources/themes/title.tres" id="2_8gwij"]
+[ext_resource type="Theme" uid="uid://b8k2m4xqawfq1" path="res://resources/themes/menu_button.tres" id="3_mah5v"]
+[ext_resource type="Theme" uid="uid://rxu5txwaemg7" path="res://resources/themes/body.tres" id="4_kyhnv"]
+
+[node name="credits" type="Control" unique_id=1643704373]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BG" type="ColorRect" parent="." unique_id=491714634]
+material = ExtResource("1_2fbfq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Titie" type="Label" parent="." unique_id=1275626228]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38020834
+anchor_top = 0.05740741
+anchor_right = 0.6197917
+anchor_bottom = 0.11666667
+grow_horizontal = 2
+theme = ExtResource("2_8gwij")
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BackToMenu" type="Button" parent="." unique_id=34834564]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4015625
+anchor_top = 0.85
+anchor_right = 0.5984375
+anchor_bottom = 0.9425926
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_mah5v")
+text = "Back To Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Label" parent="." unique_id=607689169]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030208332
+anchor_top = 0.15925926
+anchor_right = 0.96979165
+anchor_bottom = 0.8064815
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_kyhnv")
+text = "INSERT CREDITS HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true

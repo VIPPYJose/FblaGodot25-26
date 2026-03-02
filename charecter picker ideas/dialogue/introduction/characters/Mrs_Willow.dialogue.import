@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://lnfgxa8ke7ig"
+path="res://.godot/imported/Mrs_Willow.dialogue-fb4e11e365214166904541533c4c4834.tres"
+
+[deps]
+
+source_file="res://dialogue/introduction/characters/Mrs_Willow.dialogue"
+dest_files=["res://.godot/imported/Mrs_Willow.dialogue-fb4e11e365214166904541533c4c4834.tres"]
+
+[params]
+
+defaults=true

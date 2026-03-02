@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://clyl41sxmkkvw"
+path="res://.godot/imported/Mr_Pines.dialogue-c2bcb20ca3164ceffff0b2f7318f0f2a.tres"
+
+[deps]
+
+source_file="res://dialogue/introduction/characters/Mr_Pines.dialogue"
+dest_files=["res://.godot/imported/Mr_Pines.dialogue-c2bcb20ca3164ceffff0b2f7318f0f2a.tres"]
+
+[params]
+
+defaults=true

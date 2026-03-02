@@ -1,0 +1,359 @@
+[gd_scene format=3 uid="uid://boxheagepssgy"]
+
+[ext_resource type="Material" uid="uid://dmkx7n2qh5wvp" path="res://assets/effects/materials/flowing_gradient_bg.tres" id="1_6wm04"]
+[ext_resource type="Script" uid="uid://donjmrm61fp1a" path="res://scripts/settings.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://c8svy16old3pt" path="res://resources/themes/title.tres" id="2_f4mfi"]
+[ext_resource type="Theme" uid="uid://b8k2m4xqawfq1" path="res://resources/themes/menu_button.tres" id="3_es4n0"]
+[ext_resource type="Theme" uid="uid://rxu5txwaemg7" path="res://resources/themes/body.tres" id="5_es4n0"]
+[ext_resource type="Theme" uid="uid://daxws2q1mrcwx" path="res://resources/themes/header.tres" id="5_gis3k"]
+[ext_resource type="ButtonGroup" uid="uid://c7qoaieo1nsok" path="res://resources/transitions.tres" id="6_transitions"]
+
+[node name="settings" type="Control" unique_id=1226723811]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1706458258]
+material = ExtResource("1_6wm04")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="." unique_id=184670902]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36302084
+anchor_top = 0.05740741
+anchor_right = 0.63697916
+anchor_bottom = 0.11666667
+offset_left = 33.0
+offset_right = -33.0
+grow_horizontal = 2
+theme = ExtResource("2_f4mfi")
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BackToMenu" type="Button" parent="." unique_id=125071957]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4015625
+anchor_top = 0.85
+anchor_right = 0.5984375
+anchor_bottom = 0.9425926
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_es4n0")
+text = "Back To Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1112025368]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26614583
+anchor_top = 0.15277778
+anchor_right = 0.7338542
+anchor_bottom = 0.74814814
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+metadata/_edit_use_anchors_ = true
+
+[node name="Volume" type="VBoxContainer" parent="VBoxContainer" unique_id=1269896061]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer/Volume" unique_id=2019052970]
+layout_mode = 2
+theme = ExtResource("5_gis3k")
+text = "Volume Controls"
+
+[node name="Master" type="HBoxContainer" parent="VBoxContainer/Volume" unique_id=1315304887]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Volume/Master" unique_id=183326758]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="Master Volume" type="Label" parent="VBoxContainer/Volume/Master" unique_id=2033056045]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("5_es4n0")
+text = "Master Volume "
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Volume/Master" unique_id=1159200313]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.02
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Volume/Master" unique_id=1845216753]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 2.0
+value = 70.0
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Volume/Master" unique_id=2020324030]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Music" type="HBoxContainer" parent="VBoxContainer/Volume" unique_id=927905282]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Volume/Music" unique_id=1985450193]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="Music Volume" type="Label" parent="VBoxContainer/Volume/Music" unique_id=464748508]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("5_es4n0")
+text = "Music Volume "
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Volume/Music" unique_id=1569429349]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.04
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Volume/Music" unique_id=2080986011]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 2.0
+value = 70.0
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Volume/Music" unique_id=896593122]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="SFX" type="HBoxContainer" parent="VBoxContainer/Volume" unique_id=997292344]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Volume/SFX" unique_id=1141041485]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="SFX Volume" type="Label" parent="VBoxContainer/Volume/SFX" unique_id=152623948]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("5_es4n0")
+text = "SFX Volume   "
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Volume/SFX" unique_id=1517082953]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.04
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Volume/SFX" unique_id=16381452]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 2.0
+value = 70.0
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Volume/SFX" unique_id=54756070]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Maximize" type="HBoxContainer" parent="VBoxContainer" unique_id=199979365]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Maximize" unique_id=1168185666]
+layout_mode = 2
+theme = ExtResource("5_gis3k")
+text = "Maximize"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Maximize" unique_id=1139154570]
+custom_minimum_size = Vector2(58.9, 0)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/Maximize" unique_id=1477787831]
+layout_mode = 2
+size_flags_stretch_ratio = 3.1
+icon_alignment = 1
+
+[node name="Transition" type="VBoxContainer" parent="VBoxContainer" unique_id=1156484554]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition" unique_id=2061713534]
+layout_mode = 2
+theme = ExtResource("5_gis3k")
+text = "Transition"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Transition" unique_id=543964022]
+layout_mode = 2
+
+[node name="Squares" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=2003941705]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Squares" unique_id=446916879]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Squares" unique_id=863345100]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Squares"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Squares" unique_id=1171961366]
+custom_minimum_size = Vector2(85.16, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Squares" unique_id=26978269]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Scribbles" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=481083562]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Scribbles" unique_id=1408469292]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Scribbles" unique_id=996703556]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Scribbles"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Scribbles" unique_id=845947191]
+custom_minimum_size = Vector2(60.83, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Scribbles" unique_id=1935646212]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Curtains" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=2019934480]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Curtains" unique_id=1032898059]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Curtains" unique_id=262568179]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Curtains"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Curtains" unique_id=1016683302]
+custom_minimum_size = Vector2(73.15, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Curtains" unique_id=1286776093]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Circles" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=1736222295]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Circles" unique_id=859381941]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Circles" unique_id=1144279012]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Circles"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Circles" unique_id=1773266257]
+custom_minimum_size = Vector2(85.99, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Circles" unique_id=249825893]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Radial" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=1035795858]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Radial" unique_id=1962653367]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Radial" unique_id=200350932]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Radial"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Radial" unique_id=965579202]
+custom_minimum_size = Vector2(99.005, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Radial" unique_id=1476731243]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Diagonal" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=1717015323]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Diagonal" unique_id=659982063]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Diagonal" unique_id=388381294]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Diagonal"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Diagonal" unique_id=2142780038]
+custom_minimum_size = Vector2(73.155, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Diagonal" unique_id=69327883]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Horizontal" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=612767712]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Horizontal" unique_id=642880043]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Horizontal" unique_id=1561444740]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Horizontal"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Horizontal" unique_id=673992437]
+custom_minimum_size = Vector2(47.295, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Horizontal" unique_id=478340847]
+layout_mode = 2
+button_group = ExtResource("6_transitions")
+
+[node name="Vertical" type="HBoxContainer" parent="VBoxContainer/Transition/GridContainer" unique_id=234124233]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Transition/GridContainer/Vertical" unique_id=1761090496]
+custom_minimum_size = Vector2(31.435, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Transition/GridContainer/Vertical" unique_id=1867223644]
+layout_mode = 2
+theme = ExtResource("5_es4n0")
+text = "Vertical"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Transition/GridContainer/Vertical" unique_id=377192206]
+custom_minimum_size = Vector2(73.825, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Vertical" unique_id=1032545359]
+layout_mode = 2
+button_group = ExtResource("6_transitions")

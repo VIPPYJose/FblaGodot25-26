@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://pegap51mbh4b"]
+
+[ext_resource type="Script" uid="uid://cqag2ro7d18r" path="res://scripts/screen.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://b8k2m4xqawfq1" path="res://resources/themes/menu_button.tres" id="2_theme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_left"]
+bg_color = Color(0.38, 0.25, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.52, 0.35, 0.18, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_normal"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.35, 0.22, 0.1, 0.5)
+border_width_bottom = 1
+border_color = Color(0.48, 0.32, 0.16, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_selected"]
+bg_color = Color(0.52, 0.35, 0.18, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.72, 0.52, 0.28, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_right"]
+bg_color = Color(0.45, 0.3, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.58, 0.38, 0.2, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="Screen" type="Control" unique_id=2012695458]
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.12
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=629952977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(500)
+dragger_visibility = 1
+split_offset = 500
+
+[node name="MessageListPanel" type="PanelContainer" parent="HSplitContainer" unique_id=2005513548]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_left")
+
+[node name="LeftMargin" type="MarginContainer" parent="HSplitContainer/MessageListPanel" unique_id=303537354]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 17
+theme_override_constants/margin_bottom = 16
+
+[node name="LeftVBox" type="VBoxContainer" parent="HSplitContainer/MessageListPanel/LeftMargin" unique_id=1856313773]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MessageList" type="ItemList" parent="HSplitContainer/MessageListPanel/LeftMargin/LeftVBox" unique_id=132630619]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.98, 0.92, 1)
+theme_override_colors/font_hovered_color = Color(1, 0.98, 0.92, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_constants/v_separation = 4
+theme_override_font_sizes/font_size = 28
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_item_selected")
+theme_override_styles/selected = SubResource("StyleBoxFlat_item_selected")
+
+[node name="NavButtons" type="HBoxContainer" parent="HSplitContainer/MessageListPanel/LeftMargin/LeftVBox" unique_id=1461393271]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 47
+
+[node name="Spacer" type="Control" parent="HSplitContainer/MessageListPanel/LeftMargin/LeftVBox/NavButtons" unique_id=1702991362]
+layout_mode = 2
+
+[node name="PrevButton" type="Button" parent="HSplitContainer/MessageListPanel/LeftMargin/LeftVBox/NavButtons" unique_id=730232608]
+layout_mode = 2
+text = "Previous"
+
+[node name="NextButton" type="Button" parent="HSplitContainer/MessageListPanel/LeftMargin/LeftVBox/NavButtons" unique_id=1623819225]
+layout_mode = 2
+text = "Next"
+
+[node name="Spacer2" type="Control" parent="HSplitContainer/MessageListPanel/LeftMargin/LeftVBox/NavButtons" unique_id=280290028]
+layout_mode = 2
+
+[node name="DetailPanel" type="PanelContainer" parent="HSplitContainer" unique_id=1114102424]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_right")
+
+[node name="DetailMargin" type="MarginContainer" parent="HSplitContainer/DetailPanel" unique_id=1353048911]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="DetailVBox" type="VBoxContainer" parent="HSplitContainer/DetailPanel/DetailMargin" unique_id=1282244614]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DetailSubject" type="Label" parent="HSplitContainer/DetailPanel/DetailMargin/DetailVBox" unique_id=525938118]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.98, 0.92, 1)
+text = "Subject"
+
+[node name="DetailSender" type="Label" parent="HSplitContainer/DetailPanel/DetailMargin/DetailVBox" unique_id=972200968]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.9, 0.82, 1)
+text = "Sender"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/DetailPanel/DetailMargin/DetailVBox" unique_id=41167329]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BodyScroll" type="ScrollContainer" parent="HSplitContainer/DetailPanel/DetailMargin/DetailVBox" unique_id=1049245622]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DetailBody" type="RichTextLabel" parent="HSplitContainer/DetailPanel/DetailMargin/DetailVBox/BodyScroll" unique_id=212466181]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.98, 0.92, 1)
+bbcode_enabled = true
+text = "Select a message"
+fit_content = true
+scroll_active = false
+
+[node name="CloseButton" type="Button" parent="." unique_id=2024556415]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -148.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+text = "Close"

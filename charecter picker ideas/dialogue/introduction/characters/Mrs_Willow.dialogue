@@ -1,0 +1,57 @@
+~ start
+Mrs. Willow: Oh! There you are, dear. I've been hoping someone would come by.
+Mrs. Willow: My cat, Whiskers, has gone missing. She slipped through a gap in the fence this morning and I simply cannot get over to look!
+- I'll help you find Whiskers!
+	Mrs. Willow: Oh, bless your heart! She's somewhere in the fenced yard next door. The gate is stuck, but there's a big crate by the shed — maybe you could push it to climb over.
+	=> searchYard
+- I'm kind of busy right now...
+	Mrs. Willow: Oh... I see. Poor Whiskers has been out there all morning.
+	Mrs. Willow: I wouldn't ask if I weren't so worried. Are you sure you can't spare a moment?
+	=> failureState
+
+~ failureState
+- Fine, I'll help after all.
+	Mrs. Willow: Thank you, dear! I knew you'd come around.
+	=> searchYard
+- Maybe later.
+	Mrs. Willow: Well... she can't stay out there forever. Please come back when you're ready.
+	=> END
+
+~ searchYard
+Mrs. Willow: The crate is right next to the shed wall. Push it close to the fence and you should be able to climb over!
+- Push the crate toward the fence
+	Mrs. Willow: That's it — almost there! Give it one more shove.
+	- Push it the rest of the way
+		Mrs. Willow: Perfect! Now climb over and look for Whiskers!
+		=> lookForCat
+	- This crate is really heavy...
+		Mrs. Willow: You can do it! Just lean into it, dear.
+		=> searchYard
+- Look around the yard for another way in
+	=> hiddenInteraction
+
+~ hiddenInteraction
+MC: Hmm... there's a small gap in the fence near the rosebush. It's tight, but I might be able to squeeze a hand through and rattle the latch from this side.
+MC: ...Click! The latch gives way!
+Mrs. Willow: [#surprised] Oh my goodness — you found the side latch! I completely forgot that was there. How clever of you!
+Mrs. Willow: Well, go on in then!
+=> lookForCat
+
+~ lookForCat
+MC: I can hear a soft meow near the flowerpots...
+MC: There she is — curled up behind the big terracotta pot!
+Mrs. Willow: Whiskers! Oh, thank goodness!
+- Pick up Whiskers and bring her back
+	Mrs. Willow: [#happy] Oh, you wonderful child! She looks perfectly fine — just a little shaken up.
+	Mrs. Willow: Here — take this. It's my old notebook. I used to jot down everything odd that happened around here. I think you'll find it useful.
+	Mrs. Willow: And one more thing — go speak with Mr. Pines at his shop down the road. He's been hearing strange noises too. He'll want to know you're looking into things.
+	=> tutorialComplete
+- Wait for Whiskers to come out on her own
+	MC: She's not budging. I'd better just scoop her up gently.
+	Mrs. Willow: Don't be shy, dear — she won't scratch! Go on!
+	=> lookForCat
+
+~ tutorialComplete
+Mrs. Willow: You're a good kid. Oakvale needs more people paying attention to things like this.
+Mrs. Willow: Now off you go — and be careful out there. Something strange really is going on, and I don't think it's just a lost cat.
+=> END

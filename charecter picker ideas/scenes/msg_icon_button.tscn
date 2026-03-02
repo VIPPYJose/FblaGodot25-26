@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b2rw60qjx4sfa"]
+
+[ext_resource type="Script" uid="uid://xgu04w8jr58u" path="res://scripts/msg_icon_button.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dweqk5gsumlfe" path="res://assets/sprites/msgs/none.png" id="2_none"]
+
+[node name="MsgIconButton" type="TextureButton" unique_id=473867281]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("2_none")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_script")

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://0fkwwkm0a80h"]
+
+[ext_resource type="Material" uid="uid://dmkx7n2qh5wvp" path="res://assets/effects/materials/flowing_gradient_bg.tres" id="1_s1lw7"]
+[ext_resource type="Theme" uid="uid://c8svy16old3pt" path="res://resources/themes/title.tres" id="2_qox6o"]
+[ext_resource type="Theme" uid="uid://daxws2q1mrcwx" path="res://resources/themes/header.tres" id="3_0subk"]
+[ext_resource type="Script" uid="uid://cscecp7oy87pi" path="res://scripts/quitting_msg.gd" id="4_quit"]
+
+[node name="quitting_msg" type="Control" unique_id=109698921]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_quit")
+
+[node name="BG" type="ColorRect" parent="." unique_id=783566995]
+material = ExtResource("1_s1lw7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=364610156]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.122395836
+anchor_top = 0.44444445
+anchor_right = 0.8776042
+anchor_bottom = 0.5555556
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 31
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1589903045]
+layout_mode = 2
+theme = ExtResource("2_qox6o")
+text = "Thank You For Playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=96755850]
+layout_mode = 2
+theme = ExtResource("3_0subk")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 76
+text = "Come Back again!"
+horizontal_alignment = 1
+vertical_alignment = 1

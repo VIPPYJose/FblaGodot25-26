@@ -1,0 +1,50 @@
+~ start
+Mr. Pines: Welcome to Pines' General Store! We've got — oh. You're the kid from Oakvale Street, aren't you?
+Mr. Pines: Did Mrs. Willow send you? I figured someone would come by eventually.
+- She did. You've been hearing strange noises too?
+	Mr. Pines: Strange noises, strange shadows, strange hours. You name it.
+	=> noiseTopic
+- I'm just browsing, actually.
+	Mr. Pines: Ha! Nobody just browses in this neighborhood anymore. Not since the odd things started up.
+	Mr. Pines: Go on, ask what you really came here to ask.
+	=> start
+
+~ noiseTopic
+Mr. Pines: Three nights running now. Coming from the direction of the park — around midnight, I'd guess. A kind of low humming. Not an animal. Not music. Something... mechanical.
+- That sounds serious. What do you think it is?
+	Mr. Pines: If I knew that, I wouldn't still be losing sleep over it, would I?
+	Mr. Pines: Look — I don't want to scare you. But whatever it is, it's gotten bigger. Two nights ago my delivery boxes rattled off the shelf. Nothing fell, mind you — just rattled.
+	=> adviceTopic
+- Maybe it's just the pipes?
+	Mr. Pines: I've lived here thirty years. I know what the pipes sound like.
+	Mr. Pines: This is different. Rhythmic. Purposeful.
+	=> adviceTopic
+
+~ adviceTopic
+Mr. Pines: If you're planning to investigate — and I have a feeling you are — you'll want to be thorough. Talk to everyone. Write things down.
+- I actually have a notebook now. Mrs. Willow gave it to me.
+	Mr. Pines: [#surprised] Did she now? Good. That woman's sharper than she lets on.
+	Mr. Pines: Keep notes of everything strange. Dates, times, descriptions. You'll start to see a pattern.
+	=> parkHint
+- I'll figure it out as I go.
+	Mr. Pines: That's the spirit, I suppose. Just don't go into the park at night on your own.
+	=> parkHint
+
+~ parkHint
+Mr. Pines: The park is your next stop. I'd head there during daylight. There are kids there most afternoons — they may have seen or heard something.
+Mr. Pines: And there's a teacher, Ms. Harper, who supervises the school yard near the south gate. She's been keeping her own eye on things. Worth a conversation.
+- Thanks, Mr. Pines. I'll head to the park.
+	Mr. Pines: One more thing. The gate on the north end of the neighborhood — it's been sticking lately. Once you have everything you need from Mrs. Willow, it should open for you.
+	Mr. Pines: Stay safe out there. And if you find anything — come back and tell me.
+	=> END
+- Before I go — is there anything else unusual you've noticed?
+	=> shopSecrets
+
+~ shopSecrets
+Mr. Pines: [#thoughtful] Well... since you're asking.
+Mr. Pines: A few days ago a customer came in right before closing. Young kid, maybe a couple years older than you. Bought wire, batteries, and three small motors. Paid in exact change and didn't say a word.
+Mr. Pines: I didn't think much of it then. But now I wonder.
+MC: Batteries and motors. That sounds like... a project of some kind.
+Mr. Pines: Could be nothing. Could be everything. Write it down in that notebook.
+Mr. Pines: Now go on — daylight's burning.
+=> END

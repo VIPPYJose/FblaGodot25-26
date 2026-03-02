@@ -140,6 +140,13 @@ func setup_hud():
 			hud.shop_menu_instance.shop_closed.connect(_on_shop_closed)
 
 func spawn_player():
+	if GameState.uses_component_system:
+		_spawn_component_player()
+	else:
+		_spawn_legacy_player()
+
+
+func _spawn_legacy_player():
 	var variant = GameState.character_variant
 	var id = GameState.character_id
 	var scene_path = ""
@@ -158,7 +165,61 @@ func spawn_player():
 	player.input_pickable = true
 	add_child(player)
 	player.add_to_group("player")
-	
+	_add_name_tag(player)
+
+
+func _spawn_component_player():
+	# Build a layered character from individual component SpriteFrames
+	var player = CharacterBody2D.new()
+	player.name = "Player"
+	player.global_position = player_spawn_pos
+	player.scale = Vector2(2.27, 2.27)
+	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	player.input_pickable = true
+
+	# Layer order: Body → Eyes → Outfit → Hairstyle → Accessory
+	var components := GameState.get_character_components()
+	var layer_order := ["body", "eyes", "outfit", "hairstyle", "accessory"]
+	var first_sprite: AnimatedSprite2D = null
+
+	for category in layer_order:
+		var option: int = components.get(category, 1)
+		var sf: SpriteFrames = GameState.get_component_sprite_frames(category, option)
+		if sf:
+			var sprite := AnimatedSprite2D.new()
+			sprite.name = category.capitalize()
+			sprite.sprite_frames = sf
+			sprite.position = Vector2(0, -4.26)
+			if sf.has_animation("idle_down"):
+				sprite.animation = "idle_down"
+			player.add_child(sprite)
+			if first_sprite == null:
+				first_sprite = sprite
+
+	# Add collision shape
+	var collision = CollisionPolygon2D.new()
+	collision.polygon = PackedVector2Array([
+		Vector2(0, -5.28), Vector2(-3.52, -5.28), Vector2(-3.08, 6.6),
+		Vector2(0, 9.25), Vector2(3.08, 6.6), Vector2(3.52, -5.28)
+	])
+	player.add_child(collision)
+
+	# Add camera
+	var camera = Camera2D.new()
+	camera.name = "Camera2D"
+	camera.zoom = Vector2(2.5, 2.5)
+	camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
+	camera.position_smoothing_enabled = true
+	camera.add_to_group("player")
+	player.add_child(camera)
+
+	player.set_script(load("res://scripts/player_component.gd"))
+	add_child(player)
+	player.add_to_group("player")
+	_add_name_tag(player)
+
+
+func _add_name_tag(player: Node):
 	var name_tag = Label.new()
 	name_tag.text = GameState.player_name
 	name_tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

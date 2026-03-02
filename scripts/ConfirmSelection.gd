@@ -19,6 +19,13 @@ func _ready():
 	dog_label.visible = false
 
 func setup_player():
+	if GameState.uses_component_system:
+		_setup_component_player()
+	else:
+		_setup_legacy_player()
+
+
+func _setup_legacy_player():
 	var variant = GameState.character_variant
 	var id = GameState.character_id
 	var scene_path = ""
@@ -44,6 +51,28 @@ func setup_player():
 		player_sprite.play("idle_up_dude1")
 	
 	player_scene.free()
+
+
+func _setup_component_player():
+	# Hide the default single-sprite preview (we'll add layered sprites instead)
+	player_sprite.visible = false
+
+	var components := GameState.get_character_components()
+	var layer_order := ["body", "eyes", "outfit", "hairstyle", "accessory"]
+	var container: Control = player_sprite.get_parent()  # PlayerContainer
+
+	for category in layer_order:
+		var option: int = components.get(category, 1)
+		var sf: SpriteFrames = GameState.get_component_sprite_frames(category, option)
+		if sf:
+			var sprite := AnimatedSprite2D.new()
+			sprite.name = "Component_" + category.capitalize()
+			sprite.sprite_frames = sf
+			sprite.position = player_sprite.position
+			sprite.scale = player_sprite.scale
+			if sf.has_animation("idle_down"):
+				sprite.play("idle_down")
+			container.add_child(sprite)
 
 func setup_dog():
 	var dog_scene = load("res://scenes/People and dog/dog.tscn").instantiate()

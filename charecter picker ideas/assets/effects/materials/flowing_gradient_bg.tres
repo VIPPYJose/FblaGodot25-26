@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dmkx7n2qh5wvp"]
+
+[ext_resource type="Shader" uid="uid://chbyfs7hbv716" path="res://assets/effects/shaders/flowing_gradient.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" uid="uid://c4m8x2vqp7wkl" path="res://assets/effects/textures/menu_bg_gradient_texture.tres" id="2_texture"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/gradient_texture = ExtResource("2_texture")
+shader_parameter/pixel_steps = 128.0
+shader_parameter/speed = 0.035
+shader_parameter/direction = Vector2(-1, -1)
