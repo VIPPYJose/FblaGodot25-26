@@ -24,7 +24,7 @@ func _ready() -> void:
 	# Set camera zoom
 	var camera = get_node_or_null("Camera2D")
 	if camera:
-		camera.zoom = Vector2(5, 5)
+		camera.zoom = Vector2(2.5, 2.5)
 
 	# Ensure player collides with everything
 	collision_mask = 1

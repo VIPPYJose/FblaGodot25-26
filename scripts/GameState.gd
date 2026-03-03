@@ -12,46 +12,12 @@ var char_hairstyle: int = 1
 var char_outfit: int = 1
 var char_eyes: int = 1
 var char_accessory: int = 1
-var uses_component_system: bool = false  # true when new customizer is used
+var uses_component_system: bool = false # true when new customizer is used
 
-## Maps component index (1-5) to SpriteFrames .tres paths for in-game animations
-const COMPONENT_ANIM_PATHS := {
-	"body": [
-		"res://resources/character_components_animations/body/Body_01.tres",
-		"res://resources/character_components_animations/body/Body_02.tres",
-		"res://resources/character_components_animations/body/Body_03.tres",
-		"res://resources/character_components_animations/body/Body_04.tres",
-		"res://resources/character_components_animations/body/Body_07.tres",
-	],
-	"hairstyle": [
-		"res://resources/character_components_animations/hairstyle/Hairstyle_01_04.tres",
-		"res://resources/character_components_animations/hairstyle/Hairstyle_02_04.tres",
-		"res://resources/character_components_animations/hairstyle/Hairstyle_05_04.tres",
-		"res://resources/character_components_animations/hairstyle/Hairstyle_06_04.tres",
-		"res://resources/character_components_animations/hairstyle/Hairstyle_19_04.tres",
-	],
-	"eyes": [
-		"res://resources/character_components_animations/eyes/Eyes_01.tres",
-		"res://resources/character_components_animations/eyes/Eyes_03.tres",
-		"res://resources/character_components_animations/eyes/Eyes_04.tres",
-		"res://resources/character_components_animations/eyes/Eyes_05.tres",
-		"res://resources/character_components_animations/eyes/Eyes_06.tres",
-	],
-	"outfit": [
-		"res://resources/character_components_animations/outfit/Outfit_01_03.tres",
-		"res://resources/character_components_animations/outfit/Outfit_02_01.tres",
-		"res://resources/character_components_animations/outfit/Outfit_04_02.tres",
-		"res://resources/character_components_animations/outfit/Outfit_07_02.tres",
-		"res://resources/character_components_animations/outfit/Outfit_10_04.tres",
-	],
-	"accessory": [
-		"res://resources/character_components_animations/accessory/Accessory_03_Backpack_01.tres",
-		"res://resources/character_components_animations/accessory/Accessory_04_Snapback_01.tres",
-		"res://resources/character_components_animations/accessory/Accessory_04_Snapback_04.tres",
-		"res://resources/character_components_animations/accessory/Accessory_11_Beanie_01.tres",
-		"res://resources/character_components_animations/accessory/Accessory_15_Glasses_01.tres",
-	],
-}
+const CharacterAssets = preload("res://scripts/CharacterAssets.gd")
+
+## Maps component index (1-N) to SpriteFrames .tres paths for in-game animations
+var COMPONENT_ANIM_PATHS: Dictionary = CharacterAssets.COMPONENT_ANIM_PATHS
 
 var money: int = 150
 

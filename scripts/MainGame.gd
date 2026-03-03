@@ -173,7 +173,7 @@ func _spawn_component_player():
 	var player = CharacterBody2D.new()
 	player.name = "Player"
 	player.global_position = player_spawn_pos
-	player.scale = Vector2(2.27, 2.27)
+	player.scale = Vector2(0.0000000017, 0.0000000017)
 	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	player.input_pickable = true
 
@@ -210,6 +210,7 @@ func _spawn_component_player():
 	camera.zoom = Vector2(2.5, 2.5)
 	camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 	camera.position_smoothing_enabled = true
+	camera.scale = Vector2(1.005, 1.075)
 	camera.add_to_group("player")
 	player.add_child(camera)
 
