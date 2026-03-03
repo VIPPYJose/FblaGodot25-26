@@ -4,145 +4,123 @@ A fun pet care simulation game where you raise and care for a virtual dog. Manag
 
 ## Quick Navigation
 
-- [What's This Game About?](#whats-this-game-about)
-- [Libraries We're Using](#libraries-were-using)
-- [How Everything Connects](#how-everything-connects)
-- [Folder & File Guide](#folder--file-guide)
-- [Getting Started](#getting-started)
-- [Plugin Integration](#plugin-integration)
-- [Help](#help)
-- [License](#license)
-- [Authors](#authors)
-- [Credits](#credits)
+- [**Comments & Formatting**](#1-appropriate-use-of-comments-naming-conventions-and-formatting) (1. Appropriate Use of Comments, Naming Conventions, and Formatting)
+- [**Program Modularity**](#2-program-modularity-and-readable-design) (2. Program Modularity and Readable Design)
+- [**Data Storage**](#3-data-storage-and-scope-management) (3. Data Storage and Scope Management)
+- [**Report Generation**](#4-report-generation) (4. Report Generation)
+- [**File Directory**](#5-file-directory-details) (5. File Directory Details)
+- [**Libraries & Attribution**](#6-templates-libraries-and-attribution) (6. Templates, Libraries, and Attribution)
 
 ---
 
-## What's This Game About?
+## 1. Appropriate Use of Comments, Naming Conventions, and Formatting
 
-You start a new game by creating a character and choosing from 8 different dog breeds. Then you spend your days looking after your pet:
+The codebase follows consistent styling and standard naming conventions to maintain readability. 
 
-- **Feed & hydrate your dog** - Buy food and water from the shop to keep hunger and thirst in check
-- **Keep your dog healthy** - Watch out for health issues and visit the vet when needed
-- **Manage your allowance** - You get 150 gold per week to spend on supplies, vet visits, and emergencies
-- **Chat with NPCs** - Talk to the shop owner, vet, and townspeople to learn more about the game world
-- **Watch time pass** - Each in-game day takes 5 minutes. Your dog's needs decay over time, just like a real pet
+- **Naming Conventions**: Variables and functions use `snake_case` (e.g., `dog_breed`, `current_day`, `spend_money()`). Classes and script nodes use `PascalCase` (e.g., `GameState`, `DogState`).
+- **Formatting**: Scripts maintain strict indentation and structure based on GDScript guidelines. Signals, variables, and engine hook functions (`_ready`, `_process`) remain grouped sequentially at the top of files.
+- **Comments**: Inline comments explain non-obvious logic constraints. Section headers (e.g., `# Finance System`, `# Customizable Costs`) break large files into manageable, readable blocks.
 
-When you start, there's a Day 1 tutorial that walks you through the basics. After that, you're free to play however you want.
-
----
-
-## Libraries We're Using
-
-We built this game using some awesome open-source tools. Here's what each one does:
-
-| Library | Who Made It | What It Does |
-|---------|-----------|------------|
-| **Dialogue Manager** | Nathan Hoad | Handles all the NPC conversations. Lets us write dialogue in simple `.dialogue` files instead of coding it all out. |
-| **Scene Manager** | GlassBrick | Smoothly transitions between scenes with cool effects like curtains, fades, and dissolves. |
-| **SimpleTODO** | KoBeWi | A dev tool for keeping notes and tasks organized in the Godot editor. |
-| **Godot Engine** | Godot Foundation | The game engine that runs everything. Version 4.5. |
-
-All of these are open-source under the MIT License, which means we can use them for free and modify them if we need to.
-
----
-
-## Getting Started
-
-### Dependencies
-
-* **Godot Engine 4.5** - Game engine (free, open-source)
-* **Windows, macOS, or Linux** - The game runs on any OS that supports Godot 4.5
-* **At least 4GB RAM** - Recommended for smooth gameplay
-* **50MB disk space** - For the game and assets
-
-### Installing
-
-1. **Download and install Godot 4.5** from [godotengine.org](https://godotengine.org)
-2. **Clone or download** this project folder
-3. **Open Godot** and select "Import" → navigate to the `project.godot` file in this folder
-4. **Wait for plugins to load** - Dialogue Manager, Scene Manager, and SimpleTODO will auto-load
-5. **You're ready to go!** No modifications needed.
-
-### Executing Program
-
-**To play the game:**
-
-1. Open the project in Godot 4.5
-2. Click the **Play** button (or press **F5**)
-3. The game will start at the Main Menu
-4. Choose "Start New Game" or "Continue" from the menu
-5. Follow the Day 1 tutorial on your first playthrough
-
-**To run from terminal (optional):**
-
-```
-# On Windows
-godot --path . --main-scene res://scenes/ui/MainMenu.tscn
-
-# On macOS/Linux
-godot --path . --main-scene res://scenes/ui/MainMenu.tscn
+**Example Code (from `scripts/GameState.gd`):**
+```gdscript
+# Finance System
+var weekly_allowance: int = 150
+var savings_balance: int = 200 # Starts at $200
 ```
 
----
+## 2. Program Modularity and Readable Design
 
-## How Everything Connects
+The program separates logic into independent, focused modules. This structure leverages core Object-Oriented Programming (OOP) concepts:
 
-### The Game Flow
+| OOP Concept | Project Implementation |
+|-------------|------------------------|
+| **Encapsulation (data hiding)** | Internal states like the dog's pathfinding array (`action_path`) or the financial log (`transaction_history`) remain private. Outside nodes interface with these states strictly through public methods like `start_action()` or `spend_money()`. |
+| **Inheritance (reusing code)** | Project scripts inherit logic from Godot's built-in nodes. The `dog.gd` script extends `CharacterBody2D` to cleanly inherit physics and collision detection, while `finance_menu.gd` extends `CanvasLayer` to inherit viewport rendering capabilities. |
+| **Polymorphism (multiple forms)** | Interaction scripts treat all clickable entities uniformly. Different NPCs execute distinct dialogue trees while sharing a standardized interaction interface mapping to the Dialogue Manager. |
+| **Abstraction (simplifying complexity)** | Complex mechanical procedures are masked behind simple references. Calling `GameState.advance_day()` instantly processes supply decay, increments timers, resets local budgets, and fires event signals without exposing the underlying operations to the caller. |
 
-When you start: Main Menu → Story Intro → Create Character → Pick Dog → Name Dog → Start Playing
+**Example Code (from `scripts/dog.gd`):**
+```gdscript
+extends CharacterBody2D
 
-### The Heart: GameState.gd
+# State machine encapsulation
+enum DogState {FOLLOWING_PLAYER, GOING_TO_FOOD, GOING_TO_WATER, GOING_TO_SLEEP, SLEEPING}
+var current_state: DogState = DogState.FOLLOWING_PLAYER
 
-One script (`GameState.gd`) remembers everything: your name, pet name, money, supplies, day count, and tutorial progress. Every other script reads from and updates this central hub.
-
-### Moving Around
-
-- `player.gd` reads your keyboard input and moves you
-- `dog.gd` makes your dog follow you and manages its needs (hunger, thirst, etc.)
-- `bottom_hud.gd` shows your pet's status at the bottom of the screen
-
-### Talking to NPCs
-
-Get close to someone → Press E → Dialogue Manager shows a text box → Pick dialogue choices → Conversation happens
-
-Each NPC has a `.dialogue` file with their full conversation tree.
-
-### Shopping & Money
-
-Talk to shop owner → Buy items → `shop_menu.gd` opens → Pick food/water/medicine → Confirm → Money goes down, supplies go up
-
-You get 150 gold per week. Use `finance_menu.gd` to see your budget and spending.
-
-### Day Cycle
-
-Every 5 minutes = 1 new day. Your dog's needs get worse. Weekly allowance might reset. Everything updates via GameState signals.
-
-### Tutorial (Day 1 Only)
-
-`day1_tutorial.gd` blocks movement and shows hints until you complete the basics. Never bothers you again.
-
-### Saving Your Game
-
-When you exit or load, `MainMenu.gd` saves/restores all GameState data to your computer.
-
----
-
-## Folder & File Guide
-
-### Quick Overview
-
-```
-project.godot          Main settings and plugin list
-/addons/               Dialogue Manager, Scene Manager, SimpleTODO
-/assets/               Art (dogs, characters, fonts, music)
-/scenes/               Game screens (.tscn files)
-  /ui/                 HUD, menus, shop
-  /maps/               Locations (house, shop, vet, world)
-/scripts/              Game logic (.gd files)
-/dialogues/            NPC conversation files (.dialogue)
+func start_action(path_name: String, state: DogState, callback: Callable):
+	# Abstracted state change and pathfinding initialization
+	action_callback = callback
+	current_state = state
 ```
 
-### Key Scripts
+## 3. Data Storage and Scope Management
+
+The project handles game states using precise variable scoping and complex data structures. Variables serve single, clear purposes using explicit data types. For example, `has_prescription: bool` strictly tracks medication requirements, while `target_distance: float` purely controls movement spacing. Variables reliably store data that updates dynamically when necessary, such as adjusting `money -= amount` during item purchases.
+
+- **Arrays and Lists**: A Godot `Array` stores the `transaction_history` chronological ledger (e.g., `[{ "day": 1, "amount": 150 }]`). Map waypoints for AI movement populate into an `Array[Vector2]`.
+- **Dictionaries**: Dictionaries hold categorized datasets. The `budget_data` dictionary maps specific spending categories to targeted limits and current expenditures (e.g., `"Food": {"limit": 50, "spent": 0}`).
+- **Variable Scope**: Local variables execute isolated temporary math (e.g., calculating `food_pct` exclusively inside `update_overview()`). Persistent cross-scene variables operate safely inside the `GameState` global singleton.
+
+These storage techniques reinforce core OOP principles:
+
+| OOP Concept | Project Implementation |
+|-------------|------------------------|
+| **Encapsulation (data hiding)** | Write access to internal arrays like `transaction_history` is restricted. New ledger array entries must filter through the `record_transaction()` function wrapper. |
+| **Inheritance (reusing code)** | Data serialization mechanisms inherit from Godot's native `FileAccess` class to handle complex dictionary parsing during save state read/write operations. |
+| **Polymorphism (multiple forms)** | The `transaction_history` array dynamically holds mixed data classes within its dictionaries (integers for timestamps, floating points for calculations, strings for semantic descriptions). |
+| **Abstraction (simplifying complexity)** | Reading complex nested dictionary trees is abstracted. Evaluating the budget abstracts the deep lookup process into a simple function query via `get_budget_status(category)`. |
+
+**Example Code (from `scripts/GameState.gd`):**
+```gdscript
+# Complex data storage using dictionaries
+var budget_data: Dictionary = {
+	"Food": {"limit": 50, "spent": 0},
+	"Vet": {"limit": 50, "spent": 0}
+}
+
+# Transaction history list using arrays
+var transaction_history: Array = []
+
+func record_transaction(description: String, amount: int, category: String):
+	var entry = {
+		"day": current_day,
+		"description": description,
+		"amount": amount,
+		"category": category
+	}
+	transaction_history.push_front(entry) # Encapsulated array modification
+```
+
+## 4. Report Generation
+
+The application dynamically produces a "Weekly Financial Report" module inside the `finance_menu.gd` script. 
+
+- **Calculation**: Computes total player expenditures against base income allowances. Segmented by operational categories such as Food and Vet visits.
+- **Presentation**: Generates a consolidated breakdown containing total income received, gross spending, categorical expenditures, and emergency fund depletion.
+- **Visuals**: Translates numerical budget consumption into visual UI progress bars. These indicators dynamically shift colors based on hard spending thresholds (e.g., transitioning to red upon passing 100% allocation).
+
+| Presentation Element | Visual Output | Purpose |
+|----------------------|---------------|---------|
+| **String Formatting** | `Food & Water (80%)` | Clearly maps raw numerical budget percentages into readable UI labels. |
+| **Progress Bars** | Visual fill gauge | Transforms abstract category spending logic into an immediately scannable visual format. |
+| **Dynamic Colors** | Green / Yellow / Red | Visually alerts the player as their spending thresholds increase toward the weekly limit. |
+
+
+## 5. File Directory Details
+
+The file tree directly maps to functional project boundaries. 
+
+* **`/addons/`**: Third-party plugin dependencies required for core game mechanics.
+* **`/assets/`**: Raw rendering assets, 2D sprites, font families, and audio tracks.
+* **`/scenes/`**: Serialized Godot nodes (`.tscn`). Segmented into `/ui/` (interface menus, HUD overlays) and `/maps/` (navigable game environments).
+* **`/scripts/`**: Primary logic controllers (`.gd`). 
+  - `GameState.gd`: Global singleton managing save files, system time, and core metrics.
+  - `finance_menu.gd`: Interface logic translating player actions into the visualized budget logic.
+  - `dog.gd`: State machine and vector pathfinding computation for the AI pet.
+* **`/dialogues/`**: Dialogue node configurations (`.dialogue`).
+* **`project.godot`**: Runtime execution configuration and environment settings.
+
+#### Key Scripts
 
 | Script | Purpose |
 |--------|---------|
@@ -154,109 +132,15 @@ project.godot          Main settings and plugin list
 | `finance_menu.gd` | Budget tracking |
 | `day1_tutorial.gd` | Tutorial system |
 
-For more details, check the [project structure](https://github.com/FblaGodot/MyLittleBuddy) on GitHub.
+## 6. Templates, Libraries, and Attribution
 
----
+This project operates on Godot Engine v4.5 and integrates open-source dependencies distributed under the MIT License.
 
-## Plugin Integration
+| Library | Author | License | Function |
+|---------|---------|---------|---------|
+| **Godot Engine** | Godot Foundation | MIT | Core engine runtime operation. |
+| **Dialogue Manager** | Nathan Hoad | MIT | Parses and executes `.dialogue` syntax for NPC interaction UI. |
+| **Scene Manager** | GlassBrick | MIT | Asynchronous scene processing and visual transition effects. |
+| **SimpleTODO** | KoBeWi | MIT | In-editor project task tracking and management overlay. |
 
-### Dialogue Manager - How We Use It
-
-We have three `.dialogue` files in `/dialogues/` that contain all the NPC conversations. When a player talks to an NPC:
-
-```
-NPC talks to player
-  ↓
-Dialogue Manager loads the .dialogue file
-  ↓
-Shows conversation in a text box (the "balloon")
-  ↓
-Player picks a dialogue choice
-  ↓
-Next part of conversation appears
-```
-
-Example of what a `.dialogue` file looks like:
-```
-~ start
-shopkeeper: "Welcome! What can I help you with?"
-    -> I'd like to buy some food
-    -> Never mind
-
-~ I'd like to buy some food
-shopkeeper: "Good choice! Food is 20 gold per unit."
-    -> [end]
-```
-
-Simple and readable!
-
-### Scene Manager - Smooth Transitions
-
-When the game changes scenes (like going from Main Menu to the game), Scene Manager adds a nice visual effect. In the code it looks like:
-
-```gdscript
-SceneManager.change_scene("res://scenes/ui/MainGame.tscn", {"pattern": "curtains"})
-```
-
-The "curtains" effect closes like stage curtains, then opens on the new scene. Makes the game feel more polished.
-
-### SimpleTODO - Just for Developers
-
-This is a Godot editor plugin that helps us organize notes. It doesn't affect gameplay at all—it's just a tool we use while coding.
-
-### Godot 4.5 Features We Use
-
-- **Physics**: `CharacterBody2D` for smooth character and dog movement
-- **Animation**: `AnimatedSprite2D` plays through sprite sheet animations
-- **Audio**: `AudioStreamPlayer` for background music
-- **UI**: `CanvasLayer` to layer menus on top of the game
-- **Signals**: Event system so scripts can talk to each other
-- **File I/O**: Save and load your game progress
-
-
----
-
-## License
-
-This project is licensed under the **MIT License** - see the individual addon LICENSE files for details on third-party libraries:
-
-- **Dialogue Manager**: MIT License (Nathan Hoad)
-- **Scene Manager**: MIT License (GlassBrick)
-- **SimpleTODO**: MIT License (KoBeWi)
-- **Godot Engine**: MIT License (Godot Foundation)
-
-**Commercial Assets**: Dog sprites, character sprites, and background music are used under their original purchase agreements. They may not be redistributed separately.
-
----
-
-## Authors
-
-**FBLA My Little Buddy 2025-2026**
-
-Made by the FBLA My Little Buddy 25-26 team: Jose Gerald, Uday Kamboj, and Vivaan Pillai.
-
----
-
-## Version History
-
-* **1.0** (January 23, 2026)
-    * Full game release with all core features
-    * Pet care system, finance management, NPC dialogue
-    * Day cycle, tutorial, and save/load system
-    * All 8 dog breeds and character customization
-    * See [releases](https://github.com/FblaGodot/MyLittleBuddy/releases) for details
-
-* **0.5** (In Development)
-    * Beta testing phase
-    * Core gameplay loop complete
-    * Dialogue system integrated
-    * Finance tracking implemented
-
-* **0.1** (Initial Prototype)
-    * Basic pet spawning and movement
-    * Simple UI framework
-    * Initial project structure
-
----
-
-*Last updated: January 23, 2026*
+*Note: Visual game assets (app sprites, environments, audio) are governed by original purchase agreements and remain excluded from generalized open-source redistribution.*
