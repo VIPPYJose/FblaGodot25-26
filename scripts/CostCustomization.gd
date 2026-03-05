@@ -9,6 +9,7 @@ extends Control
 @onready var back_button: Button = $ButtonContainer/BackButton
 
 func _ready() -> void:
+	UITheme.apply_theme(self)
 	# Initialize inputs with current GameState values
 	food_input.text = str(GameState.food_cost)
 	water_input.text = str(GameState.water_cost)

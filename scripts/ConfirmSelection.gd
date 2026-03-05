@@ -9,6 +9,7 @@ extends Control
 @onready var question_label = $QuestionLabel
 
 func _ready():
+	UITheme.apply_theme(self)
 	setup_player()
 	setup_dog()
 	setup_labels()

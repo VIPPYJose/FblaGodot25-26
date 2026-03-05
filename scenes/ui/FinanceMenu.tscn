@@ -149,6 +149,18 @@ theme_override_font_sizes/font_size = 26
 value = 20.0
 show_percentage = true
 
+[node name="TravelLabel" type="Label" parent="Panel/VBox/Content/TabContainer/Overview"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Travel & Transport"
+
+[node name="TravelProgress" type="ProgressBar" parent="Panel/VBox/Content/TabContainer/Overview"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+value = 0.0
+show_percentage = true
+
 [node name="BudgetPlanner" type="VBoxContainer" parent="Panel/VBox/Content/TabContainer"]
 visible = false
 layout_mode = 2
@@ -206,6 +218,32 @@ text = "$50"
 horizontal_alignment = 2
 
 [node name="VetSlider" type="HSlider" parent="Panel/VBox/Content/TabContainer/BudgetPlanner"]
+layout_mode = 2
+max_value = 200.0
+step = 5.0
+value = 50.0
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBox/Content/TabContainer/BudgetPlanner"]
+layout_mode = 2
+
+[node name="TravelBox" type="VBoxContainer" parent="Panel/VBox/Content/TabContainer/BudgetPlanner"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBox/Content/TabContainer/BudgetPlanner/TravelBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBox/Content/TabContainer/BudgetPlanner/TravelBox/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Travel Limit"
+
+[node name="TravelLimitLabel" type="Label" parent="Panel/VBox/Content/TabContainer/BudgetPlanner"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "$50"
+horizontal_alignment = 2
+
+[node name="TravelSlider" type="HSlider" parent="Panel/VBox/Content/TabContainer/BudgetPlanner"]
 layout_mode = 2
 max_value = 200.0
 step = 5.0
@@ -306,5 +344,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="Panel/VBox/Content/TabContainer/Overview/DepositBtn" to="." method="_on_deposit_btn_pressed"]
 [connection signal="value_changed" from="Panel/VBox/Content/TabContainer/BudgetPlanner/FoodSlider" to="." method="_on_food_slider_value_changed"]
 [connection signal="value_changed" from="Panel/VBox/Content/TabContainer/BudgetPlanner/VetSlider" to="." method="_on_vet_slider_value_changed"]
+[connection signal="value_changed" from="Panel/VBox/Content/TabContainer/BudgetPlanner/TravelSlider" to="." method="_on_travel_slider_value_changed"]
 [connection signal="pressed" from="Panel/VBox/Content/TabContainer/AllTimeHistory/ViewToggleContainer/BreakdownBtn" to="." method="_on_breakdown_btn_pressed"]
 [connection signal="pressed" from="Panel/VBox/Content/TabContainer/AllTimeHistory/ViewToggleContainer/GraphsBtn" to="." method="_on_graphs_btn_pressed"]

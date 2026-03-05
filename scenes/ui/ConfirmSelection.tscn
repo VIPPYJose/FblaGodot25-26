@@ -52,7 +52,7 @@ grow_vertical = 2
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerContainer"]
 position = Vector2(100, 100)
-scale = Vector2(10, 10)
+scale = Vector2(5, 5)
 
 [node name="PlayerLabel" type="Label" parent="."]
 layout_mode = 1

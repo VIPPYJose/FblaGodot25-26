@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4f2nlbvifihu"]
+[gd_scene format=4 uid="uid://4f2nlbvifihu"]
 
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/Floor_5.tscn" id="1_d4mai"]
 [ext_resource type="PackedScene" path="res://scenes/maps/Vet/Items_4.tscn" id="2_8p53o"]
@@ -11,24 +11,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdbq2"]
 size = Vector2(43, 20)
 
-[node name="map" type="Node2D"]
+[node name="map" type="Node2D" unique_id=1903601602]
 scale = Vector2(2, 2)
 
-[node name="Floor_5" parent="." instance=ExtResource("1_d4mai")]
+[node name="Floor_5" parent="." unique_id=635678087 instance=ExtResource("1_d4mai")]
 
-[node name="Items_4" parent="." instance=ExtResource("2_8p53o")]
+[node name="Items_4" parent="." unique_id=1697727147 instance=ExtResource("2_8p53o")]
+tile_map_data = PackedByteArray("AAAIAAQAAAADAAQAAAAIAAkAAAADAAQAAAASAAQAAAADAAQAAAASAAkAAAADAAQAAAAKAAMAAAAEAAQAAAALAAMAAAAFAAQAAAAPAAMAAAAEAAQAAAAQAAMAAAAFAAQAAAAQAAIAAAAGAAQAAAAPAAIAAAAHAAQAAAALAAIAAAAGAAQAAAAKAAIAAAAHAAQAAAANAAQAAAAAAAUAAAARAAEAAAABAAUAAAASAAEAAAACAAUAAAARAAIAAAADAAUAAAASAAIAAAAEAAUAAAARAAMAAAAFAAUAAAASAAMAAAAGAAUAAAAMAAAAAAAHAAUAAAANAAAAAAAAAAYAAAAMAAEAAAABAAYAAAANAAEAAAACAAYAAAA=")
 
-[node name="Lamps_3" parent="." instance=ExtResource("3_f5a5i")]
+[node name="Lamps_3" parent="." unique_id=597891014 instance=ExtResource("3_f5a5i")]
 
-[node name="Chairs_&_Desk_2" parent="." instance=ExtResource("4_8c7ds")]
+[node name="Chairs_&_Desk_2" parent="." unique_id=1795141454 instance=ExtResource("4_8c7ds")]
 
-[node name="Person_1" parent="." instance=ExtResource("5_n2bye")]
+[node name="Person_1" parent="." unique_id=2023969511 instance=ExtResource("5_n2bye")]
 
-[node name="POV_Fix_0" parent="." instance=ExtResource("6_ddgcn")]
+[node name="POV_Fix_0" parent="." unique_id=1201817880 instance=ExtResource("6_ddgcn")]
 
-[node name="vetNPC" type="Area2D" parent="."]
+[node name="vetNPC" type="Area2D" parent="." unique_id=949942058]
 script = ExtResource("vet_npc_script")
 
-[node name="talk" type="CollisionShape2D" parent="vetNPC"]
+[node name="talk" type="CollisionShape2D" parent="vetNPC" unique_id=900401074]
 position = Vector2(218, 74.5)
 shape = SubResource("RectangleShape2D_fdbq2")

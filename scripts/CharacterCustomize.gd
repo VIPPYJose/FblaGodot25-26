@@ -18,14 +18,14 @@ const PIXEL_FONT_PATH := "res://assets/fonts/Minecraft.ttf"
 # Each sprite sheet row at y=96 contains: idle_right(6) → idle_up(6) → idle_left(6) → idle_down(6)
 # Frame size is 48×96.
 const DIR_ATLAS := {
-	"left":  Rect2(576, 96, 48, 96),
-	"down":  Rect2(864, 96, 48, 96),
-	"up":    Rect2(288, 96, 48, 96),
+	"left": Rect2(576, 96, 48, 96),
+	"down": Rect2(864, 96, 48, 96),
+	"up": Rect2(288, 96, 48, 96),
 	"right": Rect2(0, 96, 48, 96),
 }
 
 # Scale factor for the 48×96 sprites (makes them ~240×480 at scale 5)
-const SPRITE_SCALE := 5.0
+const SPRITE_SCALE := 7.5
 
 var PREVIEW_TEXTURES: Dictionary = CharacterAssets.PREVIEW_TEXTURES
 
@@ -40,9 +40,9 @@ var visibility := {
 }
 
 # ─── UI references (populated in _build_ui) ───
-var dropdowns := {}        # String(category) → OptionButton
-var preview_sprites := {}  # String(direction) → { String(category) → Sprite2D }
-var vis_checks := {}       # String(category) → CheckBox
+var dropdowns := {} # String(category) → OptionButton
+var preview_sprites := {} # String(direction) → { String(category) → Sprite2D }
+var vis_checks := {} # String(category) → CheckBox
 var name_input: LineEdit
 var continue_btn: Button
 var back_btn: Button
@@ -317,16 +317,24 @@ func _create_bottom_bar() -> PanelContainer:
 	name_input.placeholder_text = "Enter Name"
 	name_input.max_length = 25
 	name_input.add_theme_font_size_override("font_size", 26)
+	name_input.add_theme_color_override("font_color", Color.BLACK)
+	name_input.add_theme_color_override("font_placeholder_color", Color(0.45, 0.45, 0.45))
 	if pixel_font:
 		name_input.add_theme_font_override("font", pixel_font)
 	var input_sb := StyleBoxFlat.new()
 	input_sb.bg_color = Color.WHITE
-	input_sb.border_color = Color(0.5, 0.5, 0.5)
-	input_sb.set_border_width_all(2)
+	input_sb.border_color = Color(0.4, 0.45, 0.5)
+	input_sb.set_border_width_all(3)
 	input_sb.set_corner_radius_all(4)
-	input_sb.content_margin_left = 10
-	input_sb.content_margin_right = 10
+	input_sb.content_margin_left = 12
+	input_sb.content_margin_right = 12
+	input_sb.content_margin_top = 6
+	input_sb.content_margin_bottom = 6
 	name_input.add_theme_stylebox_override("normal", input_sb)
+	var input_sb_focus: StyleBoxFlat = input_sb.duplicate()
+	input_sb_focus.border_color = Color(0.85, 0.80, 0.2)
+	input_sb_focus.border_width_bottom = 4
+	name_input.add_theme_stylebox_override("focus", input_sb_focus)
 	name_input.text_changed.connect(_on_name_changed)
 	name_row.add_child(name_input)
 

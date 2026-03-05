@@ -5,6 +5,7 @@ extends Control
 @onready var settings_button = $VBoxContainer/SettingsButton
 
 func _ready():
+	UITheme.apply_theme(self)
 	continue_button.pressed.connect(_on_continue_pressed)
 	start_button.pressed.connect(_on_start_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)

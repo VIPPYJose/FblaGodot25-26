@@ -54,7 +54,8 @@ var weekly_allowance: int = 150
 var savings_balance: int = 200 # Starts at $200
 var budget_data: Dictionary = {
 	"Food": {"limit": 50, "spent": 0},
-	"Vet": {"limit": 50, "spent": 0}
+	"Vet": {"limit": 50, "spent": 0},
+	"Travel": {"limit": 50, "spent": 0}
 }
 var weekly_report: Dictionary = {
 	"income": 0,
@@ -227,7 +228,8 @@ func initialize_day_one():
 	savings_balance = 200
 	budget_data = {
 		"Food": {"limit": 50, "spent": 0},
-		"Vet": {"limit": 50, "spent": 0}
+		"Vet": {"limit": 50, "spent": 0},
+		"Travel": {"limit": 50, "spent": 0}
 	}
 	transaction_history = []
 	all_time_spent = 0
@@ -366,7 +368,8 @@ func load_game() -> bool:
 	savings_balance = save_data.get("savings_balance", 200)
 	budget_data = save_data.get("budget_data", {
 		"Food": {"limit": 50, "spent": 0},
-		"Vet": {"limit": 50, "spent": 0}
+		"Vet": {"limit": 50, "spent": 0},
+		"Travel": {"limit": 50, "spent": 0}
 	})
 	weekly_report = save_data.get("weekly_report", {
 		"income": 0,

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cu55pijpmpv1u"]
+
+[ext_resource type="Texture2D" uid="uid://codoomxckemjs" path="res://scenes/People and dog/Taxi/TAXI_CLEAN_EAST_000.png" id="1_nxq8a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok8at"]
+atlas = ExtResource("1_nxq8a")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fy1to"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok8at")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Taxi" type="Node2D" unique_id=1820536928]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1193945361]
+sprite_frames = SubResource("SpriteFrames_fy1to")

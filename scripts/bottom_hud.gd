@@ -11,8 +11,10 @@ extends CanvasLayer
 var pause_menu_scene = preload("res://scenes/ui/PauseMenu.tscn")
 var finance_menu_scene = preload("res://scenes/ui/FinanceMenu.tscn")
 var supplies_menu_scene = preload("res://scenes/ui/supplies_menu.tscn")
+var taxi_menu_scene = preload("res://scenes/ui/taxi_menu.tscn")
 var current_pause_menu = null
 var supplies_menu_instance = null
+var taxi_menu_instance = null
 var shop_menu_instance = null
 
 var shop_menu_scene = preload("res://scenes/ui/ShopMenu.tscn")
@@ -32,6 +34,10 @@ func _ready():
 	add_child(supplies_menu_instance)
 	supplies_menu_instance.menu_opened.connect(func(): supplies_menu_opened.emit())
 	
+	# Create taxi menu instance
+	taxi_menu_instance = taxi_menu_scene.instantiate()
+	add_child(taxi_menu_instance)
+	
 	# Create shop menu instance
 	shop_menu_instance = shop_menu_scene.instantiate()
 	add_child(shop_menu_instance)
@@ -46,14 +52,34 @@ func update_ui():
 	money_label.text = "$ " + str(GameState.money)
 	time_label.text = GameState.get_time_string()
 
+# Close all bottom menus so only one can be open at a time
+func _close_all_bottom_menus():
+	if supplies_menu_instance and supplies_menu_instance.get_menu_visible():
+		supplies_menu_instance.hide_menu()
+	if taxi_menu_instance and taxi_menu_instance.get_menu_visible():
+		taxi_menu_instance.hide_menu()
+	# Close needs menu (dog menu) if open
+	var dog = get_tree().get_first_node_in_group("dog")
+	if dog and dog.has_method("get_menu_visible") and dog.get_menu_visible():
+		dog.toggle_menu()
+
 func _on_supplies_btn_pressed():
 	if supplies_menu_instance:
-		supplies_menu_instance.toggle_menu()
+		if supplies_menu_instance.get_menu_visible():
+			supplies_menu_instance.hide_menu()
+		else:
+			_close_all_bottom_menus()
+			supplies_menu_instance.show_menu()
 
 func _on_needs_btn_pressed():
 	var dog = get_tree().get_first_node_in_group("dog")
 	if dog and dog.has_method("toggle_menu"):
-		dog.toggle_menu()
+		var menu_is_visible = dog.has_method("get_menu_visible") and dog.get_menu_visible()
+		if menu_is_visible:
+			dog.toggle_menu()
+		else:
+			_close_all_bottom_menus()
+			dog.toggle_menu()
 
 func _on_finance_btn_pressed():
 	get_tree().paused = true
@@ -142,13 +168,9 @@ func _on_open_shop_requested():
 		shop_menu_instance.show_shop()
 
 func _on_home_btn_pressed():
-	SceneManager.fade_in_place({
-		"pattern": "curtains",
-		"on_fade_out": func():
-			var player = get_tree().get_first_node_in_group("player")
-			if player:
-				player.global_position = Vector2(750, 380)
-			var dog = get_tree().get_first_node_in_group("dog")
-			if dog:
-				dog.global_position = Vector2(800, 380) # Move dog near player
-	})
+	if taxi_menu_instance:
+		if taxi_menu_instance.get_menu_visible():
+			taxi_menu_instance.hide_menu()
+		else:
+			_close_all_bottom_menus()
+			taxi_menu_instance.show_menu()

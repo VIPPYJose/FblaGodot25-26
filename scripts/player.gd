@@ -43,18 +43,18 @@ func _physics_process(_delta: float) -> void:
 
 func _play_move_anim():
 	var anim = ""
-	if last_dir.x > 0: anim = "move_left"
-	elif last_dir.x < 0: anim = "move_right"
-	elif last_dir.y < 0: anim = "move_down"
-	else: anim = "move_up"
+	if last_dir.x > 0: anim = "move_right"
+	elif last_dir.x < 0: anim = "move_left"
+	elif last_dir.y < 0: anim = "move_up"
+	else: anim = "move_down"
 	_play_if_exists(anim)
 
 func _play_idle_anim():
 	var anim = ""
-	if last_dir.x > 0: anim = "idle_left"
-	elif last_dir.x < 0: anim = "idle_right"
-	elif last_dir.y < 0: anim = "idle_down"
-	else: anim = "idle_up"
+	if last_dir.x > 0: anim = "idle_right"
+	elif last_dir.x < 0: anim = "idle_left"
+	elif last_dir.y < 0: anim = "idle_up"
+	else: anim = "idle_down"
 	_play_if_exists(anim)
 
 func _play_if_exists(anim_name: String):

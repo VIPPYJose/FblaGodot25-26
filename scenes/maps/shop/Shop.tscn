@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c72hdhwbpin62"]
+[gd_scene format=4 uid="uid://c72hdhwbpin62"]
 
 [ext_resource type="PackedScene" path="res://scenes/maps/shop/POV_fixing_0.tscn" id="0_id"]
 [ext_resource type="PackedScene" path="res://scenes/maps/shop/Person_1.tscn" id="1_id"]
@@ -10,22 +10,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf6l"]
 size = Vector2(40, 20)
 
-[node name="map" type="Node2D"]
+[node name="map" type="Node2D" unique_id=1603676545]
 scale = Vector2(2, 2)
 
-[node name="Floor_4" parent="." instance=ExtResource("4_id")]
+[node name="Floor_4" parent="." unique_id=1628107850 instance=ExtResource("4_id")]
 
-[node name="Carpet_&_Shelves_3" parent="." instance=ExtResource("3_id")]
+[node name="Carpet_&_Shelves_3" parent="." unique_id=1356587564 instance=ExtResource("3_id")]
 
-[node name="Items_2" parent="." instance=ExtResource("2_id")]
+[node name="Items_2" parent="." unique_id=1743555362 instance=ExtResource("2_id")]
+tile_map_data = PackedByteArray("AAAMAAcAAAAAAAEAAAAOAAcAAAABAAEAAAANAAcAAAACAAEAAAALAAkAAAADAAEAAAAKAAkAAAAEAAEAAAALAAgAAAAFAAEAAAAKAAgAAAAGAAEAAAAOAAkAAAAHAAEAAAANAAgAAAAAAAIAAAAMAAgAAAABAAIAAAAOAAgAAAACAAIAAAANAAoAAAABAAAAAAAMAAoAAAADAAIAAAAMAAkAAAAEAAIAAAANAAkAAAAAAAAAAAAOAAoAAAAFAAIAAAAIAA8AAAAGAAIAAAAHAA8AAAACAAAAAAAHAAkAAAAHAAIAAAAHAAsAAAAAAAMAAAAIAAkAAAABAAMAAAAIAA0AAAACAAMAAAAHAA0AAAADAAMAAAASAAkAAAAEAAMAAAASAAsAAAAFAAMAAAATAAkAAAAGAAMAAAATAAsAAAAHAAMAAAASABEAAAAAAAQAAAATABEAAAABAAQAAAASABIAAAACAAQAAAATABIAAAADAAQAAAASABMAAAAEAAQAAAATABMAAAAFAAQAAAAHABEAAAAAAAQAAAAIABEAAAABAAQAAAAHABIAAAACAAQAAAAIABIAAAADAAQAAAAHABMAAAAEAAQAAAAIABMAAAAFAAQAAAAPAAgAAAAGAAQAAAAPAAkAAAAHAAQAAAA=")
 
-[node name="Person_1" parent="." instance=ExtResource("1_id")]
+[node name="Person_1" parent="." unique_id=870488165 instance=ExtResource("1_id")]
 
-[node name="POV_fixing_0" parent="." instance=ExtResource("0_id")]
+[node name="POV_fixing_0" parent="." unique_id=1644014569 instance=ExtResource("0_id")]
 
-[node name="shopNPC" type="Area2D" parent="."]
+[node name="shopNPC" type="Area2D" parent="." unique_id=125024094]
 script = ExtResource("shop_npc_script")
 
-[node name="talk" type="CollisionShape2D" parent="shopNPC"]
+[node name="talk" type="CollisionShape2D" parent="shopNPC" unique_id=1010599684]
 position = Vector2(216, 175)
 shape = SubResource("RectangleShape2D_mkf6l")

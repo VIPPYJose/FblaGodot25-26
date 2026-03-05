@@ -4,6 +4,7 @@ extends Control
 @onready var pet_name_input = $VBoxContainer/PetNameInput
 
 func _ready():
+	UITheme.apply_theme(self)
 	var dog_scene = load("res://scenes/People and dog/dog.tscn").instantiate()
 	preview.sprite_frames = dog_scene.get_node("AnimatedSprite2D").sprite_frames
 	dog_scene.free()

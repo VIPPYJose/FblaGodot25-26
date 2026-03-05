@@ -20,6 +20,7 @@ var is_typing = false
 var technical_slide_index = 6
 
 func _ready():
+	UITheme.apply_theme(self)
 	technical_panel.hide()
 	continue_button.hide()
 	show_slide(0)

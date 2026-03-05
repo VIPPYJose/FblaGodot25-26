@@ -13,12 +13,15 @@ signal menu_closed
 @onready var deposit_input = $Panel/VBox/Content/TabContainer/Overview/DepositInput
 @onready var food_progress = $Panel/VBox/Content/TabContainer/Overview/FoodProgress
 @onready var vet_progress = $Panel/VBox/Content/TabContainer/Overview/VetProgress
+@onready var travel_progress = $Panel/VBox/Content/TabContainer/Overview/TravelProgress
 
 # Budget Elements
 @onready var food_slider = $Panel/VBox/Content/TabContainer/BudgetPlanner/FoodSlider
 @onready var vet_slider = $Panel/VBox/Content/TabContainer/BudgetPlanner/VetSlider
+@onready var travel_slider = $Panel/VBox/Content/TabContainer/BudgetPlanner/TravelSlider
 @onready var food_limit_label = $Panel/VBox/Content/TabContainer/BudgetPlanner/FoodLimitLabel
 @onready var vet_limit_label = $Panel/VBox/Content/TabContainer/BudgetPlanner/VetLimitLabel
+@onready var travel_limit_label = $Panel/VBox/Content/TabContainer/BudgetPlanner/TravelLimitLabel
 
 # History Elements
 @onready var history_cash_label = $Panel/VBox/Content/TabContainer/AllTimeHistory/CashHeader
@@ -65,26 +68,31 @@ func update_overview():
 	var total_spent = GameState.weekly_report["total_spent"]
 	
 	# Calculate percentages based on composition of total spending (sharing the 100%)
-	# as requested: "if vet was $50 and med was $40 and water was $10, Food=10% Vet=90%"
 	var food_spent = GameState.budget_data["Food"]["spent"]
 	var vet_spent = GameState.budget_data["Vet"]["spent"]
+	var travel_spent = GameState.budget_data["Travel"]["spent"]
 	
 	var food_pct = 0.0
 	var vet_pct = 0.0
+	var travel_pct = 0.0
 	
 	if total_spent > 0:
 		food_pct = (float(food_spent) / float(total_spent)) * 100.0
 		vet_pct = (float(vet_spent) / float(total_spent)) * 100.0
+		travel_pct = (float(travel_spent) / float(total_spent)) * 100.0
 	
 	food_progress.value = food_pct
 	vet_progress.value = vet_pct
+	travel_progress.value = travel_pct
 	
 	# Show percentage in label for clarity
 	$Panel/VBox/Content/TabContainer/Overview/FoodLabel.text = "Food & Water (%.0f%%)" % food_pct
 	$Panel/VBox/Content/TabContainer/Overview/VetLabel.text = "Vet & Medicine (%.0f%%)" % vet_pct
+	$Panel/VBox/Content/TabContainer/Overview/TravelLabel.text = "Travel & Transport (%.0f%%)" % travel_pct
 	
 	update_progress_color(food_progress, food_pct)
 	update_progress_color(vet_progress, vet_pct)
+	update_progress_color(travel_progress, travel_pct)
 
 func update_progress_color(bar: ProgressBar, percent: float):
 	var style = StyleBoxFlat.new()
@@ -108,6 +116,10 @@ func update_budget_inputs():
 	if not vet_slider.has_focus():
 		vet_slider.value = GameState.budget_data["Vet"]["limit"]
 		vet_limit_label.text = "$%d" % vet_slider.value
+	
+	if not travel_slider.has_focus():
+		travel_slider.value = GameState.budget_data["Travel"]["limit"]
+		travel_limit_label.text = "$%d" % travel_slider.value
 
 func update_report():
 	var r = GameState.weekly_report
@@ -136,7 +148,7 @@ func update_history():
 	for entry in GameState.transaction_history:
 		var h_box = HBoxContainer.new()
 		
-		var font_size = 35 
+		var font_size = 35
 		#labels which day it is
 		var day_label = Label.new()
 		day_label.text = "[Day %d]" % entry["day"]
@@ -183,6 +195,11 @@ func _on_food_slider_value_changed(value):
 func _on_vet_slider_value_changed(value):
 	GameState.budget_data["Vet"]["limit"] = int(value)
 	vet_limit_label.text = "$%d" % value
+	update_overview()
+
+func _on_travel_slider_value_changed(value):
+	GameState.budget_data["Travel"]["limit"] = int(value)
+	travel_limit_label.text = "$%d" % value
 	update_overview()
 
 # Graph view toggle handlers

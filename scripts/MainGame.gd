@@ -173,7 +173,7 @@ func _spawn_component_player():
 	var player = CharacterBody2D.new()
 	player.name = "Player"
 	player.global_position = player_spawn_pos
-	player.scale = Vector2(0.0000000017, 0.0000000017)
+	player.scale = Vector2(1.0, 1.0)
 	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	player.input_pickable = true
 
