@@ -67,3 +67,5 @@ theme_override_font_sizes/font_size = 58
 text = "Continue"
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+
+; COMMIT: Achievements and Catch Minigame Update

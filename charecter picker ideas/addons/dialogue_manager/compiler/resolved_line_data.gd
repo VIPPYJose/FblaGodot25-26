@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## Any data associated with inline dialogue BBCodes.
 class_name DMResolvedLineData extends RefCounted
 

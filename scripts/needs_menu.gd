@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 @onready var panel = $PanelContainer
@@ -7,8 +8,6 @@ extends CanvasLayer
 @onready var thirst_val = $PanelContainer/VBoxContainer/GridContainer/Thirst/HBox/Value
 @onready var energy_bar = $PanelContainer/VBoxContainer/GridContainer/Energy/HBox/ProgressBar
 @onready var energy_val = $PanelContainer/VBoxContainer/GridContainer/Energy/HBox/Value
-@onready var hygiene_bar = $PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox/ProgressBar
-@onready var hygiene_val = $PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox/Value
 @onready var health_bar = $PanelContainer/VBoxContainer/GridContainer/Health/HBox/ProgressBar
 @onready var health_val = $PanelContainer/VBoxContainer/GridContainer/Health/HBox/Value
 # @onready var arrow = $Download7_44_10Pm # This node does not exist in the scene
@@ -16,6 +15,7 @@ extends CanvasLayer
 var target_dog: Node2D
 
 func _ready():
+	UITheme.apply_overlay_theme(self )
 	panel.hide()
 	# arrow.hide()
 	$PanelContainer/VBoxContainer/TitleHBox/CloseButton.pressed.connect(func():
@@ -48,9 +48,6 @@ func update_ui():
 	
 	energy_bar.value = target_dog.energy
 	energy_val.text = str(round(target_dog.energy))
-	
-	hygiene_bar.value = target_dog.hygiene
-	hygiene_val.text = str(round(target_dog.hygiene))
 	
 	health_bar.value = target_dog.health
 	health_val.text = str(round(target_dog.health))

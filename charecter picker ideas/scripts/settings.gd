@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 
 const SETTINGS_PATH := "user://settings.cfg"

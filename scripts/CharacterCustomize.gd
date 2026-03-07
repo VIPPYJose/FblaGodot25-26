@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 
 ## Character customization screen inspired by the Character-Generator-2.0 UI.

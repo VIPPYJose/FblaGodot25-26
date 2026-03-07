@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node
 class_name LLMAssistant
 
@@ -64,7 +65,6 @@ func get_current_game_state() -> String:
 		state_text += "  Hunger: " + str(round(dog.hunger)) + "/100\n"
 		state_text += "  Thirst: " + str(round(dog.thirst)) + "/100\n"
 		state_text += "  Energy: " + str(round(dog.energy)) + "/100\n"
-		state_text += "  Hygiene: " + str(round(dog.hygiene)) + "/100\n"
 		state_text += "  Health: " + str(round(dog.health)) + "/100\n"
 	else:
 		# Fallback to GameState if dog not found

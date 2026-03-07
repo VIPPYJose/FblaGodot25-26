@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Area2D
 ## Teleport area that shows an interact prompt and teleports the player when E is pressed.
 

@@ -442,3 +442,5 @@ offset_bottom = -41.0
 grow_vertical = 0
 theme = ExtResource("3_a1j51")
 text = "Press E To Interact"
+
+; COMMIT: Achievements and Catch Minigame Update

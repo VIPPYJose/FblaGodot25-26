@@ -62,6 +62,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Help"
 
+[node name="AchievementsBtn" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Achievements"
+
 [node name="ResumeBtn" type="Button" parent="Panel/VBox" unique_id=771301827]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -73,3 +79,5 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Quit Game"
+
+; COMMIT: Achievements and Catch Minigame Update

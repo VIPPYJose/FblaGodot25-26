@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## Quick open panel to quickly access all resources that are in the project.
 ## Initially shows all resources, but can be changed to more specific resources
 ## or filtered down with text.

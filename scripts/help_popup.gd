@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 @onready var chat_history = $Panel/MainHBox/RightSection/ChatContainer/ChatScroll/ChatHistory
@@ -10,6 +11,8 @@ var llm_assistant: LLMAssistant = null
 var is_waiting_for_response: bool = false
 
 func _ready():
+	UITheme.apply_overlay_theme(self )
+
 	# Create LLM Assistant instance
 	llm_assistant = LLMAssistant.new()
 	add_child(llm_assistant)
@@ -18,6 +21,12 @@ func _ready():
 	llm_assistant.response_received.connect(_on_response_received)
 	llm_assistant.request_started.connect(_on_request_started)
 	llm_assistant.request_failed.connect(_on_request_failed)
+
+func _input(event):
+	# ESC closes the help popup without toggling the pause menu
+	if event.is_action_pressed("ui_cancel"):
+		queue_free()
+		get_viewport().set_input_as_handled()
 
 func _on_close_btn_pressed():
 	queue_free()
@@ -79,7 +88,10 @@ func add_chat_message(text: String, is_user: bool, is_error: bool = false):
 	label.text = text
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	label.add_theme_font_size_override("font_size", 22)
+	label.add_theme_font_size_override("font_size", 33)
+	var font := UITheme.get_pixel_font()
+	if font:
+		label.add_theme_font_override("font", font)
 	
 	if is_user:
 		# User message - right aligned, blue tint

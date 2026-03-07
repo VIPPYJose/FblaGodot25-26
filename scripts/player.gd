@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CharacterBody2D
 
 @export var speed := 300

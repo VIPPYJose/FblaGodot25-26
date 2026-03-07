@@ -401,3 +401,5 @@ scale = Vector2(1.0052286, 1.0746742)
 zoom = Vector2(2.5, 2.5)
 process_callback = 0
 position_smoothing_enabled = true
+
+; COMMIT: Achievements and Catch Minigame Update

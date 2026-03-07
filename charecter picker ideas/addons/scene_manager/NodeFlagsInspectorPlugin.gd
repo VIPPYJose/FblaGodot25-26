@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends EditorInspectorPlugin
 
 var SingletonCheckProperty = load('res://addons/scene_manager/SingletonCheckProperty.gd')

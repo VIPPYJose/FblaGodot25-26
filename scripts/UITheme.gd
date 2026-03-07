@@ -1,7 +1,10 @@
+# COMMIT: Achievements and Catch Minigame Update
 class_name UITheme
 ## Shared UI styling utilities for the blue-checker pixel-art aesthetic.
-## Call UITheme.apply_theme(root_control) in any screen's _ready() to
-## get the consistent look across all starting screens.
+##
+## Two modes:
+##   apply_theme(root)          – full-screen menus: adds checker bg + styles everything
+##   apply_overlay_theme(root)  – in-game popups: styles fonts/buttons/panels, preserves label colors
 
 const PIXEL_FONT_PATH := "res://assets/fonts/Minecraft.ttf"
 
@@ -16,10 +19,16 @@ const CLR_RED    := Color(0.72, 0.25, 0.25)
 #  PUBLIC API
 # ═══════════════════════════════════════════════════════════════════
 
-## One-call theme application: checker background + restyle all children.
+## Full-screen theme: replaces background with checker + styles every child.
 static func apply_theme(root: Control) -> void:
 	_replace_background(root)
-	_style_children_recursive(root)
+	_style_children_recursive(root, true)
+
+
+## Overlay theme: styles fonts, buttons, panels but preserves existing label colors.
+## Works on CanvasLayer, Control, or any Node.
+static func apply_overlay_theme(root: Node) -> void:
+	_style_children_recursive(root, false)
 
 
 ## Create the blue checker background (can also be used standalone).
@@ -59,7 +68,7 @@ static func get_pixel_font() -> Font:
 
 static func style_button(btn: Button, bg_color: Color = CLR_GREY) -> void:
 	var font := get_pixel_font()
-	if font:
+	if font and not _has_emoji(btn.text):
 		btn.add_theme_font_override("font", font)
 	btn.add_theme_color_override("font_color", Color.WHITE)
 	btn.add_theme_color_override("font_hover_color", Color.WHITE)
@@ -90,11 +99,12 @@ static func style_button(btn: Button, bg_color: Color = CLR_GREY) -> void:
 	btn.add_theme_stylebox_override("disabled", sb_disabled)
 
 
-static func style_label(label: Label) -> void:
+static func style_label(label: Label, force_white: bool = true) -> void:
 	var font := get_pixel_font()
-	if font:
+	if font and not _has_emoji(label.text):
 		label.add_theme_font_override("font", font)
-	label.add_theme_color_override("font_color", Color.WHITE)
+	if force_white:
+		label.add_theme_color_override("font_color", Color.WHITE)
 	label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.5))
 	label.add_theme_constant_override("shadow_offset_x", 2)
 	label.add_theme_constant_override("shadow_offset_y", 2)
@@ -127,7 +137,7 @@ static func style_line_edit(input: LineEdit) -> void:
 
 static func style_panel(panel: Control) -> void:
 	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0.10, 0.12, 0.16, 0.88)
+	sb.bg_color = Color(0.10, 0.12, 0.16, 0.92)
 	sb.border_color = Color(0.30, 0.35, 0.42)
 	sb.set_border_width_all(3)
 	sb.set_corner_radius_all(8)
@@ -138,13 +148,29 @@ static func style_panel(panel: Control) -> void:
 		panel.add_theme_stylebox_override("panel", sb)
 
 
+static func style_rich_text(rtl: RichTextLabel) -> void:
+	var font := get_pixel_font()
+	if font:
+		rtl.add_theme_font_override("normal_font", font)
+		rtl.add_theme_font_override("bold_font", font)
+		rtl.add_theme_font_override("italics_font", font)
+
+
+static func style_check_box(cb: CheckBox) -> void:
+	var font := get_pixel_font()
+	if font and not _has_emoji(cb.text):
+		cb.add_theme_font_override("font", font)
+	cb.add_theme_color_override("font_color", Color.WHITE)
+	cb.add_theme_color_override("font_hover_color", Color(0.9, 0.9, 1.0))
+	cb.add_theme_color_override("font_pressed_color", Color.WHITE)
+
+
 # ═══════════════════════════════════════════════════════════════════
 #  INTERNALS
 # ═══════════════════════════════════════════════════════════════════
 
 ## Remove any existing full-screen ColorRect backgrounds, then add checker.
 static func _replace_background(root: Control) -> void:
-	# Remove old solid-color backgrounds (direct children that fill the screen)
 	for child in root.get_children():
 		if child is ColorRect and child.anchor_right >= 1.0 and child.anchor_bottom >= 1.0:
 			child.queue_free()
@@ -156,24 +182,46 @@ static func _replace_background(root: Control) -> void:
 ## Auto-detect a good colour based on button text.
 static func _auto_button_color(btn: Button) -> Color:
 	var t := btn.text.to_lower().strip_edges()
-	if t in ["continue", "continue game", "yes", "start new game", "start"]:
+	if t in ["continue", "continue game", "yes", "start new game", "start", "resume",
+			"got it!", "transfer", "submit", "ask", "send", "purchace", "purchase"]:
 		return CLR_GREEN
 	elif t in ["randomize"]:
 		return CLR_ORANGE
-	elif t in ["no", "back", "close"]:
+	elif t in ["no", "back", "close", "x", "quit game", " x "]:
 		return CLR_RED
 	return CLR_GREY
 
 
 ## Walk the tree and style every relevant node.
-static func _style_children_recursive(node: Node) -> void:
-	if node is Button and not (node is CheckBox) and not (node is OptionButton):
+## preserve_colors=false → full styling (for full-screen menus)
+## preserve_colors=true  → skip label color overrides (for overlays)
+static func _style_children_recursive(node: Node, force_label_colors: bool = true) -> void:
+	if node is CheckBox:
+		style_check_box(node)
+	elif node is OptionButton:
+		pass  # OptionButtons are custom-styled by their own scripts
+	elif node is Button:
 		style_button(node, _auto_button_color(node))
 	elif node is Label:
-		style_label(node)
+		if force_label_colors:
+			style_label(node, true)
+		else:
+			# Overlay mode: set font + shadow but keep existing color
+			style_label(node, not node.has_theme_color_override("font_color"))
 	elif node is LineEdit:
 		style_line_edit(node)
+	elif node is RichTextLabel:
+		style_rich_text(node)
 	elif node is PanelContainer or node is Panel:
 		style_panel(node)
 	for child in node.get_children():
-		_style_children_recursive(child)
+		_style_children_recursive(child, force_label_colors)
+
+
+## Returns true if the text contains emoji (high-unicode) characters.
+## We skip setting the pixel font on these since Minecraft.ttf lacks emoji glyphs.
+static func _has_emoji(text: String) -> bool:
+	for i in range(text.length()):
+		if text.unicode_at(i) > 0x2000:
+			return true
+	return false

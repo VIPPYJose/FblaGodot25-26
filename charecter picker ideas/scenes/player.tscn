@@ -75,3 +75,5 @@ horizontal_alignment = 1
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
+
+; COMMIT: Achievements and Catch Minigame Update

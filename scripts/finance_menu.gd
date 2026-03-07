@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 signal menu_closed
@@ -39,6 +40,8 @@ signal menu_closed
 @onready var report_text = $Panel/VBox/Content/TabContainer/WeeklyReport/ReportLabel
 
 func _ready():
+	UITheme.apply_overlay_theme(self)
+
 	# Connect to GameState signals
 	GameState.budget_updated.connect(update_ui)
 	GameState.savings_updated.connect(update_ui)
@@ -145,6 +148,7 @@ func update_history():
 		child.queue_free()
 	
 	# Populate from GameState
+	var pixel_font := UITheme.get_pixel_font()
 	for entry in GameState.transaction_history:
 		var h_box = HBoxContainer.new()
 		
@@ -154,6 +158,8 @@ func update_history():
 		day_label.text = "[Day %d]" % entry["day"]
 		day_label.custom_minimum_size.x = 130
 		day_label.add_theme_font_size_override("font_size", font_size)
+		if pixel_font:
+			day_label.add_theme_font_override("font", pixel_font)
 		h_box.add_child(day_label)
 		
 		#labels the description of the transaction
@@ -161,6 +167,8 @@ func update_history():
 		desc_label.text = entry["description"]
 		desc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		desc_label.add_theme_font_size_override("font_size", font_size)
+		if pixel_font:
+			desc_label.add_theme_font_override("font", pixel_font)
 		h_box.add_child(desc_label)
 		
 		#labels the amount of the transaction
@@ -169,6 +177,8 @@ func update_history():
 		amount_label.text = "%s$%d" % [prefix, entry["amount"]]
 		amount_label.add_theme_color_override("font_color", Color.GREEN if entry["amount"] >= 0 else Color.RED)
 		amount_label.add_theme_font_size_override("font_size", font_size)
+		if pixel_font:
+			amount_label.add_theme_font_override("font", pixel_font)
 		h_box.add_child(amount_label)
 		
 		history_list.add_child(h_box)

@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CharacterBody2D
 ## NPC that starts dialogue when the player enters its Area2D and presses the interact key.
 ## Locks player movement during dialogue and unlocks when dialogue ends.

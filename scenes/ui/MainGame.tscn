@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c72hdhwbpin62" path="res://scenes/maps/shop/Shop.tscn" id="3_rl3lx"]
 [ext_resource type="PackedScene" uid="uid://ciqs30qh7j8kh" path="res://scenes/maps/House/House.tscn" id="4_p8prh"]
 [ext_resource type="PackedScene" uid="uid://4f2nlbvifihu" path="res://scenes/maps/Vet/Vet.tscn" id="5_mrp28"]
+[ext_resource type="Script" uid="uid://dwn2snim0omos" path="res://scripts/catch_area.gd" id="catch_area_script"]
 [ext_resource type="Script" uid="uid://djopbckuyqam2" path="res://scripts/interaction_area.gd" id="interaction_area_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utfc0"]
@@ -69,6 +70,9 @@ size = Vector2(95, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbs0w"]
 size = Vector2(118, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_catch"]
+size = Vector2(118, 96)
 
 [sub_resource type="Curve2D" id="Curve2D_rl3lx"]
 _data = {
@@ -713,6 +717,13 @@ is_sleep = true
 position = Vector2(319, -699)
 shape = SubResource("RectangleShape2D_xbs0w")
 
+[node name="CatchArea" type="Area2D" parent="Interaction areas" unique_id=440463769]
+script = ExtResource("catch_area_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction areas/CatchArea" unique_id=1925786831]
+position = Vector2(1609, 577)
+shape = SubResource("RectangleShape2D_catch")
+
 [node name="VetPath" type="Path2D" parent="." unique_id=54715628]
 curve = SubResource("Curve2D_rl3lx")
 
@@ -879,3 +890,5 @@ shape = SubResource("RectangleShape2D_mu1ml")
 position = Vector2(362, 221)
 build_mode = 1
 polygon = PackedVector2Array(-103, -1007, 285, -1003, 287, -769, -98, -772)
+
+; COMMIT: Achievements and Catch Minigame Update

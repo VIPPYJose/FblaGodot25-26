@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## A compiled line of dialogue.
 class_name DMCompiledLine extends RefCounted
 

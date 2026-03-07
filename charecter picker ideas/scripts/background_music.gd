@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node
 
 ## Autoload that plays background music continuously across all scenes.

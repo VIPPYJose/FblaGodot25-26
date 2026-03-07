@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 @onready var panel = $Panel
@@ -10,6 +11,7 @@ signal hint_hidden
 var current_timer: Timer = null
 
 func _ready():
+	UITheme.apply_overlay_theme(self)
 	panel.modulate.a = 0
 	anim_player.animation_finished.connect(_on_animation_finished)
 

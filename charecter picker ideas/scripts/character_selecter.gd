@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 
 @onready var components: Control = $Components

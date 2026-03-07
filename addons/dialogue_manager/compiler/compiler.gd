@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## A compiler of Dialogue Manager dialogue.
 class_name DMCompiler extends RefCounted
 

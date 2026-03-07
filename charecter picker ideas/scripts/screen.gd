@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 
 ## Email-style message screen: left pane = list of messages (new at bottom), right pane = detail view.

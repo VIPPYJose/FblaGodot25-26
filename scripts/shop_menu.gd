@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 signal shop_closed
 
@@ -22,6 +23,7 @@ var water_cart_count = 0
 var prescription_selected = false
 
 func _ready():
+	UITheme.apply_overlay_theme(self)
 	visible = false
 	update_ui()
 

@@ -6,3 +6,4 @@
 collision_enabled = false
 tile_set = ExtResource("tileset_id")
 tile_map_data = PackedByteArray(0, 0)
+; COMMIT: Achievements and Catch Minigame Update

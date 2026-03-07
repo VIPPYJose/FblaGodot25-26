@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 class_name SceneManagerConstants extends Object
 
 const SINGLETON_GROUP_NAME = "scene_manager_entity_nodes"

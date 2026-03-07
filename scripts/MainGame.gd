@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node2D
 
 # Tile (45, 20) in Map.tscn scaled by 2 and offset by (-724, -317)
@@ -18,7 +19,6 @@ func _ready():
 	spawn_player()
 	spawn_dog()
 	setup_hud()
-	setup_pause_menu()
 	# Only show tutorial paths if it's Day 1 and tutorial isn't complete
 	if GameState.is_day_one and not GameState.is_tutorial_complete:
 		_make_paths_visible()
@@ -57,6 +57,11 @@ func _ready():
 	# Connect to day started signal for health changes
 	GameState.day_started.connect(_on_day_started)
 	GameState.vet_talk_finished.connect(_on_vet_talk_finished)
+	GameState.open_shop_requested.connect(_on_open_shop_requested)
+
+func _on_open_shop_requested():
+	if shop_path:
+		shop_path.visible = false
 
 var home_hint_shown = false
 func _on_shop_closed():
@@ -100,7 +105,6 @@ func save_current_game():
 			"hunger": dog_instance.hunger,
 			"thirst": dog_instance.thirst,
 			"energy": dog_instance.energy,
-			"hygiene": dog_instance.hygiene,
 			"health": dog_instance.health
 		}
 		GameState.save_game(dog_data)
@@ -111,21 +115,7 @@ func restore_dog_from_save():
 		dog_instance.hunger = saved_dog_data.get("hunger", 100.0)
 		dog_instance.thirst = saved_dog_data.get("thirst", 100.0)
 		dog_instance.energy = saved_dog_data.get("energy", 100.0)
-		dog_instance.hygiene = saved_dog_data.get("hygiene", 100.0)
 		dog_instance.health = saved_dog_data.get("health", 30.0)
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		var pause_menu = get_node_or_null("PauseMenu")
-		if pause_menu:
-			pause_menu.toggle_pause()
-
-func setup_pause_menu():
-	var pause_scene = load("res://scenes/ui/PauseMenu.tscn")
-	if pause_scene:
-		var pause_menu = pause_scene.instantiate()
-		pause_menu.name = "PauseMenu"
-		add_child(pause_menu)
 
 func setup_hud():
 	var hud_scene = load("res://scenes/ui/bottom_hud.tscn")

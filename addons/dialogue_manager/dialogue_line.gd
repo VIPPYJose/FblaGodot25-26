@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## A line of dialogue returned from [code]DialogueManager[/code].
 class_name DialogueLine extends RefCounted
 

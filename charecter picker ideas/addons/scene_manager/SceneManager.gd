@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node2D
 
 signal fade_complete

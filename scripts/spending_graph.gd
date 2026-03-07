@@ -1,9 +1,10 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 class_name SpendingGraph
 
 # Graph data
-var spending_points: Array[Vector2] = []  # (day, cumulative_spending)
-var cash_points: Array[Vector2] = []    # (day, current_cash_balance)
+var spending_points: Array[Vector2] = [] # (day, cumulative_spending)
+var cash_points: Array[Vector2] = [] # (day, current_cash_balance)
 
 # Graph dimensions
 var margin_left: int = 80
@@ -40,10 +41,10 @@ func build_graph_data(transaction_history: Array):
 	sorted_transactions.sort_custom(func(a, b): return a["day"] < b["day"])
 	
 	var cumulative_spending: float = 0.0
-	var current_cash: float = 150.0  # Starting cash balance
+	var current_cash: float = 150.0 # Starting cash balance
 	max_day = 0
 	max_amount = 0.0
-	var min_amount: float = 0.0  # Track minimum for negative balances
+	var min_amount: float = 0.0 # Track minimum for negative balances
 	
 	# Add starting point at day 0
 	cash_points.append(Vector2(0, current_cash))
@@ -67,7 +68,7 @@ func build_graph_data(transaction_history: Array):
 			if cumulative_spending > max_amount:
 				max_amount = cumulative_spending
 			
-			current_cash += amount  # amount is negative, so this subtracts
+			current_cash += amount # amount is negative, so this subtracts
 			cash_points.append(Vector2(day, current_cash))
 			if current_cash > max_amount:
 				max_amount = current_cash
@@ -88,7 +89,7 @@ func build_graph_data(transaction_history: Array):
 		max_amount = max(max_amount, abs(min_amount))
 	# Add some padding for better visualization
 	if max_amount > 0:
-		max_amount *= 1.1  # 10% padding
+		max_amount *= 1.1 # 10% padding
 	
 	# Calculate increments based on max values - auto-scale to fit data
 	# The graph area size stays fixed, but numbers scale with data
@@ -252,7 +253,7 @@ func draw_grid():
 		
 		day += day_increment
 		if day_increment == 0:
-			break  # Safety
+			break # Safety
 	
 	# Horizontal grid lines (amounts)
 	# Check if we need to handle negative values
@@ -267,7 +268,7 @@ func draw_grid():
 	
 	# Draw negative grid lines if needed
 	if min_cash < 0:
-		var amount = -amount_increment
+		var amount = - amount_increment
 		while amount >= -max_amount:
 			var normalized_y = amount / max_amount
 			var y = zero_y - normalized_y * (graph_height / 2.0)
@@ -292,12 +293,12 @@ func draw_grid():
 			
 			amount -= amount_increment
 			if amount_increment == 0:
-				break  # Safety
+				break # Safety
 	
 	# Draw positive grid lines
-	var amount = 0.0
-	while amount <= max_amount:
-		var normalized_y = amount / max_amount
+	var pos_amount = 0.0
+	while pos_amount <= max_amount:
+		var normalized_y = pos_amount / max_amount
 		var y = zero_y - normalized_y * (graph_height / 2.0)
 		draw_line(
 			Vector2(margin_left, y),
@@ -311,16 +312,16 @@ func draw_grid():
 		draw_string(
 			get_theme_default_font(),
 			label_pos,
-			"$" + str(int(amount)),
+			"$" + str(int(pos_amount)),
 			HORIZONTAL_ALIGNMENT_LEFT,
 			-1,
 			18,
 			Color.WHITE
 		)
 		
-		amount += amount_increment
+		pos_amount += amount_increment
 		if amount_increment == 0:
-			break  # Safety
+			break # Safety
 
 func draw_spending_line():
 	# Prevent division by zero

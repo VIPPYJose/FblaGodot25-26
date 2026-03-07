@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 @onready var panel = $PanelContainer
@@ -9,6 +10,7 @@ extends CanvasLayer
 signal menu_opened
 
 func _ready():
+	UITheme.apply_overlay_theme(self)
 	panel.hide()
 	$PanelContainer/VBoxContainer/TitleHBox/CloseButton.pressed.connect(func():
 		panel.hide()

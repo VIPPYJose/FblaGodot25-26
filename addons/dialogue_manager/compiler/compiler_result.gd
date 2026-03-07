@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## The result of using the [DMCompiler] to compile some dialogue.
 class_name DMCompilerResult extends RefCounted
 

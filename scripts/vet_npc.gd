@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Area2D
 
 var tutorial_hint_scene = preload("res://scenes/ui/tutorial_hint.tscn")

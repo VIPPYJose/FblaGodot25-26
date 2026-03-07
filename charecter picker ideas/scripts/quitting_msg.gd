@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 
 const DISPLAY_DURATION := 3.0

@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node
 
 var character_id: int = 1
@@ -20,13 +21,14 @@ const CharacterAssets = preload("res://scripts/CharacterAssets.gd")
 var COMPONENT_ANIM_PATHS: Dictionary = CharacterAssets.COMPONENT_ANIM_PATHS
 
 var money: int = 150
+var starting_money: int = 150
 
 # Customizable Costs
 var food_cost: int = 20
 var water_cost: int = 10
 var medicine_cost: int = 40
 var vet_fee: int = 50
-var dog_house_cost: int = 300
+var taxi_cost: int = 10
 var master_volume: int = 70
 var current_day: int = 0
 var days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -66,12 +68,37 @@ var weekly_report: Dictionary = {
 var transaction_history: Array = [] # Stores {day, description, amount, category}
 var all_time_spent: int = 0
 
+# Pet Advanced Features
+var inflation_rate: float = 1.0
+var pet_age_days: int = 0
+var foods: Array = ["Cheap Kibble", "Healthy Veggies", "Premium Meat"]
+var favorite_food: String = "Premium Meat"
+var disliked_food: String = "Cheap Kibble"
+var achievements: Dictionary = {
+	"Penny Pincher": false, # $200 in savings
+	"Master Chef": false, # Feed 10 times
+	"Golden Years": false, # Reach Day 30
+	"Catch Pro": false, # Earn $40 in one catch round
+	"Catch Master": false # Earn $200 total from catch
+}
+var times_fed: int = 0
+
+# Catch minigame
+var catch_played_today: bool = false
+var catch_last_played_day: int = -1
+var catch_total_earnings: int = 0
+
+signal event_triggered(message: String)
+signal achievement_unlocked(name: String)
+
 # Signals
 signal budget_updated
 signal savings_updated
 signal emergency_fund_used(item_name: String)
 signal history_updated
+@warning_ignore("unused_signal")
 signal vet_talk_finished
+@warning_ignore("unused_signal")
 signal open_shop_requested
 
 func _ready():
@@ -91,6 +118,27 @@ func advance_day():
 	food = max(0, food - 1)
 	water = max(0, water - 1)
 	
+	# Process medication
+	if medication != "none":
+		# Medication heals dog by 30 each night
+		dog_health = min(100.0, dog_health + 30)
+		# Parse remaining days from medication string, e.g. "Antibiotics (5 days)"
+		var regex = RegEx.new()
+		regex.compile("(\\d+)")
+		var result = regex.search(medication)
+		if result:
+			var days_left = int(result.get_string()) - 1
+			if days_left <= 0:
+				medication = "none"
+				event_triggered.emit("Medication course finished!")
+			else:
+				medication = "Antibiotics (" + str(days_left) + " days)"
+				event_triggered.emit("Medication applied! Health +30. " + str(days_left) + " days left.")
+		else:
+			# If we can't parse days, just use it once
+			medication = "none"
+			event_triggered.emit("Medication applied! Health +30.")
+	
 	# Increment day
 	current_day += 1
 	is_day_one = false
@@ -102,7 +150,50 @@ func advance_day():
 	# Wake up dog
 	is_dog_sleeping = false
 	
+	# Reset catch minigame availability
+	catch_played_today = false
+	
+	# Banking Interest Logic
+	if savings_balance > 0:
+		var interest = int(savings_balance * 0.05)
+		if interest > 0:
+			savings_balance += interest
+			savings_updated.emit()
+	
+	# Inflation & Random Bills
+	if current_day > 0 and current_day % 10 == 0:
+		inflation_rate += 0.1
+		var tax: int = int(10.0 * inflation_rate)
+		if money >= tax:
+			spend_money(tax, "Travel") # Put under Travel or general
+			event_triggered.emit("Inflation up! Paid pet license tax: $" + str(tax))
+		else:
+			dog_health -= 20
+			event_triggered.emit("Could not pay tax! Dog gets stressed.")
+			
+	# Achievements check
+	if not achievements["Golden Years"] and current_day >= 30:
+		achievements["Golden Years"] = true
+		achievement_unlocked.emit("Golden Years")
+	
 	day_started.emit(current_day)
+	
+	# Random Text Event (20% chance)
+	if randf() < 0.2:
+		var evs = [
+			{"msg": "Pet found a $5 bill!", "amt": 5, "type": "money"},
+			{"msg": "Pet chewed your shoe...", "amt": - 15, "type": "money"},
+			{"msg": "Pet had a wonderful dream", "amt": 15, "type": "health"}
+		]
+		var ev = evs[randi() % evs.size()]
+		event_triggered.emit(ev["msg"])
+		if ev["type"] == "money":
+			if ev["amt"] > 0:
+				money += ev["amt"]
+			else:
+				spend_money(abs(ev["amt"]), "Emergency")
+		elif ev["type"] == "health":
+			dog_health = min(100.0, dog_health + ev["amt"])
 
 func old_process_disabled(delta):
 	if get_tree().paused:
@@ -224,7 +315,7 @@ func initialize_day_one():
 	is_day_one = true
 	is_tutorial_complete = false
 	# Reset finances for new game
-	money = 150
+	money = starting_money
 	savings_balance = 200
 	budget_data = {
 		"Food": {"limit": 50, "spent": 0},
@@ -286,6 +377,7 @@ func save_game(dog_data: Dictionary = {}):
 		"pet_name": pet_name,
 		"player_name": player_name,
 		"money": money,
+		"starting_money": starting_money,
 		"current_day": current_day,
 		"day_timer": day_timer,
 		"food": food,
@@ -299,7 +391,7 @@ func save_game(dog_data: Dictionary = {}):
 		"water_cost": water_cost,
 		"medicine_cost": medicine_cost,
 		"vet_fee": vet_fee,
-		"dog_house_cost": dog_house_cost,
+		"taxi_cost": taxi_cost,
 		# Finance Data
 		"savings_balance": savings_balance,
 		"budget_data": budget_data,
@@ -310,8 +402,12 @@ func save_game(dog_data: Dictionary = {}):
 		"dog_hunger": dog_data.get("hunger", 100.0),
 		"dog_thirst": dog_data.get("thirst", 100.0),
 		"dog_energy": dog_data.get("energy", 100.0),
-		"dog_hygiene": dog_data.get("hygiene", 100.0),
 		"dog_health": dog_data.get("health", 30.0),
+		"inflation_rate": inflation_rate,
+		"times_fed": times_fed,
+		"achievements": achievements,
+		"catch_last_played_day": catch_last_played_day,
+		"catch_total_earnings": catch_total_earnings,
 		# Component-based character data
 		"uses_component_system": uses_component_system,
 		"char_body": char_body,
@@ -348,6 +444,7 @@ func load_game() -> bool:
 	pet_name = save_data.get("pet_name", "")
 	player_name = save_data.get("player_name", "")
 	money = save_data.get("money", 150)
+	starting_money = save_data.get("starting_money", 150)
 	current_day = save_data.get("current_day", 0)
 	day_timer = save_data.get("day_timer", 0.0)
 	food = save_data.get("food", 0)
@@ -362,7 +459,7 @@ func load_game() -> bool:
 	water_cost = save_data.get("water_cost", 10)
 	medicine_cost = save_data.get("medicine_cost", 40)
 	vet_fee = save_data.get("vet_fee", 50)
-	dog_house_cost = save_data.get("dog_house_cost", 300)
+	taxi_cost = save_data.get("taxi_cost", 10)
 	
 	# Restore Finance Data
 	savings_balance = save_data.get("savings_balance", 200)
@@ -379,6 +476,18 @@ func load_game() -> bool:
 	})
 	transaction_history = save_data.get("transaction_history", [])
 	all_time_spent = save_data.get("all_time_spent", 0)
+	
+	inflation_rate = save_data.get("inflation_rate", 1.0)
+	times_fed = save_data.get("times_fed", 0)
+	var loaded_achievements = save_data.get("achievements", {})
+	for k in achievements.keys():
+		if loaded_achievements.has(k):
+			achievements[k] = loaded_achievements[k]
+	
+	# Restore catch game data
+	catch_last_played_day = save_data.get("catch_last_played_day", -1)
+	catch_total_earnings = save_data.get("catch_total_earnings", 0)
+	catch_played_today = (catch_last_played_day == current_day)
 	
 	# Restore component-based character data
 	uses_component_system = save_data.get("uses_component_system", false)
@@ -409,7 +518,6 @@ func get_saved_dog_data() -> Dictionary:
 		"hunger": save_data.get("dog_hunger", 100.0),
 		"thirst": save_data.get("dog_thirst", 100.0),
 		"energy": save_data.get("dog_energy", 100.0),
-		"hygiene": save_data.get("dog_hygiene", 100.0),
 		"health": save_data.get("dog_health", 30.0)
 	}
 

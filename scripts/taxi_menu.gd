@@ -1,12 +1,10 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 @onready var panel = $PanelContainer
 
 signal menu_opened
 signal menu_closed
-
-# Taxi fare cost
-const TAXI_COST := 10
 
 # Destination coordinates
 const DESTINATIONS := {
@@ -17,6 +15,7 @@ const DESTINATIONS := {
 }
 
 func _ready():
+	UITheme.apply_overlay_theme(self )
 	panel.hide()
 	$PanelContainer/VBoxContainer/TitleHBox/CloseButton.pressed.connect(func():
 		hide_menu()
@@ -49,17 +48,47 @@ func get_menu_visible() -> bool:
 
 func _travel_to(destination: String):
 	var pos = DESTINATIONS[destination]
-	if not GameState.spend_money(TAXI_COST, "Travel"):
+	if not GameState.spend_money(GameState.taxi_cost, "Travel"):
 		# Not enough money - could show a notification
 		return
 	hide_menu()
+	
+	var player = get_tree().get_first_node_in_group("player")
+	var dog = get_tree().get_first_node_in_group("dog")
+	
+	var taxi_scene = load("res://taxi.tscn")
+	var taxi_instance = null
+	if taxi_scene:
+		taxi_instance = taxi_scene.instantiate()
+		get_tree().current_scene.add_child(taxi_instance)
+		if player:
+			taxi_instance.global_position = player.global_position + Vector2(0, 20)
+	
+	if player:
+		player.hide()
+	if dog:
+		dog.hide()
+	
+	var timer = Timer.new()
+	timer.wait_time = 0.1
+	timer.autostart = true
+	get_tree().current_scene.add_child(timer)
+	timer.timeout.connect(func():
+		if is_instance_valid(taxi_instance):
+			taxi_instance.global_position.x += 40
+	)
+	
 	SceneManager.fade_in_place({
 		"pattern": "curtains",
 		"on_fade_out": func():
-			var player = get_tree().get_first_node_in_group("player")
+			if is_instance_valid(timer):
+				timer.queue_free()
+			if is_instance_valid(taxi_instance):
+				taxi_instance.queue_free()
 			if player:
+				player.show()
 				player.global_position = pos
-			var dog = get_tree().get_first_node_in_group("dog")
 			if dog:
+				dog.show()
 				dog.global_position = pos + Vector2(50, 0)
 	})

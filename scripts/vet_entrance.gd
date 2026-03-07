@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Area2D
 
 # Vet entrance controller - shows "Press E to enter" and handles teleportation

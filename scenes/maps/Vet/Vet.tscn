@@ -33,3 +33,5 @@ script = ExtResource("vet_npc_script")
 [node name="talk" type="CollisionShape2D" parent="vetNPC" unique_id=900401074]
 position = Vector2(218, 74.5)
 shape = SubResource("RectangleShape2D_fdbq2")
+
+; COMMIT: Achievements and Catch Minigame Update

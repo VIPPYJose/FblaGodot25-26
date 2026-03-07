@@ -11,3 +11,5 @@ texture_normal = ExtResource("2_none")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("1_script")
+
+; COMMIT: Achievements and Catch Minigame Update

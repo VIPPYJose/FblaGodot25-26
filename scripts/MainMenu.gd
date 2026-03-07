@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Control
 
 @onready var continue_button = $VBoxContainer/ContinueButton
@@ -27,3 +28,8 @@ func _on_settings_pressed():
 	if settings_scene:
 		var settings_menu = settings_scene.instantiate()
 		add_child(settings_menu)
+
+func _on_close_settings_pressed():
+	var panel = get_node_or_null("SettingsPanel")
+	if panel:
+		panel.hide()

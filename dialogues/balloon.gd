@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 class_name CustomDialogueBalloon extends CanvasLayer
 ## A customized dialogue balloon for larger text.
 

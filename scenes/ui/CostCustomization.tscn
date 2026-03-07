@@ -53,13 +53,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
+offset_left = -660.0
 offset_top = -100.0
-offset_right = 600.0
+offset_right = 660.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
+alignment = 1
+
+[node name="StartingCashColumn" type="VBoxContainer" parent="CostColumns"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StartingCashLabel" type="Label" parent="CostColumns/StartingCashColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Starting Cash"
+horizontal_alignment = 1
+
+[node name="StartingCashInput" type="LineEdit" parent="CostColumns/StartingCashColumn"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "$150"
 alignment = 1
 
 [node name="FoodColumn" type="VBoxContainer" parent="CostColumns"]
@@ -130,21 +147,21 @@ theme_override_font_sizes/font_size = 32
 placeholder_text = "$50"
 alignment = 1
 
-[node name="DogHouseColumn" type="VBoxContainer" parent="CostColumns"]
+[node name="TaxiColumn" type="VBoxContainer" parent="CostColumns"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="DogHouseLabel" type="Label" parent="CostColumns/DogHouseColumn"]
+[node name="TaxiLabel" type="Label" parent="CostColumns/TaxiColumn"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "Dog House"
+text = "Taxi Fare"
 horizontal_alignment = 1
 
-[node name="DogHouseInput" type="LineEdit" parent="CostColumns/DogHouseColumn"]
+[node name="TaxiInput" type="LineEdit" parent="CostColumns/TaxiColumn"]
 custom_minimum_size = Vector2(180, 70)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-placeholder_text = "$300"
+placeholder_text = "$10"
 alignment = 1
 
 [node name="ButtonContainer" type="HBoxContainer" parent="."]
@@ -174,3 +191,5 @@ custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Continue"
+
+; COMMIT: Achievements and Catch Minigame Update

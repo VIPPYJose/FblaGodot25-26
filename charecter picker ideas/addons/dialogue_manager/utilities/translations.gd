@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## A collection of utility functions for working with dialogue translations.
 class_name DMTranslationUtilities extends RefCounted
 

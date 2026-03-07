@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## The CodeEdit that is used when the editor is split, to show the split script.
 @tool
 extends CodeEdit

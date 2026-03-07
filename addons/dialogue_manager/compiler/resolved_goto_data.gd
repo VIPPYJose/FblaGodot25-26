@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## Data associated with a dialogue jump/goto line.
 class_name DMResolvedGotoData extends RefCounted
 

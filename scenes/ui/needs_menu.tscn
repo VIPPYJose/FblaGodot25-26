@@ -123,31 +123,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 38
 text = "50"
 
-[node name="Hygiene" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Hygiene"
-
-[node name="HBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene"]
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-value = 50.0
-show_percentage = false
-
-[node name="Value" type="Label" parent="PanelContainer/VBoxContainer/GridContainer/Hygiene/HBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 38
-text = "50"
-
 [node name="Health" type="VBoxContainer" parent="PanelContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -187,3 +162,5 @@ offset_right = -10.0
 offset_bottom = -34.0
 grow_horizontal = 0
 grow_vertical = 0
+
+; COMMIT: Achievements and Catch Minigame Update

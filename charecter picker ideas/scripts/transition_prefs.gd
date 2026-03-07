@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node
 
 ## Autoload that stores the user's chosen scene transition pattern.

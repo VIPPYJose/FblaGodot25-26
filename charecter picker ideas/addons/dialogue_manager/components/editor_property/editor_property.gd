@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 @tool
 
 class_name DMDialogueEditorProperty extends EditorProperty

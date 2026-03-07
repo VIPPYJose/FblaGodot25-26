@@ -90,3 +90,5 @@ theme_override_font_sizes/font_size = 50
 text = "Close"
 
 [connection signal="pressed" from="SettingsPanel/VBoxContainer/CloseButton" to="." method="_on_close_settings_pressed"]
+
+; COMMIT: Achievements and Catch Minigame Update

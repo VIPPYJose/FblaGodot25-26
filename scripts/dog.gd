@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CharacterBody2D
 
 @export var target_distance: float = 67.0
@@ -23,26 +24,27 @@ var action_speed: float = 250.0
 var hunger: float = 80.0
 var thirst: float = 70.0
 var energy: float = 100.0
-var hygiene: float = 90.0
-var health: float = 30.0 # Starts at 30 on Day 1
+var health: float = 30.0 # Starts low on Day 1
 
 var hunger_decay: float = 100.0 / 240.0 # ~0.417 per second (4 minutes to empty)
 var thirst_decay: float = 100.0 / 240.0
 var energy_decay: float = 100.0 / 240.0
-var hygiene_decay: float = 100.0 / 240.0
 
 # Initialize all pet needs for Day 1
 func initialize_day_one():
 	hunger = 100.0
 	thirst = 100.0
 	energy = 100.0
-	hygiene = 100.0
 	health = 30.0 # Health starts low on Day 1
 
 # Apply random health change at start of each day
 func apply_daily_health_change():
 	var change = randi_range(-30, 30)
 	health = clamp(health + change, 10, 100) # Floor at 10, cap at 100
+	
+	# Apply medication healing (medication is processed in GameState.advance_day)
+	if GameState.medication != "none":
+		health = min(100.0, health + 30)
 
 func _ready() -> void:
 	add_to_group("dog")
@@ -102,11 +104,41 @@ func start_action(path_name: String, state: DogState, callback: Callable):
 	print("Started action: ", path_name, " with ", action_path.size(), " points")
 
 func _on_food_complete():
-	hunger = min(100.0, hunger + 30.0)
+	if GameState.food <= 0:
+		GameState.event_triggered.emit("⚠️ No food at home! Buy some from the shop.")
+		current_state = DogState.FOLLOWING_PLAYER
+		return
+	
+	GameState.food -= 1
+	var fed_type = GameState.foods[randi() % GameState.foods.size()]
+	
+	if fed_type == GameState.favorite_food:
+		hunger = min(100.0, hunger + 50.0)
+		GameState.event_triggered.emit("Fed dog " + fed_type + ". It's their favorite! 💖")
+		health = min(100.0, health + 10)
+	elif fed_type == GameState.disliked_food:
+		hunger = min(100.0, hunger + 10.0)
+		GameState.event_triggered.emit("Fed dog " + fed_type + ". They hated it... 🤢")
+		health -= 5
+	else:
+		hunger = min(100.0, hunger + 30.0)
+		GameState.event_triggered.emit("Fed dog " + fed_type + ".")
+		
+	GameState.times_fed += 1
+	if GameState.times_fed >= 10 and not GameState.achievements["Master Chef"]:
+		GameState.achievements["Master Chef"] = true
+		GameState.achievement_unlocked.emit("Master Chef")
+		
 	current_state = DogState.FOLLOWING_PLAYER
 	print("Dog ate! Hunger: ", hunger)
 
 func _on_water_complete():
+	if GameState.water <= 0:
+		GameState.event_triggered.emit("⚠️ No water at home! Buy some from the shop.")
+		current_state = DogState.FOLLOWING_PLAYER
+		return
+	
+	GameState.water -= 1
 	thirst = min(100.0, thirst + 30.0)
 	current_state = DogState.FOLLOWING_PLAYER
 	print("Dog drank! Thirst: ", thirst)
@@ -123,10 +155,14 @@ func toggle_menu() -> void:
 		if needs_menu_instance.panel.visible:
 			needs_menu_instance.panel.hide()
 		else:
-			needs_menu_instance.show_menu(self)
+			needs_menu_instance.show_menu(self )
 
 func _physics_process(delta: float) -> void:
 	GameState.dog_health = health
+	
+	
+	# Features 3, 5, 8: Age Scaling, Color Moods, Jitter, Sleep Cycles
+	_apply_dynamic_appearance()
 	
 	# Handle state-specific behavior
 	match current_state:
@@ -141,6 +177,31 @@ func _physics_process(delta: float) -> void:
 			return
 		DogState.FOLLOWING_PLAYER:
 			_process_following_player(delta)
+
+func _apply_dynamic_appearance():
+	if not animated_sprite_2d: return
+	
+	# 5. Growing Up (Scale)
+	var age_scale_factor = 1.0 + float(GameState.current_day) * 0.05
+	age_scale_factor = min(age_scale_factor, 2.0) # max double size
+	animated_sprite_2d.scale = Vector2(age_scale_factor, age_scale_factor)
+	
+	# 3. Color Moods
+	if health < 50:
+		animated_sprite_2d.modulate = Color(0.8, 0.8, 1.0) # Sick (Pale blue)
+	elif hunger < 30:
+		animated_sprite_2d.modulate = Color(1.0, 0.6, 0.6) # Hungry (Red tint)
+	elif energy < 30:
+		animated_sprite_2d.modulate = Color(0.7, 0.7, 0.7) # Sleepy (Darker)
+	else:
+		animated_sprite_2d.modulate = Color(1, 1, 1) # Normal
+		
+	# 3. Jitter / Shake if really sick
+	if health < 20:
+		var jitter = Vector2(randf_range(-1.5, 1.5), randf_range(-1.5, 1.5))
+		animated_sprite_2d.position = jitter
+	else:
+		animated_sprite_2d.position = Vector2.ZERO
 
 func _process_action_path():
 	if action_path.is_empty():
@@ -176,10 +237,19 @@ func _process_following_player(delta: float):
 	if not GameState.is_tutorial_complete or GameState.is_dog_sleeping:
 		pass # Skip decay
 	else:
+		# 8. Sleep Cycles (System Time Integration)
+		var time_dict = Time.get_time_dict_from_system()
+		var hour = time_dict["hour"]
+		var is_late_night = (hour >= 22 or hour <= 6)
+		
+		# Extra energy decay if awake at night
+		var current_energy_decay = energy_decay
+		if is_late_night:
+			current_energy_decay *= 2.0
+			
 		hunger = max(0, hunger - hunger_decay * delta)
 		thirst = max(0, thirst - thirst_decay * delta)
-		energy = max(0, energy - energy_decay * delta)
-		hygiene = max(0, hygiene - hygiene_decay * delta)
+		energy = max(0, energy - current_energy_decay * delta)
 		
 		check_emergency_triggers(delta)
 	
@@ -191,10 +261,6 @@ func _process_following_player(delta: float):
 	if global_position.distance_to(player.global_position) > 250:
 		global_position = player.global_position + Vector2(-10, 0)
 		path.clear()
-
-	if player.velocity == Vector2.ZERO:
-		_play_animation("idle")
-		return
 	
 	var old_pos = global_position
 	

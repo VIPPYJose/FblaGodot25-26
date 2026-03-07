@@ -65,3 +65,5 @@ size_flags_horizontal = 4
 text = "Continue"
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+
+; COMMIT: Achievements and Catch Minigame Update

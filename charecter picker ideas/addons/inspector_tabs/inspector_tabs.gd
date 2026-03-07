@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends EditorInspectorPlugin
 
 const KEY_TAB_LAYOUT = "inspector_tabs/tab_layout"

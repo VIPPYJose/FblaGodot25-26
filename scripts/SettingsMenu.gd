@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CanvasLayer
 
 signal settings_closed
@@ -7,6 +8,8 @@ signal settings_closed
 @onready var close_btn = $Panel/VBox/CloseBtn
 
 func _ready():
+	UITheme.apply_overlay_theme(self)
+
 	# Initial value from GameState if exists, else default to 70
 	var initial_volume = GameState.get("master_volume") if "master_volume" in GameState else 70
 	volume_slider.value = initial_volume
@@ -14,6 +17,12 @@ func _ready():
 	
 	volume_slider.value_changed.connect(_on_volume_changed)
 	close_btn.pressed.connect(_on_close_pressed)
+
+func _input(event):
+	# ESC closes settings without toggling pause menu
+	if event.is_action_pressed("ui_cancel"):
+		_on_close_pressed()
+		get_viewport().set_input_as_handled()
 
 func _on_volume_changed(value):
 	volume_value_label.text = str(int(value))

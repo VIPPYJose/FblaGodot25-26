@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Node
 
 const DialogueResource = preload("./dialogue_resource.gd")

@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 class_name DMExportPlugin extends EditorExportPlugin
 
 const IGNORED_PATHS = [

@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends Area2D
 
 @export var hint_text: String = "Press E to interact"

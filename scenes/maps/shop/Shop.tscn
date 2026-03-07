@@ -30,3 +30,5 @@ script = ExtResource("shop_npc_script")
 [node name="talk" type="CollisionShape2D" parent="shopNPC" unique_id=1010599684]
 position = Vector2(216, 175)
 shape = SubResource("RectangleShape2D_mkf6l")
+
+; COMMIT: Achievements and Catch Minigame Update

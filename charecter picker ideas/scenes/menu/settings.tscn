@@ -357,3 +357,5 @@ layout_mode = 2
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/Transition/GridContainer/Vertical" unique_id=1032545359]
 layout_mode = 2
 button_group = ExtResource("6_transitions")
+
+; COMMIT: Achievements and Catch Minigame Update

@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 ## Copyright (c) 2023-present Marius Hanl under the MIT License.
 ## The editor plugin entrypoint for Script-IDE.
 ##

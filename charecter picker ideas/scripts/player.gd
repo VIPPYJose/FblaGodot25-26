@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends CharacterBody2D
 
 ## Player character with layered character components. Applies customization from

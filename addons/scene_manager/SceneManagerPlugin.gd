@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 @tool
 extends EditorPlugin
 var _inspector_plugin

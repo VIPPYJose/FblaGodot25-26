@@ -53,3 +53,5 @@ one_shot = true
 [connection signal="gui_input" from="VBoxContainer/Image" to="." method="image_input"]
 [connection signal="pressed" from="Button" to="." method="delete_pressed"]
 [connection signal="timeout" from="Timer" to="." method="request_save"]
+
+; COMMIT: Achievements and Catch Minigame Update

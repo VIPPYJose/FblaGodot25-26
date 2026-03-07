@@ -347,3 +347,4 @@ vertical_alignment = 1
 [connection signal="value_changed" from="Panel/VBox/Content/TabContainer/BudgetPlanner/TravelSlider" to="." method="_on_travel_slider_value_changed"]
 [connection signal="pressed" from="Panel/VBox/Content/TabContainer/AllTimeHistory/ViewToggleContainer/BreakdownBtn" to="." method="_on_breakdown_btn_pressed"]
 [connection signal="pressed" from="Panel/VBox/Content/TabContainer/AllTimeHistory/ViewToggleContainer/GraphsBtn" to="." method="_on_graphs_btn_pressed"]
+; COMMIT: Achievements and Catch Minigame Update

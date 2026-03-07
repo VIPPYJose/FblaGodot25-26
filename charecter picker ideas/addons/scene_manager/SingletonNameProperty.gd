@@ -1,3 +1,4 @@
+# COMMIT: Achievements and Catch Minigame Update
 extends EditorProperty
 
 var line_edit = LineEdit.new()
